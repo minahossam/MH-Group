@@ -1,218 +1,262 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       MOBILE MENU
-    ========================== */
+  /* =========================================
+     ELEMENTS
+  ========================================== */
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const siteNav = document.querySelector(".site-nav");
-    const navLinks = document.querySelectorAll(".site-nav a");
+  const header = document.getElementById("siteHeader");
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+  const currentYear = document.getElementById("currentYear");
 
-    if (menuToggle && siteNav) {
 
-        menuToggle.addEventListener("click", () => {
+  /* =========================================
+     CURRENT YEAR
+  ========================================== */
 
-            const isOpen = document.body.classList.toggle("menu-open");
+  if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+  }
 
-            menuToggle.classList.toggle("active", isOpen);
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
+  /* =========================================
+     HEADER ON SCROLL
+  ========================================== */
 
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen ? "Close menu" : "Open menu"
-            );
+  const updateHeader = () => {
+    if (!header) return;
 
-        });
-
+    if (window.scrollY > 30) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
     }
+  };
+
+  updateHeader();
+
+  window.addEventListener("scroll", updateHeader, {
+    passive: true
+  });
 
 
-    /* =========================
-       CLOSE MOBILE MENU
-    ========================== */
+  /* =========================================
+     MOBILE MENU
+  ========================================== */
+
+  const closeMenu = () => {
+    if (!menuToggle || !mainNav) return;
+
+    menuToggle.classList.remove("active");
+    mainNav.classList.remove("open");
+
+    menuToggle.setAttribute("aria-expanded", "false");
+
+    document.body.classList.remove("menu-open");
+  };
+
+
+  const openMenu = () => {
+    if (!menuToggle || !mainNav) return;
+
+    menuToggle.classList.add("active");
+    mainNav.classList.add("open");
+
+    menuToggle.setAttribute("aria-expanded", "true");
+
+    document.body.classList.add("menu-open");
+  };
+
+
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+
+      const isOpen = mainNav.classList.contains("open");
+
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+
+    });
+  }
+
+
+  /* =========================================
+     CLOSE MOBILE MENU ON LINK CLICK
+  ========================================== */
+
+  if (mainNav) {
+
+    const navLinks = mainNav.querySelectorAll("a");
 
     navLinks.forEach((link) => {
 
-        link.addEventListener("click", () => {
-
-            document.body.classList.remove("menu-open");
-
-            if (menuToggle) {
-                menuToggle.classList.remove("active");
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
-            }
-
-        });
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
 
     });
 
+  }
 
-    /* =========================
-       HEADER SCROLL
-    ========================== */
 
-    const header = document.querySelector(".site-header");
+  /* =========================================
+     ESCAPE KEY
+  ========================================== */
 
-    const updateHeader = () => {
+  document.addEventListener("keydown", (event) => {
 
-        if (!header) return;
+    if (event.key === "Escape") {
+      closeMenu();
+    }
 
-        if (window.scrollY > 30) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
+  });
 
-    };
 
-    updateHeader();
+  /* =========================================
+     SMOOTH ANCHOR SCROLL
+  ========================================== */
 
-    window.addEventListener(
-        "scroll",
-        updateHeader,
-        { passive: true }
+  const anchorLinks = document.querySelectorAll(
+    'a[href^="#"]'
+  );
+
+  anchorLinks.forEach((link) => {
+
+    link.addEventListener("click", (event) => {
+
+      const targetId = link.getAttribute("href");
+
+      if (!targetId || targetId === "#") {
+        return;
+      }
+
+      const target = document.querySelector(targetId);
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+
+      const headerOffset = header
+        ? header.offsetHeight
+        : 0;
+
+      const targetPosition =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        headerOffset;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+      });
+
+    });
+
+  });
+
+
+  /* =========================================
+     REVEAL ANIMATIONS
+  ========================================== */
+
+  const revealTargets = document.querySelectorAll(
+    [
+      ".statement-content",
+      ".service-row",
+      ".approach-main",
+      ".approach-item",
+      ".process-item",
+      ".industry-item",
+      ".about-content",
+      ".contact-main"
+    ].join(", ")
+  );
+
+
+  revealTargets.forEach((element, index) => {
+
+    element.classList.add("reveal-element");
+
+    element.style.setProperty(
+      "--reveal-delay",
+      `${Math.min(index * 45, 300)}ms`
+    );
+
+  });
+
+
+  const revealObserver =
+    new IntersectionObserver(
+      (entries, observer) => {
+
+        entries.forEach((entry) => {
+
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          entry.target.classList.add("is-visible");
+
+          observer.unobserve(entry.target);
+
+        });
+
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px"
+      }
     );
 
 
-    /* =========================
-       SMOOTH ANCHOR SCROLL
-    ========================== */
+  revealTargets.forEach((element) => {
+    revealObserver.observe(element);
+  });
 
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
-        link.addEventListener("click", (event) => {
+  /* =========================================
+     REDUCED MOTION SUPPORT
+  ========================================== */
 
-            const targetId = link.getAttribute("href");
+  const prefersReducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-            if (!targetId || targetId === "#") return;
 
-            const target = document.querySelector(targetId);
+  if (prefersReducedMotion) {
 
-            if (!target) return;
+    revealTargets.forEach((element) => {
+      element.classList.add("is-visible");
+    });
 
-            event.preventDefault();
+  }
 
-            const headerHeight = header
-                ? header.offsetHeight
-                : 0;
 
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                headerHeight;
+  /* =========================================
+     CONTACT BUTTON SAFETY
+  ========================================== */
 
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth"
-            });
+  const contactButton =
+    document.querySelector(".contact-button");
 
-        });
+  if (contactButton) {
+
+    contactButton.addEventListener("click", () => {
+
+      /*
+        The email address in index.html is still
+        a placeholder and will be replaced later
+        with the real MH Group email.
+      */
 
     });
 
-
-    /* =========================
-       REVEAL ON SCROLL
-    ========================== */
-
-    const revealElements = document.querySelectorAll(
-        ".intro-content, " +
-        ".service-item, " +
-        ".approach-content, " +
-        ".process-step, " +
-        ".industry-item, " +
-        ".about-content"
-    );
-
-    if ("IntersectionObserver" in window) {
-
-        const observer = new IntersectionObserver(
-            (entries, obs) => {
-
-                entries.forEach((entry) => {
-
-                    if (!entry.isIntersecting) return;
-
-                    entry.target.classList.add("is-visible");
-
-                    obs.unobserve(entry.target);
-
-                });
-
-            },
-            {
-                threshold: 0.12,
-                rootMargin: "0px 0px -50px 0px"
-            }
-        );
-
-        revealElements.forEach((element) => {
-
-            element.classList.add("reveal-element");
-
-            observer.observe(element);
-
-        });
-
-    } else {
-
-        revealElements.forEach((element) => {
-            element.classList.add("is-visible");
-        });
-
-    }
-
-
-    /* =========================
-       CURRENT YEAR
-    ========================== */
-
-    const yearElement = document.getElementById("year");
-
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
-
-
-    /* =========================
-       ESCAPE KEY
-    ========================== */
-
-    document.addEventListener("keydown", (event) => {
-
-        if (event.key !== "Escape") return;
-
-        document.body.classList.remove("menu-open");
-
-        if (menuToggle) {
-
-            menuToggle.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open menu"
-            );
-
-        }
-
-    });
+  }
 
 });
