@@ -3,1582 +3,965 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description"
-content="MH Group — Premium Web Design & Digital Solutions for ambitious businesses.">
-
 <title>MH Group — Web Design & Digital Solutions</title>
+<meta name="description" content="MH Group builds premium digital experiences for ambitious businesses.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
---bg:#05070b;
---surface:#0a0e15;
---surface2:#0e131c;
---text:#f7f9fc;
---muted:#8993a3;
---line:rgba(255,255,255,.09);
---blue:#4f8cff;
---blue-light:#8ab4ff;
---max:1180px;
+  --bg:#08090b;
+  --surface:#101216;
+  --surface2:#15171c;
+  --text:#f5f7fa;
+  --muted:#969ba7;
+  --line:rgba(255,255,255,.09);
+  --blue:#4d8dff;
+  --blue2:#78aaff;
+  --max:1180px;
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-background:var(--bg);
-color:var(--text);
-font-family:"DM Sans",sans-serif;
-overflow-x:hidden;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
 }
 
-body:before{
-content:"";
-position:fixed;
-inset:0;
-pointer-events:none;
-z-index:-5;
-background:
-radial-gradient(circle at 75% 10%,rgba(79,140,255,.15),transparent 25%),
-radial-gradient(circle at 10% 60%,rgba(79,140,255,.07),transparent 25%);
-}
-
-a{
-color:inherit;
-text-decoration:none;
-}
+a{text-decoration:none;color:inherit}
 
 .container{
-width:min(var(--max),calc(100% - 40px));
-margin:auto;
+  width:min(var(--max),calc(100% - 40px));
+  margin:auto;
 }
 
-/* CURSOR GLOW */
+/* NAV */
 
-.cursor-glow{
-position:fixed;
-width:350px;
-height:350px;
-border-radius:50%;
-pointer-events:none;
-background:radial-gradient(circle,rgba(79,140,255,.09),transparent 65%);
-transform:translate(-50%,-50%);
-z-index:-1;
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:100;
+  padding:22px 0;
+  transition:.4s ease;
 }
 
-/* NAVIGATION */
-
-nav{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:1000;
-padding:22px 0;
-transition:.4s ease;
-}
-
-nav.scrolled{
-padding:14px 0;
-background:rgba(5,7,11,.72);
-backdrop-filter:blur(20px);
-border-bottom:1px solid var(--line);
+.nav.scrolled{
+  background:rgba(8,9,11,.78);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+  padding:15px 0;
 }
 
 .nav-inner{
-display:flex;
-align-items:center;
-justify-content:space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .logo{
-font-family:"Space Grotesk",sans-serif;
-font-weight:700;
-font-size:27px;
-letter-spacing:-2px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:23px;
+  font-weight:700;
+  letter-spacing:-1px;
 }
 
-.logo span{
-color:var(--blue);
-}
+.logo span{color:var(--blue)}
 
 .nav-links{
-display:flex;
-align-items:center;
-gap:34px;
+  display:flex;
+  gap:32px;
+  align-items:center;
 }
 
 .nav-links a{
-font-size:13px;
-color:#aab3c1;
-transition:.3s;
+  color:#b9bdc7;
+  font-size:14px;
+  transition:.3s;
 }
 
-.nav-links a:hover{
-color:white;
+.nav-links a:hover{color:white}
+
+.nav-cta{
+  border:1px solid var(--line);
+  padding:10px 17px;
+  border-radius:100px;
+  color:white!important;
 }
 
-.nav-button{
-padding:11px 18px;
-border:1px solid rgba(79,140,255,.5);
-border-radius:100px;
-color:white!important;
-}
-
-.nav-button:hover{
-background:var(--blue);
-box-shadow:0 0 30px rgba(79,140,255,.25);
-}
-
-.menu{
-display:none;
-font-size:24px;
-cursor:pointer;
+.nav-cta:hover{
+  border-color:var(--blue);
+  background:rgba(77,141,255,.08);
 }
 
 /* HERO */
 
 .hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-position:relative;
-padding-top:110px;
-overflow:hidden;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  padding-top:100px;
 }
 
 .grid{
-position:absolute;
-inset:0;
-background-image:
-linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-background-size:75px 75px;
-mask-image:linear-gradient(to bottom,black 20%,transparent 90%);
+  position:absolute;
+  inset:0;
+  opacity:.23;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:70px 70px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
 }
 
-.hero-orb{
-position:absolute;
-width:620px;
-height:620px;
-right:-180px;
-top:10%;
-border-radius:50%;
-background:
-radial-gradient(circle at 35% 30%,
-rgba(137,180,255,.22),
-rgba(79,140,255,.06) 35%,
-transparent 68%);
-filter:blur(2px);
-animation:orbFloat 9s ease-in-out infinite;
-}
-
-.hero-orb:before,
-.hero-orb:after{
-content:"";
-position:absolute;
-border-radius:50%;
-inset:90px;
-border:1px solid rgba(120,170,255,.13);
-animation:spin 25s linear infinite;
-}
-
-.hero-orb:after{
-inset:160px;
-animation-direction:reverse;
-animation-duration:18s;
+.glow{
+  position:absolute;
+  width:600px;
+  height:600px;
+  right:-180px;
+  top:80px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(77,141,255,.22),transparent 65%);
+  filter:blur(15px);
 }
 
 .hero-content{
-position:relative;
-z-index:2;
-max-width:950px;
+  position:relative;
+  z-index:2;
+  max-width:850px;
 }
 
 .badge{
-display:inline-flex;
-align-items:center;
-gap:10px;
-padding:8px 13px;
-border:1px solid var(--line);
-background:rgba(255,255,255,.025);
-border-radius:100px;
-font-size:11px;
-color:#aeb8c7;
-margin-bottom:30px;
-animation:fadeUp .8s ease both;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 13px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+  border-radius:100px;
+  color:#c7cad1;
+  font-size:12px;
+  margin-bottom:30px;
 }
 
-.badge-dot{
-width:7px;
-height:7px;
-background:#65e6a4;
-border-radius:50%;
-box-shadow:0 0 16px #65e6a4;
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--blue);
+  box-shadow:0 0 15px var(--blue);
 }
 
 .hero h1{
-font-family:"Space Grotesk",sans-serif;
-font-size:clamp(60px,8.5vw,112px);
-line-height:.9;
-letter-spacing:-7px;
-max-width:1000px;
-animation:fadeUp .9s .08s ease both;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(54px,8vw,104px);
+  line-height:.94;
+  letter-spacing:-5px;
+  max-width:1000px;
 }
 
 .gradient{
-background:linear-gradient(
-100deg,
-#ffffff 5%,
-#b8d2ff 45%,
-#4f8cff 90%
-);
--webkit-background-clip:text;
-background-clip:text;
-color:transparent;
+  background:linear-gradient(100deg,#fff 10%,#8fb7ff 55%,#4d8dff);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
-.hero-description{
-max-width:610px;
-font-size:18px;
-line-height:1.75;
-color:var(--muted);
-margin:32px 0;
-animation:fadeUp .9s .16s ease both;
+.hero p{
+  color:var(--muted);
+  max-width:610px;
+  font-size:18px;
+  margin-top:30px;
 }
 
-.hero-actions{
-display:flex;
-gap:13px;
-animation:fadeUp .9s .24s ease both;
+.buttons{
+  display:flex;
+  gap:13px;
+  margin-top:38px;
+  flex-wrap:wrap;
 }
 
 .btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-padding:15px 23px;
-border-radius:9px;
-font-size:13px;
-font-weight:600;
-transition:.35s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 21px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:600;
+  transition:.3s;
 }
 
-.primary{
-background:var(--blue);
-box-shadow:0 15px 45px rgba(79,140,255,.18);
+.btn-primary{
+  background:white;
+  color:#08090b;
 }
 
-.primary:hover{
-transform:translateY(-4px);
-box-shadow:0 20px 60px rgba(79,140,255,.35);
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(255,255,255,.12);
 }
 
-.secondary{
-border:1px solid var(--line);
-background:rgba(255,255,255,.025);
+.btn-secondary{
+  border:1px solid var(--line);
+  color:white;
 }
 
-.secondary:hover{
-background:rgba(255,255,255,.07);
-transform:translateY(-4px);
+.btn-secondary:hover{
+  border-color:rgba(77,141,255,.6);
+  background:rgba(77,141,255,.08);
+  transform:translateY(-3px);
 }
-
-/* SCROLL INDICATOR */
 
 .scroll{
-position:absolute;
-bottom:35px;
-left:50%;
-transform:translateX(-50%);
-font-size:10px;
-letter-spacing:3px;
-color:#596372;
-text-transform:uppercase;
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:10px;
-}
-
-.scroll-line{
-width:1px;
-height:45px;
-background:linear-gradient(var(--blue),transparent);
-animation:scrollPulse 2s infinite;
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  color:#707580;
+  font-size:11px;
+  letter-spacing:2px;
 }
 
 /* SECTION */
 
-section{
-padding:130px 0;
+section{padding:120px 0}
+
+.section-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:40px;
+  margin-bottom:55px;
 }
 
-.label{
-font-size:10px;
-font-weight:700;
-letter-spacing:2.5px;
-text-transform:uppercase;
-color:var(--blue-light);
-margin-bottom:17px;
+.eyebrow{
+  color:var(--blue2);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:13px;
 }
 
-.title{
-font-family:"Space Grotesk",sans-serif;
-font-size:clamp(42px,5vw,68px);
-line-height:1;
-letter-spacing:-4px;
-max-width:760px;
+.section-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(38px,5vw,64px);
+  letter-spacing:-3px;
+  line-height:1;
 }
 
-.subtitle{
-color:var(--muted);
-max-width:580px;
-line-height:1.75;
-margin-top:23px;
-font-size:15px;
+.section-copy{
+  color:var(--muted);
+  max-width:430px;
+  font-size:15px;
 }
 
 /* SERVICES */
 
 .services{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-margin-top:58px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
-.service{
-position:relative;
-padding:35px;
-min-height:280px;
-border:1px solid var(--line);
-border-radius:18px;
-background:
-linear-gradient(145deg,
-rgba(255,255,255,.045),
-rgba(255,255,255,.012));
-overflow:hidden;
-transition:.45s;
+.card{
+  background:linear-gradient(145deg,#111318,#0c0e12);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:32px;
+  transition:.4s;
 }
 
-.service:before{
-content:"";
-position:absolute;
-width:180px;
-height:180px;
-right:-100px;
-top:-100px;
-background:rgba(79,140,255,.12);
-filter:blur(40px);
-border-radius:50%;
-transition:.45s;
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(77,141,255,.35);
 }
 
-.service:hover{
-transform:translateY(-9px);
-border-color:rgba(79,140,255,.35);
+.icon{
+  width:43px;
+  height:43px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:50px;
+  color:var(--blue2);
+  font-size:18px;
 }
 
-.service:hover:before{
-transform:scale(1.5);
+.card h3{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:21px;
+  margin-bottom:10px;
 }
 
-.service-number{
-font-family:"Space Grotesk",sans-serif;
-font-size:12px;
-color:#667182;
-margin-bottom:55px;
-}
-
-.service-icon{
-width:48px;
-height:48px;
-border:1px solid var(--line);
-border-radius:12px;
-display:grid;
-place-items:center;
-color:var(--blue-light);
-margin-bottom:23px;
-font-size:18px;
-}
-
-.service h3{
-font-family:"Space Grotesk",sans-serif;
-font-size:23px;
-margin-bottom:12px;
-}
-
-.service p{
-color:var(--muted);
-font-size:13px;
-line-height:1.7;
+.card p{
+  color:var(--muted);
+  font-size:14px;
 }
 
 /* WORK */
 
-.work-head{
-display:flex;
-align-items:end;
-justify-content:space-between;
-gap:30px;
-}
-
-.view-all{
-font-size:13px;
-color:#aab5c5;
-border-bottom:1px solid #4b5565;
-padding-bottom:6px;
-}
-
 .work-grid{
-display:grid;
-grid-template-columns:1.35fr .65fr;
-gap:17px;
-margin-top:55px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
 }
 
 .project{
-position:relative;
-min-height:470px;
-border-radius:20px;
-border:1px solid var(--line);
-overflow:hidden;
-background:#0c1119;
-transition:.5s;
+  position:relative;
+  min-height:430px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(77,141,255,.18),transparent 35%),
+    linear-gradient(145deg,#16191f,#0d0f13);
+  transition:.5s;
 }
 
-.project.small{
-min-height:226px;
+.project:nth-child(1){
+  background:
+    radial-gradient(circle at 80% 15%,rgba(240,215,180,.15),transparent 32%),
+    linear-gradient(145deg,#171817,#0d0f10);
+}
+
+.project:nth-child(2){
+  background:
+    radial-gradient(circle at 75% 20%,rgba(180,180,180,.14),transparent 35%),
+    linear-gradient(145deg,#151619,#0d0e11);
+}
+
+.project:nth-child(3){
+  background:
+    radial-gradient(circle at 80% 20%,rgba(205,170,100,.18),transparent 35%),
+    linear-gradient(145deg,#191715,#0e0d0c);
+}
+
+.project:nth-child(4){
+  background:
+    radial-gradient(circle at 80% 20%,rgba(77,141,255,.2),transparent 35%),
+    linear-gradient(145deg,#10171d,#0c0f12);
+}
+
+.project:nth-child(5){
+  grid-column:span 2;
+  min-height:390px;
+  background:
+    radial-gradient(circle at 70% 10%,rgba(100,160,255,.2),transparent 35%),
+    linear-gradient(145deg,#111827,#090d14);
 }
 
 .project:hover{
-transform:translateY(-8px);
-border-color:rgba(79,140,255,.38);
+  transform:translateY(-7px);
+  border-color:rgba(255,255,255,.18);
 }
 
-.project-visual{
-position:absolute;
-inset:0;
-transition:.6s;
-}
-
-.project:hover .project-visual{
-transform:scale(1.05);
-}
-
-.dental{
-background:
-radial-gradient(circle at 70% 25%,rgba(151,196,255,.35),transparent 20%),
-linear-gradient(135deg,#111a28,#070a0f);
-}
-
-.law{
-background:
-radial-gradient(circle at 70% 20%,rgba(255,255,255,.12),transparent 20%),
-linear-gradient(135deg,#151515,#080808);
-}
-
-.realestate{
-background:
-radial-gradient(circle at 30% 20%,rgba(185,170,140,.18),transparent 25%),
-linear-gradient(135deg,#181612,#080807);
-}
-
-.project-overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(
-transparent 25%,
-rgba(0,0,0,.82) 100%
-);
-}
-
-.project-info{
-position:absolute;
-left:28px;
-right:28px;
-bottom:28px;
-z-index:3;
+.project-number{
+  position:absolute;
+  top:27px;
+  right:30px;
+  color:#676c77;
+  font-size:12px;
 }
 
 .project-tag{
-display:inline-block;
-padding:6px 10px;
-border:1px solid rgba(255,255,255,.13);
-background:rgba(0,0,0,.28);
-border-radius:100px;
-font-size:9px;
-letter-spacing:.7px;
-color:#b8c1ce;
-margin-bottom:12px;
+  display:inline-block;
+  width:max-content;
+  font-size:10px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:#aab0bb;
+  border:1px solid var(--line);
+  border-radius:100px;
+  padding:6px 10px;
+  margin-bottom:15px;
 }
 
 .project h3{
-font-family:"Space Grotesk",sans-serif;
-font-size:32px;
-letter-spacing:-1px;
-}
-
-.project.small h3{
-font-size:24px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:34px;
+  letter-spacing:-1.5px;
+  margin-bottom:7px;
 }
 
 .project p{
-font-size:12px;
-color:#949eac;
-margin-top:7px;
-line-height:1.5;
+  color:#9a9faa;
+  font-size:14px;
+  max-width:470px;
 }
 
-.project-arrow{
-position:absolute;
-right:25px;
-top:24px;
-width:42px;
-height:42px;
-display:grid;
-place-items:center;
-border:1px solid var(--line);
-border-radius:50%;
-font-size:17px;
-z-index:4;
-transition:.35s;
-}
-
-.project:hover .project-arrow{
-background:var(--blue);
-border-color:var(--blue);
-transform:rotate(45deg);
+.project-link{
+  margin-top:22px;
+  color:white;
+  font-size:13px;
 }
 
 /* MARQUEE */
 
 .marquee{
-border-top:1px solid var(--line);
-border-bottom:1px solid var(--line);
-padding:24px 0;
-overflow:hidden;
-white-space:nowrap;
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:22px 0;
 }
 
 .marquee-track{
-display:inline-flex;
-gap:50px;
-animation:marquee 25s linear infinite;
+  display:flex;
+  width:max-content;
+  animation:move 25s linear infinite;
 }
 
 .marquee span{
-font-family:"Space Grotesk",sans-serif;
-font-size:14px;
-letter-spacing:2px;
-text-transform:uppercase;
-color:#596372;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:17px;
+  color:#696e78;
+  padding:0 30px;
 }
 
-.marquee .dot{
-color:var(--blue);
+@keyframes move{
+  to{transform:translateX(-50%)}
 }
 
 /* ABOUT */
 
 .about{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:100px;
-align-items:center;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:90px;
+  align-items:center;
 }
 
-.about-visual{
-height:520px;
-border:1px solid var(--line);
-border-radius:22px;
-position:relative;
-overflow:hidden;
-background:
-radial-gradient(circle at 50% 45%,rgba(79,140,255,.15),transparent 25%),
-#080c12;
-display:grid;
-place-items:center;
+.about h2{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(40px,5vw,65px);
+  line-height:1;
+  letter-spacing:-3px;
 }
 
-.about-visual:before,
-.about-visual:after{
-content:"";
-position:absolute;
-border:1px solid rgba(79,140,255,.15);
-border-radius:50%;
-}
-
-.about-visual:before{
-width:330px;
-height:330px;
-animation:spin 22s linear infinite;
-}
-
-.about-visual:after{
-width:470px;
-height:470px;
-animation:spin 30s linear infinite reverse;
-}
-
-.monogram{
-font-family:"Space Grotesk",sans-serif;
-font-size:170px;
-font-weight:700;
-letter-spacing:-15px;
-color:rgba(255,255,255,.045);
-z-index:2;
-}
-
-.about-text p{
-color:var(--muted);
-line-height:1.85;
-font-size:15px;
-margin-top:25px;
+.about p{
+  color:var(--muted);
+  margin-top:22px;
+  max-width:570px;
 }
 
 .stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-margin-top:42px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
 .stat{
-border-top:1px solid var(--line);
-padding-top:18px;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--surface);
 }
 
 .stat strong{
-font-family:"Space Grotesk",sans-serif;
-font-size:29px;
-display:block;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:36px;
 }
 
 .stat span{
-font-size:11px;
-color:#697383;
+  display:block;
+  color:var(--muted);
+  font-size:13px;
+  margin-top:4px;
 }
 
 /* CTA */
 
 .cta{
-text-align:center;
-padding:150px 20px;
-border-top:1px solid var(--line);
-border-bottom:1px solid var(--line);
-position:relative;
-overflow:hidden;
-}
-
-.cta-glow{
-position:absolute;
-width:700px;
-height:300px;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-background:rgba(79,140,255,.12);
-filter:blur(100px);
-border-radius:50%;
+  text-align:center;
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:90px 30px;
+  background:
+    radial-gradient(circle at 50% 0,rgba(77,141,255,.16),transparent 40%),
+    #0d1015;
 }
 
 .cta h2{
-position:relative;
-font-family:"Space Grotesk",sans-serif;
-font-size:clamp(48px,6vw,82px);
-line-height:.95;
-letter-spacing:-5px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(42px,6vw,75px);
+  letter-spacing:-3px;
+  line-height:1;
 }
 
 .cta p{
-position:relative;
-color:var(--muted);
-max-width:500px;
-margin:25px auto 32px;
-line-height:1.7;
+  color:var(--muted);
+  margin:22px auto 32px;
+  max-width:520px;
 }
 
 /* FOOTER */
 
 footer{
-padding:45px 0;
+  padding:45px 0;
+  border-top:1px solid var(--line);
 }
 
 .footer-inner{
-display:flex;
-justify-content:space-between;
-align-items:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
 }
 
 .footer-copy{
-font-size:11px;
-color:#5f6978;
+  color:#676c76;
+  font-size:12px;
 }
 
 .footer-links{
-display:flex;
-gap:22px;
+  display:flex;
+  gap:20px;
 }
 
 .footer-links a{
-font-size:11px;
-color:#788291;
-transition:.3s;
+  color:#858a95;
+  font-size:12px;
 }
 
-.footer-links a:hover{
-color:white;
-}
+.footer-links a:hover{color:white}
 
 /* REVEAL */
 
 .reveal{
-opacity:0;
-transform:translateY(35px);
-transition:
-opacity .8s ease,
-transform .8s ease;
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .8s ease,transform .8s ease;
 }
 
 .reveal.show{
-opacity:1;
-transform:translateY(0);
+  opacity:1;
+  transform:none;
 }
 
-/* KEYFRAMES */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-@keyframes orbFloat{
-0%,100%{
-transform:translate(0,0);
-}
-50%{
-transform:translate(-25px,25px);
-}
-}
-
-@keyframes spin{
-from{
-transform:rotate(0deg);
-}
-to{
-transform:rotate(360deg);
-}
-}
-
-@keyframes scrollPulse{
-0%,100%{
-opacity:.35;
-}
-50%{
-opacity:1;
-}
-}
-
-@keyframes marquee{
-from{
-transform:translateX(0);
-}
-to{
-transform:translateX(-50%);
-}
-}
-
-/* MOBILE */
+/* RESPONSIVE */
 
 @media(max-width:800px){
 
-.container{
-width:calc(100% - 28px);
+  .nav-links{display:none}
+
+  .container{
+    width:min(100% - 28px,var(--max));
+  }
+
+  section{padding:85px 0}
+
+  .hero h1{
+    font-size:56px;
+    letter-spacing:-3px;
+  }
+
+  .hero p{font-size:16px}
+
+  .section-top{
+    display:block;
+  }
+
+  .section-copy{
+    margin-top:20px;
+  }
+
+  .services,
+  .work-grid,
+  .about{
+    grid-template-columns:1fr;
+  }
+
+  .project{
+    min-height:390px;
+  }
+
+  .project:nth-child(5){
+    grid-column:auto;
+  }
+
+  .about{
+    gap:45px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
 }
 
-.nav-links{
-display:none;
-position:absolute;
-top:72px;
-left:14px;
-right:14px;
-padding:24px;
-flex-direction:column;
-align-items:stretch;
-gap:22px;
-background:#0a0e15;
-border:1px solid var(--line);
-border-radius:16px;
+@media(max-width:500px){
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .buttons{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
 }
-
-.nav-links.open{
-display:flex;
-}
-
-.menu{
-display:block;
-}
-
-.hero{
-padding-top:130px;
-}
-
-.hero h1{
-font-size:57px;
-letter-spacing:-4px;
-}
-
-.hero-description{
-font-size:16px;
-}
-
-.hero-orb{
-width:400px;
-height:400px;
-right:-200px;
-top:25%;
-}
-
-.services{
-grid-template-columns:1fr;
-}
-
-.work-head{
-align-items:start;
-flex-direction:column;
-}
-
-.work-grid{
-grid-template-columns:1fr;
-}
-
-.project,
-.project.small{
-min-height:330px;
-}
-
-.about{
-grid-template-columns:1fr;
-gap:55px;
-}
-
-.about-visual{
-height:370px;
-}
-
-.monogram{
-font-size:110px;
-}
-
-section{
-padding:90px 0;
-}
-
-.cta{
-padding:110px 15px;
-}
-
-.footer-inner{
-flex-direction:column;
-gap:20px;
-}
-
-}
-
-@media(max-width:480px){
-
-.hero h1{
-font-size:48px;
-}
-
-.hero-actions{
-flex-direction:column;
-}
-
-.btn{
-width:100%;
-}
-
-.stats{
-gap:8px;
-}
-
-.stat strong{
-font-size:23px;
-}
-
-}
-
-/* REDUCE MOTION */
-
-@media(prefers-reduced-motion:reduce){
-
-*{
-scroll-behavior:auto!important;
-animation:none!important;
-transition:none!important;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="cursor-glow" id="cursorGlow"></div>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">MH<span>.</span></a>
 
-<nav id="nav">
-
-<div class="container nav-inner">
-
-<a href="#" class="logo">
-MH<span>.</span>
-</a>
-
-<div class="nav-links" id="navLinks">
-
-<a href="#services">Services</a>
-
-<a href="#work">Work</a>
-
-<a href="#about">About</a>
-
-<a href="#contact" class="nav-button">
-Start a Project ↗
-</a>
-
-</div>
-
-<div class="menu" id="menu">☰</div>
-
-</div>
-
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Start a Project</a>
+    </div>
+  </div>
 </nav>
 
-
-<main>
-
 <!-- HERO -->
+<header class="hero">
+  <div class="grid"></div>
+  <div class="glow"></div>
 
-<section class="hero">
+  <div class="container">
+    <div class="hero-content reveal">
 
-<div class="grid"></div>
+      <div class="badge">
+        <span class="dot"></span>
+        Web Design & Digital Solutions
+      </div>
 
-<div class="hero-orb"></div>
+      <h1>
+        Digital experiences
+        <span class="gradient">built to stand out.</span>
+      </h1>
 
-<div class="container">
+      <p>
+        MH Group creates premium websites and digital experiences
+        for ambitious businesses ready to look sharper, work smarter,
+        and grow online.
+      </p>
 
-<div class="hero-content">
+      <div class="buttons">
+        <a href="#contact" class="btn btn-primary">Start a Project →</a>
+        <a href="#work" class="btn btn-secondary">View Our Work</a>
+      </div>
 
-<div class="badge">
+    </div>
+  </div>
 
-<span class="badge-dot"></span>
-
-Web Design & Digital Solutions
-
-</div>
-
-<h1>
-
-We build digital<br>
-
-<span class="gradient">
-experiences that matter.
-</span>
-
-</h1>
-
-<p class="hero-description">
-
-MH Group creates premium websites and digital experiences
-for ambitious businesses that want to stand out,
-build trust and grow online.
-
-</p>
-
-<div class="hero-actions">
-
-<a href="#contact" class="btn primary">
-Start a Project ↗
-</a>
-
-<a href="#work" class="btn secondary">
-Explore Our Work
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="scroll">
-
-Scroll
-
-<div class="scroll-line"></div>
-
-</div>
-
-</section>
-
+  <div class="scroll">SCROLL TO EXPLORE ↓</div>
+</header>
 
 <!-- SERVICES -->
-
 <section id="services">
+  <div class="container">
 
-<div class="container">
+    <div class="section-top reveal">
+      <div>
+        <div class="eyebrow">What we do</div>
+        <h2 class="section-title">Built around<br>your business.</h2>
+      </div>
 
-<div class="reveal">
+      <p class="section-copy">
+        Strategy, design and development combined into one focused
+        digital experience.
+      </p>
+    </div>
 
-<div class="label">
-What we do
-</div>
+    <div class="services">
 
-<h2 class="title">
-Design with purpose.<br>
-Built for impact.
-</h2>
+      <div class="card reveal">
+        <div class="icon">✦</div>
+        <h3>Web Design</h3>
+        <p>
+          Premium websites designed to make your business look credible,
+          modern and memorable.
+        </p>
+      </div>
 
-<p class="subtitle">
-We combine strategy, design and development to create
-digital experiences that look exceptional and work hard
-for your business.
-</p>
+      <div class="card reveal">
+        <div class="icon">◈</div>
+        <h3>Web Development</h3>
+        <p>
+          Fast, responsive and carefully built websites that work
+          beautifully across every screen.
+        </p>
+      </div>
 
-</div>
+      <div class="card reveal">
+        <div class="icon">↗</div>
+        <h3>Digital Solutions</h3>
+        <p>
+          Practical digital systems and experiences designed around
+          business goals and customer behavior.
+        </p>
+      </div>
 
-
-<div class="services">
-
-<div class="service reveal">
-
-<div class="service-number">
-01 / 03
-</div>
-
-<div class="service-icon">
-✦
-</div>
-
-<h3>
-Web Design
-</h3>
-
-<p>
-Premium websites designed around your brand,
-your audience and your business objectives.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-number">
-02 / 03
-</div>
-
-<div class="service-icon">
-↗
-</div>
-
-<h3>
-Development
-</h3>
-
-<p>
-Fast, responsive and carefully engineered
-digital experiences across every screen.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-number">
-03 / 03
-</div>
-
-<div class="service-icon">
-◈
-</div>
-
-<h3>
-Digital Solutions
-</h3>
-
-<p>
-Thoughtful digital solutions that help businesses
-communicate, convert and grow online.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
-
 
 <!-- MARQUEE -->
-
 <div class="marquee">
-
-<div class="marquee-track">
-
-<span>Strategy</span>
-<span class="dot">✦</span>
-<span>Design</span>
-<span class="dot">✦</span>
-<span>Development</span>
-<span class="dot">✦</span>
-<span>Digital Experiences</span>
-<span class="dot">✦</span>
-<span>Strategy</span>
-<span class="dot">✦</span>
-<span>Design</span>
-<span class="dot">✦</span>
-<span>Development</span>
-<span class="dot">✦</span>
-<span>Digital Experiences</span>
-<span class="dot">✦</span>
-
+  <div class="marquee-track">
+    <span>STRATEGY</span>
+    <span>DESIGN</span>
+    <span>DEVELOPMENT</span>
+    <span>BRANDING</span>
+    <span>DIGITAL</span>
+    <span>STRATEGY</span>
+    <span>DESIGN</span>
+    <span>DEVELOPMENT</span>
+    <span>BRANDING</span>
+    <span>DIGITAL</span>
+  </div>
 </div>
-
-</div>
-
 
 <!-- WORK -->
-
 <section id="work">
+  <div class="container">
 
-<div class="container">
+    <div class="section-top reveal">
+      <div>
+        <div class="eyebrow">Selected work</div>
+        <h2 class="section-title">Concepts<br>with purpose.</h2>
+      </div>
 
-<div class="work-head reveal">
+      <p class="section-copy">
+        A selection of concept experiences created to demonstrate
+        different industries, styles and conversion goals.
+      </p>
+    </div>
 
-<div>
+    <div class="work-grid">
 
-<div class="label">
-Selected concepts
-</div>
+      <article class="project reveal">
+        <span class="project-number">01</span>
+        <span class="project-tag">Concept Project · Dental</span>
+        <h3>LUMINA DENTAL</h3>
+        <p>
+          A premium digital experience for a modern cosmetic dentistry
+          practice in the United States.
+        </p>
+        <div class="project-link">Explore concept →</div>
+      </article>
 
-<h2 class="title">
-Work that speaks<br>
-before we do.
-</h2>
+      <article class="project reveal">
+        <span class="project-number">02</span>
+        <span class="project-tag">Concept Project · Law</span>
+        <h3>HART & CO.</h3>
+        <p>
+          A sophisticated law firm experience focused on authority,
+          clarity and client trust.
+        </p>
+        <div class="project-link">Explore concept →</div>
+      </article>
 
-</div>
+      <article class="project reveal">
+        <span class="project-number">03</span>
+        <span class="project-tag">Concept Project · Real Estate</span>
+        <h3>VELA ESTATES</h3>
+        <p>
+          A luxury property platform designed around premium listings,
+          visual storytelling and high-end positioning.
+        </p>
+        <div class="project-link">Explore concept →</div>
+      </article>
 
-<a href="#contact" class="view-all">
-Start your project ↗
-</a>
+      <article class="project reveal">
+        <span class="project-number">04</span>
+        <span class="project-tag">Concept Project · Home Services</span>
+        <h3>NORTHFLOW</h3>
+        <p>
+          A conversion-focused experience for a premium HVAC and
+          home services company.
+        </p>
+        <div class="project-link">Explore concept →</div>
+      </article>
 
-</div>
+      <article class="project reveal">
+        <span class="project-number">05</span>
+        <span class="project-tag">Concept Project · SaaS</span>
+        <h3>NOVAOS</h3>
+        <p>
+          A modern SaaS landing experience built around technology,
+          clarity and product-led storytelling.
+        </p>
+        <div class="project-link">Explore concept →</div>
+      </article>
 
-
-<div class="work-grid">
-
-<div class="project reveal">
-
-<div class="project-visual dental"></div>
-
-<div class="project-overlay"></div>
-
-<div class="project-arrow">↗</div>
-
-<div class="project-info">
-
-<div class="project-tag">
-DENTAL / PREMIUM
-</div>
-
-<h3>
-Lumina Dental
-</h3>
-
-<p>
-A premium digital concept for a modern dental practice.
-</p>
-
-</div>
-
-</div>
-
-
-<div>
-
-<div class="project small reveal">
-
-<div class="project-visual law"></div>
-
-<div class="project-overlay"></div>
-
-<div class="project-arrow">↗</div>
-
-<div class="project-info">
-
-<div class="project-tag">
-LAW / TRUST
-</div>
-
-<h3>
-North & Cole
-</h3>
-
-<p>
-A refined digital presence for a modern law firm.
-</p>
-
-</div>
-
-</div>
-
-
-<br>
-
-
-<div class="project small reveal">
-
-<div class="project-visual realestate"></div>
-
-<div class="project-overlay"></div>
-
-<div class="project-arrow">↗</div>
-
-<div class="project-info">
-
-<div class="project-tag">
-REAL ESTATE / LUXURY
-</div>
-
-<h3>
-Monarch Estates
-</h3>
-
-<p>
-A sophisticated property experience.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
-
 
 <!-- ABOUT -->
-
 <section id="about">
+  <div class="container">
 
-<div class="container">
+    <div class="about">
 
-<div class="about">
+      <div class="reveal">
+        <div class="eyebrow">About MH Group</div>
 
-<div class="about-visual reveal">
+        <h2>
+          Less noise.<br>
+          More impact.
+        </h2>
 
-<div class="monogram">
-MH
-</div>
+        <p>
+          We believe great digital experiences don't need unnecessary
+          complexity. MH Group focuses on sharp design, clear messaging
+          and thoughtful technology to create websites that businesses
+          can be proud of.
+        </p>
+      </div>
 
-</div>
+      <div class="stats reveal">
 
+        <div class="stat">
+          <strong>05</strong>
+          <span>Industry Concepts</span>
+        </div>
 
-<div class="about-text reveal">
+        <div class="stat">
+          <strong>01</strong>
+          <span>Focused Digital Partner</span>
+        </div>
 
-<div class="label">
-About MH Group
-</div>
+        <div class="stat">
+          <strong>∞</strong>
+          <span>Ideas to Explore</span>
+        </div>
 
-<h2 class="title">
-Less noise.<br>
-More impact.
-</h2>
+        <div class="stat">
+          <strong>24/7</strong>
+          <span>Digital Presence</span>
+        </div>
 
-<p>
-We believe great digital experiences don't need
-to be complicated. They need clarity, strong design
-and a deep understanding of the people they're built for.
-</p>
+      </div>
 
-
-<div class="stats">
-
-<div class="stat">
-
-<strong>
-01
-</strong>
-
-<span>
-Clear Strategy
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong>
-02
-</strong>
-
-<span>
-Premium Design
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong>
-03
-</strong>
-
-<span>
-Built to Perform
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
-
 
 <!-- CTA -->
+<section id="contact">
+  <div class="container">
 
-<section id="contact" class="cta">
+    <div class="cta reveal">
 
-<div class="cta-glow"></div>
+      <div class="eyebrow">Have a project in mind?</div>
 
-<div class="container reveal">
+      <h2>
+        Let's build<br>
+        something better.
+      </h2>
 
-<div class="label">
-Have a project?
-</div>
+      <p>
+        Tell us what you're building and let's explore what
+        a stronger digital experience could look like.
+      </p>
 
-<h2>
+      <a
+        href="mailto:YOUR-EMAIL@example.com"
+        class="btn btn-primary"
+      >
+        Start a Conversation →
+      </a>
 
-Let's build something<br>
+    </div>
 
-<span class="gradient">
-remarkable.
-</span>
-
-</h2>
-
-<p>
-Tell us what you're building and let's explore
-what we can create together.
-</p>
-
-<a href="mailto:hello@mhgroup.com" class="btn primary">
-Start a Conversation ↗
-</a>
-
-</div>
-
+  </div>
 </section>
 
-</main>
-
-
 <!-- FOOTER -->
-
 <footer>
+  <div class="container footer-inner">
 
-<div class="container footer-inner">
+    <div class="logo">MH<span>.</span></div>
 
-<div class="footer-copy">
-© 2026 MH Group. All rights reserved.
-</div>
+    <div class="footer-copy">
+      © 2026 MH Group. All rights reserved.
+    </div>
 
-<div class="footer-links">
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+    </div>
 
-<a href="#services">
-Services
-</a>
-
-<a href="#work">
-Work
-</a>
-
-<a href="#about">
-About
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
-</div>
-
-</div>
-
+  </div>
 </footer>
-
 
 <script>
 
-/* NAV */
+/* NAV SCROLL */
 
 const nav = document.getElementById("nav");
 
 window.addEventListener("scroll",()=>{
-
-nav.classList.toggle(
-"scrolled",
-window.scrollY > 30
-);
-
+  if(window.scrollY > 30){
+    nav.classList.add("scrolled");
+  }else{
+    nav.classList.remove("scrolled");
+  }
 });
 
+/* REVEAL */
 
-/* MOBILE MENU */
-
-const menu = document.getElementById("menu");
-
-const navLinks =
-document.getElementById("navLinks");
-
-menu.addEventListener("click",()=>{
-
-navLinks.classList.toggle("open");
-
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{
+  threshold:.12
 });
 
-
-document.querySelectorAll(".nav-links a")
-.forEach(link=>{
-
-link.addEventListener("click",()=>{
-
-navLinks.classList.remove("open");
-
+document.querySelectorAll(".reveal").forEach(el=>{
+  observer.observe(el);
 });
-
-});
-
-
-/* SCROLL REVEAL */
-
-const observer =
-new IntersectionObserver(
-
-entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}
-
-});
-
-},
-
-{
-threshold:.12
-}
-
-);
-
-
-document
-.querySelectorAll(".reveal")
-.forEach(el=>{
-
-observer.observe(el);
-
-});
-
 
 /* MOUSE GLOW */
 
-const glow =
-document.getElementById("cursorGlow");
+const glow = document.querySelector(".glow");
 
-document.addEventListener("mousemove",(event)=>{
-
-glow.style.left =
-event.clientX + "px";
-
-glow.style.top =
-event.clientY + "px";
-
+window.addEventListener("mousemove",(e)=>{
+  if(window.innerWidth > 800){
+    glow.style.transform =
+      `translate(${(e.clientX-window.innerWidth/2)*.04}px,
+       ${(e.clientY-window.innerHeight/2)*.04}px)`;
+  }
 });
-
-
-/* MAGNETIC BUTTON EFFECT */
-
-document.querySelectorAll(".btn")
-.forEach(button=>{
-
-button.addEventListener("mousemove",(event)=>{
-
-const rect =
-button.getBoundingClientRect();
-
-const x =
-event.clientX - rect.left - rect.width / 2;
-
-const y =
-event.clientY - rect.top - rect.height / 2;
-
-button.style.transform =
-`translate(${x * .08}px,${y * .08}px)`;
-
-});
-
-button.addEventListener("mouseleave",()=>{
-
-button.style.transform="";
-
-});
-
-});
-
 
 </script>
 
