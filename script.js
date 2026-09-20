@@ -1,58 +1,62 @@
-/* =========================================================
-   MH GROUP — V5
-   WebGL Hero + Site Interactions
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =======================================================
-     YEAR
-     ======================================================= */
-
-  const year = document.getElementById("year");
-
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
-
-
-  /* =======================================================
+  /* =====================================================
      LOADER
-     ======================================================= */
+  ===================================================== */
 
-  const loader = document.getElementById("loader");
+  const loader =
+    document.getElementById("loader");
 
   window.addEventListener("load", () => {
 
     setTimeout(() => {
 
       if (loader) {
-        loader.classList.add("is-hidden");
+        loader.classList.add("hidden");
       }
 
-    }, 900);
+    }, 500);
 
   });
 
 
-  /* =======================================================
+  /* =====================================================
+     YEAR
+  ===================================================== */
+
+  const year =
+    document.getElementById("year");
+
+  if (year) {
+    year.textContent =
+      new Date().getFullYear();
+  }
+
+
+  /* =====================================================
      HEADER
-     ======================================================= */
+  ===================================================== */
 
   const header =
     document.getElementById("siteHeader");
 
-  const updateHeader = () => {
+  function updateHeader() {
 
     if (!header) return;
 
     if (window.scrollY > 40) {
+
       header.classList.add("scrolled");
+
     } else {
+
       header.classList.remove("scrolled");
+
     }
 
-  };
+  }
+
+  updateHeader();
 
   window.addEventListener(
     "scroll",
@@ -60,12 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
     { passive: true }
   );
 
-  updateHeader();
 
-
-  /* =======================================================
+  /* =====================================================
      MOBILE MENU
-     ======================================================= */
+  ===================================================== */
 
   const menuToggle =
     document.getElementById("menuToggle");
@@ -76,205 +78,151 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (menuToggle && mobileMenu) {
 
-    menuToggle.addEventListener("click", () => {
+    menuToggle.addEventListener(
+      "click",
+      () => {
 
-      const isOpen =
-        mobileMenu.classList.toggle("open");
+        const isOpen =
+          mobileMenu.classList.toggle("open");
 
-      menuToggle.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-      );
+        menuToggle.setAttribute(
+          "aria-expanded",
+          isOpen ? "true" : "false"
+        );
 
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close menu" : "Open menu"
-      );
+        document.body.classList.toggle(
+          "menu-open",
+          isOpen
+        );
 
-    });
+      }
+    );
 
 
     mobileMenu
       .querySelectorAll("a")
       .forEach(link => {
 
-        link.addEventListener("click", () => {
+        link.addEventListener(
+          "click",
+          () => {
 
-          mobileMenu.classList.remove("open");
+            mobileMenu.classList.remove(
+              "open"
+            );
 
-          menuToggle.setAttribute(
-            "aria-expanded",
-            "false"
-          );
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
 
-          menuToggle.setAttribute(
-            "aria-label",
-            "Open menu"
-          );
+            document.body.classList.remove(
+              "menu-open"
+            );
 
-        });
+          }
+        );
 
       });
 
   }
 
 
-  /* =======================================================
-     SMOOTH SCROLL
-     ======================================================= */
+  /* =====================================================
+     SMOOTH ANCHOR SCROLL
+  ===================================================== */
 
   document
     .querySelectorAll('a[href^="#"]')
     .forEach(link => {
 
-      link.addEventListener("click", event => {
+      link.addEventListener(
+        "click",
+        event => {
 
-        const targetId =
-          link.getAttribute("href");
+          const targetId =
+            link.getAttribute("href");
 
-        if (!targetId || targetId === "#") {
-          return;
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
+          }
+
+          const target =
+            document.querySelector(targetId);
+
+          if (!target) return;
+
+          event.preventDefault();
+
+          const headerOffset = 75;
+
+          const position =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            headerOffset;
+
+          window.scrollTo({
+            top: position,
+            behavior: "smooth"
+          });
+
         }
-
-        const target =
-          document.querySelector(targetId);
-
-        if (!target) {
-          return;
-        }
-
-        event.preventDefault();
-
-        const headerHeight =
-          header
-            ? header.offsetHeight
-            : 0;
-
-        const position =
-          target.getBoundingClientRect().top +
-          window.scrollY -
-          headerHeight;
-
-        window.scrollTo({
-          top: position,
-          behavior: "smooth"
-        });
-
-      });
+      );
 
     });
 
 
-  /* =======================================================
-     WEBGL HERO
-     ======================================================= */
+  /* =====================================================
+     THREE.JS
+  ===================================================== */
+
+  if (
+    typeof THREE === "undefined"
+  ) {
+
+    console.warn(
+      "Three.js was not loaded."
+    );
+
+    return;
+  }
+
 
   const canvas =
-    document.getElementById("webglCanvas");
-
-
-  /*
-   * If Three.js failed to load,
-   * keep the website functional.
-   */
-
-  if (
-    canvas &&
-    typeof THREE !== "undefined"
-  ) {
-
-    createWebGLHero(canvas);
-
-  }
-
-
-  /* =======================================================
-     CONTACT BUTTON
-     ======================================================= */
-
-  const contactButton =
-    document.querySelector(".contact-button");
-
-
-  if (
-    contactButton &&
-    window.matchMedia("(pointer: fine)").matches
-  ) {
-
-    contactButton.addEventListener(
-      "mousemove",
-      event => {
-
-        const rect =
-          contactButton.getBoundingClientRect();
-
-        const x =
-          event.clientX -
-          rect.left -
-          rect.width / 2;
-
-        const y =
-          event.clientY -
-          rect.top -
-          rect.height / 2;
-
-        const rotateX =
-          (y / rect.height) * -8;
-
-        const rotateY =
-          (x / rect.width) * 8;
-
-        contactButton.style.transform =
-          `perspective(500px)
-           rotateX(${rotateX}deg)
-           rotateY(${rotateY}deg)
-           scale(1.05)`;
-
-      }
+    document.getElementById(
+      "webglCanvas"
     );
 
-
-    contactButton.addEventListener(
-      "mouseleave",
-      () => {
-
-        contactButton.style.transform =
-          "perspective(500px) rotateX(0deg) rotateY(0deg) scale(1)";
-
-      }
-    );
-
-  }
-
-});
+  if (!canvas) return;
 
 
-/* =========================================================
-   WEBGL HERO FUNCTION
-   ========================================================= */
-
-function createWebGLHero(canvas) {
-
-  /*
-   * -------------------------------------------------------
-   * SCENE
-   * -------------------------------------------------------
-   */
+  /* =====================================================
+     SCENE
+  ===================================================== */
 
   const scene =
     new THREE.Scene();
 
 
-  /*
-   * -------------------------------------------------------
-   * CAMERA
-   * -------------------------------------------------------
-   */
+  scene.fog =
+    new THREE.FogExp2(
+      0x090b0f,
+      0.075
+    );
+
+
+  /* =====================================================
+     CAMERA
+  ===================================================== */
 
   const camera =
     new THREE.PerspectiveCamera(
       42,
-      window.innerWidth / window.innerHeight,
+      window.innerWidth /
+      window.innerHeight,
       0.1,
       100
     );
@@ -282,24 +230,26 @@ function createWebGLHero(canvas) {
   camera.position.z = 7;
 
 
-  /*
-   * -------------------------------------------------------
-   * RENDERER
-   * -------------------------------------------------------
-   */
+  /* =====================================================
+     RENDERER
+  ===================================================== */
 
   const renderer =
     new THREE.WebGLRenderer({
       canvas: canvas,
       alpha: true,
       antialias: true,
-      powerPreference: "high-performance"
+      powerPreference: "low-power"
     });
 
 
   renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio, 1.8)
+    Math.min(
+      window.devicePixelRatio,
+      1.5
+    )
   );
+
 
   renderer.setSize(
     window.innerWidth,
@@ -307,44 +257,40 @@ function createWebGLHero(canvas) {
     false
   );
 
+
   renderer.setClearColor(
-    0x000000,
+    0x090b0f,
     0
   );
 
 
-  /*
-   * -------------------------------------------------------
-   * MAIN DIGITAL OBJECT
-   * -------------------------------------------------------
-   *
-   * A layered geometric form rather than a literal logo.
-   * This keeps the visual premium and abstract.
-   */
+  /* =====================================================
+     MAIN OBJECT
+  ===================================================== */
 
-  const objectGroup =
+  const object =
     new THREE.Group();
 
-  scene.add(objectGroup);
+  scene.add(object);
 
 
-  /*
-   * Outer wireframe sphere
-   */
+  /* =====================================================
+     OUTER WIREFRAME
+  ===================================================== */
 
   const outerGeometry =
     new THREE.IcosahedronGeometry(
-      2.05,
-      2
+      1.65,
+      1
     );
 
 
   const outerMaterial =
     new THREE.MeshBasicMaterial({
-      color: 0x315cff,
+      color: 0x6b96d1,
       wireframe: true,
       transparent: true,
-      opacity: 0.22
+      opacity: 0.13
     });
 
 
@@ -354,27 +300,27 @@ function createWebGLHero(canvas) {
       outerMaterial
     );
 
-  objectGroup.add(outer);
+  object.add(outer);
 
 
-  /*
-   * Inner dark object
-   */
+  /* =====================================================
+     INNER FORM
+  ===================================================== */
 
   const innerGeometry =
     new THREE.IcosahedronGeometry(
-      1.55,
-      3
+      1.22,
+      2
     );
 
 
   const innerMaterial =
     new THREE.MeshStandardMaterial({
-      color: 0x101217,
-      metalness: 0.88,
-      roughness: 0.22,
+      color: 0x161b22,
+      roughness: 0.92,
+      metalness: 0.08,
       transparent: true,
-      opacity: 0.96
+      opacity: 0.78
     });
 
 
@@ -384,56 +330,56 @@ function createWebGLHero(canvas) {
       innerMaterial
     );
 
-  objectGroup.add(inner);
+  object.add(inner);
 
 
-  /*
-   * Inner wire structure
-   */
+  /* =====================================================
+     INNER SOFT WIREFRAME
+  ===================================================== */
 
-  const innerWireGeometry =
+  const wireGeometry =
     new THREE.IcosahedronGeometry(
-      1.68,
+      1.25,
       2
     );
 
 
-  const innerWireMaterial =
+  const wireMaterial =
     new THREE.MeshBasicMaterial({
-      color: 0x6f8cff,
+      color: 0xa5b9d1,
       wireframe: true,
       transparent: true,
-      opacity: 0.13
+      opacity: 0.035
     });
 
 
-  const innerWire =
+  const wire =
     new THREE.Mesh(
-      innerWireGeometry,
-      innerWireMaterial
+      wireGeometry,
+      wireMaterial
     );
 
-  objectGroup.add(innerWire);
+  object.add(wire);
 
 
-  /*
-   * Blue energy ring
-   */
+  /* =====================================================
+     RINGS
+  ===================================================== */
 
   const ringGeometry =
     new THREE.TorusGeometry(
-      2.35,
-      0.018,
-      16,
-      160
+      2.05,
+      0.012,
+      8,
+      100
     );
 
 
   const ringMaterial =
     new THREE.MeshBasicMaterial({
-      color: 0x315cff,
+      color: 0x718fb7,
       transparent: true,
-      opacity: 0.7
+      opacity: 0.12
     });
 
 
@@ -443,156 +389,64 @@ function createWebGLHero(canvas) {
       ringMaterial
     );
 
-
   ring.rotation.x =
-    Math.PI * 0.45;
+    Math.PI * 0.55;
 
   ring.rotation.y =
+    Math.PI * 0.15;
+
+  object.add(ring);
+
+
+  const ring2Geometry =
+    new THREE.TorusGeometry(
+      2.35,
+      0.007,
+      8,
+      100
+    );
+
+
+  const ring2Material =
+    new THREE.MeshBasicMaterial({
+      color: 0xc1ccda,
+      transparent: true,
+      opacity: 0.045
+    });
+
+
+  const ring2 =
+    new THREE.Mesh(
+      ring2Geometry,
+      ring2Material
+    );
+
+  ring2.rotation.x =
     Math.PI * 0.18;
 
-  objectGroup.add(ring);
+  ring2.rotation.z =
+    Math.PI * 0.42;
+
+  object.add(ring2);
 
 
-  /*
-   * Second ring
-   */
+  /* =====================================================
+     LIGHTING
+  ===================================================== */
 
-  const ringTwoGeometry =
-    new THREE.TorusGeometry(
-      2.7,
-      0.009,
-      12,
-      160
-    );
-
-
-  const ringTwoMaterial =
-    new THREE.MeshBasicMaterial({
-      color: 0xf3f2ee,
-      transparent: true,
-      opacity: 0.18
-    });
-
-
-  const ringTwo =
-    new THREE.Mesh(
-      ringTwoGeometry,
-      ringTwoMaterial
-    );
-
-
-  ringTwo.rotation.x =
-    Math.PI * 0.25;
-
-  ringTwo.rotation.z =
-    Math.PI * 0.2;
-
-  objectGroup.add(ringTwo);
-
-
-  /*
-   * -------------------------------------------------------
-   * PARTICLE FIELD
-   * -------------------------------------------------------
-   */
-
-  const particleCount =
-    window.innerWidth < 700
-      ? 450
-      : 900;
-
-
-  const particlePositions =
-    new Float32Array(
-      particleCount * 3
-    );
-
-
-  for (
-    let i = 0;
-    i < particleCount;
-    i++
-  ) {
-
-    const radius =
-      4.2 + Math.random() * 5.5;
-
-    const angle =
-      Math.random() * Math.PI * 2;
-
-    const height =
-      (Math.random() - 0.5) * 7;
-
-
-    particlePositions[i * 3] =
-      Math.cos(angle) *
-      radius;
-
-    particlePositions[i * 3 + 1] =
-      height;
-
-    particlePositions[i * 3 + 2] =
-      Math.sin(angle) *
-      radius;
-
-  }
-
-
-  const particlesGeometry =
-    new THREE.BufferGeometry();
-
-
-  particlesGeometry.setAttribute(
-    "position",
-    new THREE.BufferAttribute(
-      particlePositions,
-      3
-    )
-  );
-
-
-  const particlesMaterial =
-    new THREE.PointsMaterial({
-      color: 0x315cff,
-      size:
-        window.innerWidth < 700
-          ? 0.018
-          : 0.025,
-      transparent: true,
-      opacity: 0.45,
-      depthWrite: false
-    });
-
-
-  const particles =
-    new THREE.Points(
-      particlesGeometry,
-      particlesMaterial
-    );
-
-
-  scene.add(particles);
-
-
-  /*
-   * -------------------------------------------------------
-   * LIGHTING
-   * -------------------------------------------------------
-   */
-
-  const ambientLight =
+  const ambient =
     new THREE.AmbientLight(
       0xffffff,
-      0.7
+      0.28
     );
 
-  scene.add(ambientLight);
+  scene.add(ambient);
 
 
   const blueLight =
     new THREE.PointLight(
-      0x315cff,
-      7,
+      0x6b96d1,
+      0.75,
       12
     );
 
@@ -607,230 +461,287 @@ function createWebGLHero(canvas) {
 
   const whiteLight =
     new THREE.PointLight(
-      0xffffff,
-      2.2,
+      0xdbe4ef,
+      0.28,
       10
     );
 
   whiteLight.position.set(
     -3,
-    2,
+    -2,
     3
   );
 
   scene.add(whiteLight);
 
 
-  /*
-   * -------------------------------------------------------
-   * MOUSE
-   * -------------------------------------------------------
-   */
+  /* =====================================================
+     PARTICLES
+  ===================================================== */
 
-  let mouseX = 0;
-  let mouseY = 0;
-
-  let targetMouseX = 0;
-  let targetMouseY = 0;
+  const particleCount =
+    window.innerWidth < 700
+      ? 80
+      : 150;
 
 
-  const isTouch =
-    window.matchMedia(
-      "(pointer: coarse)"
-    ).matches;
+  const positions =
+    new Float32Array(
+      particleCount * 3
+    );
 
 
-  if (!isTouch) {
+  for (
+    let i = 0;
+    i < particleCount;
+    i++
+  ) {
 
-    window.addEventListener(
-      "mousemove",
-      event => {
+    const index =
+      i * 3;
 
-        targetMouseX =
-          (event.clientX /
-            window.innerWidth -
-            0.5) * 2;
+    positions[index] =
+      (Math.random() - 0.5) * 11;
 
-        targetMouseY =
-          (event.clientY /
-            window.innerHeight -
-            0.5) * 2;
+    positions[index + 1] =
+      (Math.random() - 0.5) * 8;
 
-      },
-      { passive: true }
+    positions[index + 2] =
+      (Math.random() - 0.5) * 8;
+
+  }
+
+
+  const particleGeometry =
+    new THREE.BufferGeometry();
+
+
+  particleGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(
+      positions,
+      3
+    )
+  );
+
+
+  const particleMaterial =
+    new THREE.PointsMaterial({
+      color: 0x91a5be,
+      size: 0.015,
+      transparent: true,
+      opacity: 0.13,
+      depthWrite: false
+    });
+
+
+  const particles =
+    new THREE.Points(
+      particleGeometry,
+      particleMaterial
+    );
+
+  scene.add(particles);
+
+
+  /* =====================================================
+     MOUSE
+  ===================================================== */
+
+  const mouse = {
+    x: 0,
+    y: 0
+  };
+
+
+  const targetMouse = {
+    x: 0,
+    y: 0
+  };
+
+
+  window.addEventListener(
+    "pointermove",
+    event => {
+
+      targetMouse.x =
+        (
+          event.clientX /
+          window.innerWidth -
+          0.5
+        ) * 0.30;
+
+
+      targetMouse.y =
+        (
+          event.clientY /
+          window.innerHeight -
+          0.5
+        ) * 0.20;
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  /* =====================================================
+     ANIMATION
+  ===================================================== */
+
+  let elapsed = 0;
+
+
+  function animate() {
+
+    elapsed += 0.0015;
+
+
+    /* Smooth mouse */
+
+    mouse.x +=
+      (
+        targetMouse.x -
+        mouse.x
+      ) * 0.012;
+
+
+    mouse.y +=
+      (
+        targetMouse.y -
+        mouse.y
+      ) * 0.012;
+
+
+    /* Very slow rotation */
+
+    outer.rotation.y += 0.00035;
+    outer.rotation.x += 0.00012;
+
+    inner.rotation.y -= 0.00020;
+    inner.rotation.x += 0.00008;
+
+    wire.rotation.y -= 0.00022;
+
+    ring.rotation.z += 0.00016;
+
+    ring2.rotation.z -= 0.00010;
+
+
+    /* Gentle floating */
+
+    object.position.y =
+      Math.sin(elapsed * 1.2) *
+      0.035;
+
+
+    /* Gentle mouse influence */
+
+    object.rotation.y +=
+      (
+        mouse.x * 0.12 -
+        object.rotation.y
+      ) * 0.006;
+
+
+    object.rotation.x +=
+      (
+        -mouse.y * 0.08 -
+        object.rotation.x
+      ) * 0.006;
+
+
+    /* Particles */
+
+    particles.rotation.y += 0.000045;
+
+
+    particles.rotation.x =
+      Math.sin(elapsed * .6) *
+      0.008;
+
+
+    renderer.render(
+      scene,
+      camera
     );
 
   }
 
 
   /*
-   * -------------------------------------------------------
-   * ANIMATION
-   * -------------------------------------------------------
-   */
-
-  let time = 0;
-
+     Three.js recommends setAnimationLoop()
+     for the animation loop.
+  */
 
   renderer.setAnimationLoop(
-    () => {
-
-      time += 0.006;
-
-
-      /*
-       * Smooth mouse
-       */
-
-      mouseX +=
-        (targetMouseX - mouseX) *
-        0.035;
-
-      mouseY +=
-        (targetMouseY - mouseY) *
-        0.035;
+    animate
+  );
 
 
-      /*
-       * Main object
-       */
+  /* =====================================================
+     RESIZE
+  ===================================================== */
 
-      objectGroup.rotation.y =
-        time * 0.32 +
-        mouseX * 0.28;
+  function resize() {
 
-      objectGroup.rotation.x =
-        Math.sin(time * 0.7) * 0.08 -
-        mouseY * 0.16;
+    const width =
+      window.innerWidth;
 
-
-      objectGroup.position.x =
-        mouseX * 0.32;
-
-      objectGroup.position.y =
-        -mouseY * 0.2;
+    const height =
+      window.innerHeight;
 
 
-      /*
-       * Individual rings
-       */
+    camera.aspect =
+      width / height;
 
-      ring.rotation.z =
-        time * 0.7;
-
-      ringTwo.rotation.y =
-        time * 0.4;
+    camera.updateProjectionMatrix();
 
 
-      /*
-       * Particle movement
-       */
-
-      particles.rotation.y =
-        time * 0.025;
-
-      particles.rotation.x =
-        mouseY * 0.025;
+    renderer.setPixelRatio(
+      Math.min(
+        window.devicePixelRatio,
+        1.5
+      )
+    );
 
 
-      /*
-       * Very subtle light movement
-       */
-
-      blueLight.position.x =
-        3 +
-        Math.sin(time) * 1.2;
-
-      blueLight.position.y =
-        2 +
-        Math.cos(time * 0.7) * 0.8;
+    renderer.setSize(
+      width,
+      height,
+      false
+    );
 
 
-      /*
-       * Render
-       */
+    if (width < 700) {
 
-      renderer.render(
-        scene,
-        camera
+      object.scale.set(
+        0.68,
+        0.68,
+        0.68
+      );
+
+    } else {
+
+      object.scale.set(
+        1,
+        1,
+        1
       );
 
     }
-  );
 
-
-  /*
-   * -------------------------------------------------------
-   * RESIZE
-   * -------------------------------------------------------
-   */
-
-  const resize =
-    () => {
-
-      const width =
-        window.innerWidth;
-
-      const height =
-        window.innerHeight;
-
-
-      camera.aspect =
-        width / height;
-
-      camera.updateProjectionMatrix();
-
-
-      renderer.setPixelRatio(
-        Math.min(
-          window.devicePixelRatio,
-          1.8
-        )
-      );
-
-
-      renderer.setSize(
-        width,
-        height,
-        false
-      );
-
-
-      /*
-       * Move object slightly on mobile
-       */
-
-      if (width < 700) {
-
-        objectGroup.scale.set(
-          0.72,
-          0.72,
-          0.72
-        );
-
-        objectGroup.position.x =
-          0.65;
-
-      } else {
-
-        objectGroup.scale.set(
-          1,
-          1,
-          1
-        );
-
-      }
-
-    };
-
-
-  window.addEventListener(
-    "resize",
-    resize,
-    { passive: true }
-  );
+  }
 
 
   resize();
 
-}
+
+  window.addEventListener(
+    "resize",
+    resize
+  );
+
+
+});
