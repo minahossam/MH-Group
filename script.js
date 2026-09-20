@@ -1,100 +1,85 @@
+/* =========================================================
+   MH GROUP — V4
+   ========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================================
-     ELEMENTS
-  ========================================== */
+  /* -------------------------------------------------------
+     YEAR
+     ------------------------------------------------------- */
 
-  const header = document.getElementById("siteHeader");
-  const menuToggle = document.getElementById("menuToggle");
-  const mainNav = document.getElementById("mainNav");
-  const currentYear = document.getElementById("currentYear");
+  const year = document.getElementById("year");
 
-
-  /* =========================================
-     CURRENT YEAR
-  ========================================== */
-
-  if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
+  if (year) {
+    year.textContent = new Date().getFullYear();
   }
 
 
-  /* =========================================
-     HEADER ON SCROLL
-  ========================================== */
+  /* -------------------------------------------------------
+     HEADER
+     ------------------------------------------------------- */
 
-  const updateHeader = () => {
-    if (!header) return;
+  const header = document.getElementById("header");
 
-    if (window.scrollY > 30) {
+  const handleHeader = () => {
+    if (window.scrollY > 40) {
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
     }
   };
 
-  updateHeader();
-
-  window.addEventListener("scroll", updateHeader, {
+  window.addEventListener("scroll", handleHeader, {
     passive: true
   });
 
+  handleHeader();
 
-  /* =========================================
+
+  /* -------------------------------------------------------
      MOBILE MENU
-  ========================================== */
+     ------------------------------------------------------- */
 
-  const closeMenu = () => {
-    if (!menuToggle || !mainNav) return;
+  const menuButton = document.getElementById("menuButton");
+  const nav = document.getElementById("nav");
 
-    menuToggle.classList.remove("active");
-    mainNav.classList.remove("open");
+  if (menuButton && nav) {
 
-    menuToggle.setAttribute("aria-expanded", "false");
+    menuButton.addEventListener("click", () => {
 
-    document.body.classList.remove("menu-open");
-  };
+      const isOpen = nav.classList.toggle("open");
 
+      menuButton.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
 
-  const openMenu = () => {
-    if (!menuToggle || !mainNav) return;
-
-    menuToggle.classList.add("active");
-    mainNav.classList.add("open");
-
-    menuToggle.setAttribute("aria-expanded", "true");
-
-    document.body.classList.add("menu-open");
-  };
-
-
-  if (menuToggle) {
-    menuToggle.addEventListener("click", () => {
-
-      const isOpen = mainNav.classList.contains("open");
-
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Close menu" : "Open menu"
+      );
 
     });
-  }
 
 
-  /* =========================================
-     CLOSE MOBILE MENU ON LINK CLICK
-  ========================================== */
+    /* Close menu after clicking a link */
 
-  if (mainNav) {
-
-    const navLinks = mainNav.querySelectorAll("a");
-
-    navLinks.forEach((link) => {
+    nav.querySelectorAll("a").forEach(link => {
 
       link.addEventListener("click", () => {
-        closeMenu();
+
+        nav.classList.remove("open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuButton.setAttribute(
+          "aria-label",
+          "Open menu"
+        );
+
       });
 
     });
@@ -102,38 +87,187 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================
-     ESCAPE KEY
-  ========================================== */
+  /* -------------------------------------------------------
+     CUSTOM CURSOR
+     ------------------------------------------------------- */
 
-  document.addEventListener("keydown", (event) => {
+  const cursor = document.getElementById("cursor");
 
-    if (event.key === "Escape") {
-      closeMenu();
-    }
+  if (cursor && window.matchMedia("(pointer: fine)").matches) {
 
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let currentX = 0;
+    let currentY = 0;
+
+    document.addEventListener("mousemove", event => {
+
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+
+    });
+
+
+    const animateCursor = () => {
+
+      currentX += (mouseX - currentX) * 0.18;
+      currentY += (mouseY - currentY) * 0.18;
+
+      cursor.style.left = `${currentX}px`;
+      cursor.style.top = `${currentY}px`;
+
+      requestAnimationFrame(animateCursor);
+
+    };
+
+    animateCursor();
+
+
+    /* Cursor interaction */
+
+    const interactiveElements =
+      document.querySelectorAll(
+        "a, button, .service-item, .audience-list div"
+      );
+
+    interactiveElements.forEach(element => {
+
+      element.addEventListener("mouseenter", () => {
+        document.body.classList.add("cursor-active");
+      });
+
+      element.addEventListener("mouseleave", () => {
+        document.body.classList.remove("cursor-active");
+      });
+
+    });
+
+  }
+
+
+  /* -------------------------------------------------------
+     REVEAL ON SCROLL
+     ------------------------------------------------------- */
+
+  const revealElements = document.querySelectorAll(
+    ".intro-content, .service-feature, .service-list, " +
+    ".approach-content > div:last-child, .audience-content, " +
+    ".about-main, .contact-main"
+  );
+
+  revealElements.forEach(element => {
+    element.classList.add("reveal");
   });
 
 
-  /* =========================================
-     SMOOTH ANCHOR SCROLL
-  ========================================== */
+  if ("IntersectionObserver" in window) {
 
-  const anchorLinks = document.querySelectorAll(
-    'a[href^="#"]'
-  );
+    const observer = new IntersectionObserver(
+      entries => {
 
-  anchorLinks.forEach((link) => {
+        entries.forEach(entry => {
 
-    link.addEventListener("click", (event) => {
+          if (entry.isIntersecting) {
 
-      const targetId = link.getAttribute("href");
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -60px 0px"
+      }
+    );
+
+
+    revealElements.forEach(element => {
+      observer.observe(element);
+    });
+
+  } else {
+
+    revealElements.forEach(element => {
+      element.classList.add("visible");
+    });
+
+  }
+
+
+  /* -------------------------------------------------------
+     HERO ORBIT MOVEMENT
+     ------------------------------------------------------- */
+
+  const orbit = document.querySelector(".hero-orbit");
+
+  if (
+    orbit &&
+    window.matchMedia("(pointer: fine)").matches
+  ) {
+
+    let targetX = 0;
+    let targetY = 0;
+
+    let currentOrbitX = 0;
+    let currentOrbitY = 0;
+
+
+    document.addEventListener("mousemove", event => {
+
+      const x =
+        (event.clientX / window.innerWidth - 0.5) * 2;
+
+      const y =
+        (event.clientY / window.innerHeight - 0.5) * 2;
+
+      targetX = x * 18;
+      targetY = y * 12;
+
+    });
+
+
+    const animateOrbit = () => {
+
+      currentOrbitX +=
+        (targetX - currentOrbitX) * 0.04;
+
+      currentOrbitY +=
+        (targetY - currentOrbitY) * 0.04;
+
+      orbit.style.transform =
+        `translate3d(${currentOrbitX}px, ${currentOrbitY}px, 0) translateY(-50%)`;
+
+      requestAnimationFrame(animateOrbit);
+
+    };
+
+    animateOrbit();
+
+  }
+
+
+  /* -------------------------------------------------------
+     SMOOTH ANCHOR NAVIGATION
+     ------------------------------------------------------- */
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    link.addEventListener("click", event => {
+
+      const targetId =
+        link.getAttribute("href");
 
       if (!targetId || targetId === "#") {
         return;
       }
 
-      const target = document.querySelector(targetId);
+      const target =
+        document.querySelector(targetId);
 
       if (!target) {
         return;
@@ -141,14 +275,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       event.preventDefault();
 
-      const headerOffset = header
-        ? header.offsetHeight
-        : 0;
+      const headerHeight =
+        header ? header.offsetHeight : 0;
 
       const targetPosition =
         target.getBoundingClientRect().top +
         window.scrollY -
-        headerOffset;
+        headerHeight;
 
       window.scrollTo({
         top: targetPosition,
@@ -160,103 +293,88 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* =========================================
-     REVEAL ANIMATIONS
-  ========================================== */
+  /* -------------------------------------------------------
+     CONTACT CIRCLE MICRO INTERACTION
+     ------------------------------------------------------- */
 
-  const revealTargets = document.querySelectorAll(
-    [
-      ".statement-content",
-      ".service-row",
-      ".approach-main",
-      ".approach-item",
-      ".process-item",
-      ".industry-item",
-      ".about-content",
-      ".contact-main"
-    ].join(", ")
-  );
+  const contactCircle =
+    document.querySelector(".contact-circle");
 
+  if (
+    contactCircle &&
+    window.matchMedia("(pointer: fine)").matches
+  ) {
 
-  revealTargets.forEach((element, index) => {
+    contactCircle.addEventListener(
+      "mousemove",
+      event => {
 
-    element.classList.add("reveal-element");
+        const rect =
+          contactCircle.getBoundingClientRect();
 
-    element.style.setProperty(
-      "--reveal-delay",
-      `${Math.min(index * 45, 300)}ms`
-    );
+        const x =
+          event.clientX - rect.left - rect.width / 2;
 
-  });
+        const y =
+          event.clientY - rect.top - rect.height / 2;
 
+        const rotateX =
+          (y / rect.height) * -8;
 
-  const revealObserver =
-    new IntersectionObserver(
-      (entries, observer) => {
+        const rotateY =
+          (x / rect.width) * 8;
 
-        entries.forEach((entry) => {
+        contactCircle.style.transform =
+          `perspective(500px)
+           rotateX(${rotateX}deg)
+           rotateY(${rotateY}deg)
+           scale(1.04)`;
 
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          entry.target.classList.add("is-visible");
-
-          observer.unobserve(entry.target);
-
-        });
-
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px"
       }
     );
 
 
-  revealTargets.forEach((element) => {
-    revealObserver.observe(element);
+    contactCircle.addEventListener(
+      "mouseleave",
+      () => {
+
+        contactCircle.style.transform =
+          "perspective(500px) rotateX(0) rotateY(0) scale(1)";
+
+      }
+    );
+
+  }
+
+
+  /* -------------------------------------------------------
+     KEYBOARD ACCESSIBILITY
+     ------------------------------------------------------- */
+
+  document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+
+      if (nav) {
+        nav.classList.remove("open");
+      }
+
+      if (menuButton) {
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuButton.setAttribute(
+          "aria-label",
+          "Open menu"
+        );
+
+      }
+
+    }
+
   });
-
-
-  /* =========================================
-     REDUCED MOTION SUPPORT
-  ========================================== */
-
-  const prefersReducedMotion =
-    window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-
-  if (prefersReducedMotion) {
-
-    revealTargets.forEach((element) => {
-      element.classList.add("is-visible");
-    });
-
-  }
-
-
-  /* =========================================
-     CONTACT BUTTON SAFETY
-  ========================================== */
-
-  const contactButton =
-    document.querySelector(".contact-button");
-
-  if (contactButton) {
-
-    contactButton.addEventListener("click", () => {
-
-      /*
-        The email address in index.html is still
-        a placeholder and will be replaced later
-        with the real MH Group email.
-      */
-
-    });
-
-  }
 
 });
