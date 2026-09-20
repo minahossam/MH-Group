@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LUMINA DENTAL — MH Group</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#0a0b0d;
+  --surface:#111316;
+  --text:#f7f5f0;
+  --muted:#96989a;
+  --line:rgba(255,255,255,.10);
+  --gold:#d8c09a;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1120px,calc(100% - 40px));
+  margin:auto;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  padding:22px 0;
+  background:rgba(10,11,13,.65);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-family:"Space Grotesk";
+  font-weight:700;
+  font-size:22px;
+}
+
+.logo span{
+  color:#4d8dff;
+}
+
+.back{
+  color:#aaa;
+  font-size:13px;
+  transition:.3s;
+}
+
+.back:hover{
+  color:white;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  padding-top:100px;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 75% 35%,rgba(216,192,154,.20),transparent 28%),
+    radial-gradient(circle at 85% 75%,rgba(255,255,255,.06),transparent 25%),
+    linear-gradient(135deg,#101210,#080909);
+}
+
+.hero-grid{
+  position:absolute;
+  inset:0;
+  opacity:.12;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:70px 70px;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+}
+
+.tag{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:25px;
+}
+
+h1{
+  font-family:"Space Grotesk";
+  font-size:clamp(60px,9vw,120px);
+  line-height:.88;
+  letter-spacing:-6px;
+}
+
+.subtitle{
+  color:#b7b7b3;
+  font-size:19px;
+  max-width:600px;
+  margin-top:30px;
+}
+
+.hero-meta{
+  display:flex;
+  gap:35px;
+  margin-top:45px;
+  flex-wrap:wrap;
+}
+
+.meta strong{
+  display:block;
+  font-family:"Space Grotesk";
+  font-size:15px;
+}
+
+.meta span{
+  display:block;
+  color:#777;
+  font-size:11px;
+  margin-top:4px;
+}
+
+/* SECTIONS */
+
+section{
+  padding:120px 0;
+}
+
+.label{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+h2{
+  font-family:"Space Grotesk";
+  font-size:clamp(38px,5vw,65px);
+  line-height:1;
+  letter-spacing:-3px;
+  margin-bottom:25px;
+}
+
+p{
+  color:var(--muted);
+  max-width:650px;
+}
+
+/* TWO COLUMN */
+
+.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:100px;
+}
+
+.big-number{
+  font-family:"Space Grotesk";
+  font-size:130px;
+  line-height:1;
+  color:#191b1d;
+}
+
+/* APPROACH */
+
+.approach{
+  background:#0e1012;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:55px;
+}
+
+.step{
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#111316;
+}
+
+.step-number{
+  color:var(--gold);
+  font-size:12px;
+}
+
+.step h3{
+  font-family:"Space Grotesk";
+  font-size:22px;
+  margin:50px 0 10px;
+}
+
+.step p{
+  font-size:14px;
+}
+
+/* DESIGN */
+
+.design-box{
+  min-height:450px;
+  border-radius:24px;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(circle at 80% 20%,rgba(216,192,154,.20),transparent 30%),
+    linear-gradient(135deg,#171916,#0b0d0c);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.dental-card{
+  width:min(500px,80%);
+  padding:35px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+}
+
+.dental-card small{
+  color:var(--gold);
+  letter-spacing:2px;
+  font-size:9px;
+}
+
+.dental-card h3{
+  font-family:"Space Grotesk";
+  font-size:42px;
+  line-height:1;
+  margin:20px 0;
+}
+
+.dental-card p{
+  font-size:13px;
+}
+
+.fake-button{
+  display:inline-block;
+  margin-top:25px;
+  padding:11px 17px;
+  border-radius:8px;
+  background:#f3eee4;
+  color:#101010;
+  font-size:12px;
+}
+
+/* OUTCOME */
+
+.outcome{
+  text-align:center;
+}
+
+.outcome p{
+  margin:0 auto;
+}
+
+.quote{
+  margin:50px auto 0;
+  max-width:750px;
+  font-family:"Space Grotesk";
+  font-size:28px;
+  line-height:1.25;
+  color:#ddd;
+}
+
+/* CTA */
+
+.cta{
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:80px 30px;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 0,rgba(216,192,154,.12),transparent 45%),
+    #101214;
+}
+
+.cta h2{
+  margin-bottom:15px;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  background:white;
+  color:#090a0b;
+  padding:14px 22px;
+  border-radius:9px;
+  font-weight:600;
+  font-size:13px;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+/* FOOTER */
+
+footer{
+  padding:40px 0;
+  border-top:1px solid var(--line);
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  color:#666;
+  font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .container{
+    width:min(100% - 28px,1120px);
+  }
+
+  section{
+    padding:85px 0;
+  }
+
+  h1{
+    font-size:58px;
+    letter-spacing:-4px;
+  }
+
+  .two,
+  .steps{
+    grid-template-columns:1fr;
+    gap:45px;
+  }
+
+  .big-number{
+    display:none;
+  }
+
+  .hero-meta{
+    gap:22px;
+  }
+
+  .dental-card h3{
+    font-size:32px;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+    gap:12px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">MH<span>.</span></div>
+    <a href="index.html#work" class="back">← Back to Work</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="container">
+
+    <div class="hero-content">
+
+      <div class="tag">
+        Concept Project · Cosmetic Dentistry
+      </div>
+
+      <h1>
+        LUMINA<br>
+        DENTAL
+      </h1>
+
+      <p class="subtitle">
+        A premium digital experience designed for a modern
+        cosmetic dentistry practice in the United States.
+      </p>
+
+      <div class="hero-meta">
+
+        <div class="meta">
+          <strong>Industry</strong>
+          <span>Healthcare</span>
+        </div>
+
+        <div class="meta">
+          <strong>Focus</strong>
+          <span>Premium Positioning</span>
+        </div>
+
+        <div class="meta">
+          <strong>Role</strong>
+          <span>Strategy · Design · Development</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+<!-- OBJECTIVE -->
+
+<section>
+
+  <div class="container">
+
+    <div class="two">
+
+      <div>
+        <div class="label">01 · Objective</div>
+
+        <h2>
+          Make premium
+          care feel effortless.
+        </h2>
+
+        <p>
+          The goal was to create a digital presence that feels
+          as refined as the experience inside a high-end cosmetic
+          dentistry clinic.
+        </p>
+
+      </div>
+
+      <div class="big-number">
+        01
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- APPROACH -->
+
+<section class="approach">
+
+  <div class="container">
+
+    <div class="label">02 · Approach</div>
+
+    <h2>
+      Designed around
+      confidence.
+    </h2>
+
+    <p>
+      Every part of the concept was designed to communicate
+      calmness, quality and trust without overwhelming the visitor.
+    </p>
+
+    <div class="steps">
+
+      <div class="step">
+
+        <span class="step-number">01</span>
+
+        <h3>Positioning</h3>
+
+        <p>
+          A premium visual language created to position the
+          clinic above traditional dental websites.
+        </p>
+
+      </div>
+
+      <div class="step">
+
+        <span class="step-number">02</span>
+
+        <h3>Experience</h3>
+
+        <p>
+          Clear information architecture helps visitors
+          understand services and next steps quickly.
+        </p>
+
+      </div>
+
+      <div class="step">
+
+        <span class="step-number">03</span>
+
+        <h3>Conversion</h3>
+
+        <p>
+          Strategic calls-to-action guide potential patients
+          toward booking a consultation.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- VISUAL -->
+
+<section>
+
+  <div class="container">
+
+    <div class="label">03 · Visual Direction</div>
+
+    <h2>
+      Quiet luxury.
+    </h2>
+
+    <div class="design-box">
+
+      <div class="dental-card">
+
+        <small>LUMINA DENTAL</small>
+
+        <h3>
+          Your smile,<br>
+          beautifully refined.
+        </h3>
+
+        <p>
+          Cosmetic dentistry designed around precision,
+          comfort and confidence.
+        </p>
+
+        <span class="fake-button">
+          Book a Consultation →
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- OUTCOME -->
+
+<section class="outcome">
+
+  <div class="container">
+
+    <div class="label">04 · Concept Outcome</div>
+
+    <h2>
+      A digital identity<br>
+      built to feel premium.
+    </h2>
+
+    <p>
+      The final concept combines sophisticated typography,
+      restrained color, clear messaging and focused calls-to-action
+      to create a memorable healthcare experience.
+    </p>
+
+    <div class="quote">
+      “The website should feel like the first five minutes
+      inside the clinic.”
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CTA -->
+
+<section>
+
+  <div class="container">
+
+    <div class="cta">
+
+      <div class="label">
+        MH Group
+      </div>
+
+      <h2>
+        Ready to build<br>
+        something better?
+      </h2>
+
+      <p style="margin:auto">
+        Have a business that deserves a stronger digital presence?
+        Let's talk.
+      </p>
+
+      <a href="index.html#contact" class="btn">
+        Start a Project →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>MH Group</div>
+
+    <div>
+      Concept project · 2026
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
