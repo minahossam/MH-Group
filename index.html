@@ -1,741 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="MH Group — Web Design & Digital Solutions."
-  >
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>MH Group — Web Design & Digital Solutions</title>
 
-  <!-- Fonts -->
+  <meta
+    name="description"
+    content="MH Group creates refined digital experiences, websites, and digital solutions for ambitious businesses."
+  />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
     rel="stylesheet"
-  >
+  />
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 
 <body>
 
-  <!-- =====================================================
-       LOADER
-       ===================================================== -->
-
+  <!-- LOADER -->
   <div class="loader" id="loader">
-
-    <div class="loader-brand">
+    <div class="loader-inner">
       <span>MH</span>
+      <div class="loader-line"></div>
     </div>
-
-    <div class="loader-line">
-      <span></span>
-    </div>
-
-    <div class="loader-status">
-      DIGITAL STUDIO / 2026
-    </div>
-
   </div>
 
 
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
-
+  <!-- HEADER -->
   <header class="site-header" id="siteHeader">
 
     <a href="#top" class="brand">
-
-      <span class="brand-mark">
-        MH
-      </span>
-
-      <span class="brand-name">
-        GROUP
-      </span>
-
+      <span class="brand-mark">MH</span>
+      <span class="brand-name">GROUP</span>
     </a>
-
 
     <nav class="desktop-nav">
-
-      <a href="#services">
-        Services
-      </a>
-
-      <a href="#process">
-        Process
-      </a>
-
-      <a href="#about">
-        About
-      </a>
-
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
     </nav>
 
-
     <a href="#contact" class="header-cta">
-
-      <span>
-        Start a project
-      </span>
-
-      <span class="header-cta-arrow">
-        ↗
-      </span>
-
+      Start a project
+      <span>↗</span>
     </a>
 
-
-    <button
-      class="menu-toggle"
-      id="menuToggle"
-      aria-label="Open menu"
-      aria-expanded="false"
-    >
-
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
       <span></span>
       <span></span>
-
     </button>
 
   </header>
 
 
-  <!-- =====================================================
-       MOBILE MENU
-       ===================================================== -->
-
+  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-
-    <div class="mobile-menu-inner">
-
-      <a href="#services">
-        Services
-        <span>01</span>
-      </a>
-
-      <a href="#process">
-        Process
-        <span>02</span>
-      </a>
-
-      <a href="#about">
-        About
-        <span>03</span>
-      </a>
-
-      <a href="#contact">
-        Start a project
-        <span>04</span>
-      </a>
-
-    </div>
-
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
+      <a href="#contact">Start a project</a>
+    </nav>
   </div>
 
 
-  <!-- =====================================================
-       MAIN
-       ===================================================== -->
-
   <main id="top">
 
-
-    <!-- ===================================================
-         HERO
-         =================================================== -->
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
 
     <section class="hero">
 
-      <!-- WebGL Canvas -->
-
-      <canvas
-        id="webglCanvas"
-        class="webgl-canvas"
-      ></canvas>
-
-
-      <!-- Hero grid -->
-
       <div class="hero-grid"></div>
 
+      <div class="hero-glow"></div>
 
-      <!-- Hero top -->
+      <canvas id="webgl"></canvas>
 
-      <div class="hero-top">
-
-        <div class="hero-location">
-
-          <span class="status-dot"></span>
-
-          Independent digital studio
-
-        </div>
-
-
-        <div class="hero-number">
-          001 / 005
-        </div>
-
+      <div class="hero-topline">
+        <span>INDEPENDENT DIGITAL STUDIO</span>
+        <span>EST. 2026</span>
       </div>
 
 
-      <!-- Main headline -->
-
       <div class="hero-content">
 
-        <div class="hero-kicker">
-          WEB DESIGN & DIGITAL SOLUTIONS
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          Web Design & Digital Solutions
         </div>
 
 
         <h1 class="hero-title">
 
-          <span class="title-line">
+          <span class="title-line title-line-one">
+            WE BUILD
+          </span>
+
+          <span class="title-line title-line-two">
             DIGITAL
           </span>
 
-          <span class="title-line title-outline">
-            THAT
-          </span>
-
-          <span class="title-line">
-            MATTERS.
+          <span class="title-line title-line-three">
+            PRESENCE<span class="title-dot">.</span>
           </span>
 
         </h1>
 
 
-        <div class="hero-description">
+        <div class="hero-bottom">
 
-          <p>
-            We create digital experiences
-            that make ambitious businesses
-            easier to see, understand and trust.
+          <p class="hero-description">
+            High-quality websites and digital experiences
+            designed to make ambitious businesses look
+            as strong online as they are in the real world.
           </p>
 
-        </div>
 
+          <div class="hero-actions">
 
-        <a href="#contact" class="hero-cta">
+            <a href="#contact" class="primary-button">
+              <span>Start a project</span>
+              <span class="button-arrow">↗</span>
+            </a>
 
-          <span class="hero-cta-circle">
-            ↗
-          </span>
+            <a href="#services" class="text-button">
+              Explore services
+              <span>↓</span>
+            </a>
 
-          <span>
-            Start a conversation
-          </span>
+          </div>
 
-        </a>
-
-      </div>
-
-
-      <!-- Hero bottom -->
-
-      <div class="hero-bottom">
-
-        <div class="hero-scroll">
-
-          <span>
-            Scroll to explore
-          </span>
-
-          <span class="scroll-line"></span>
-
-        </div>
-
-
-        <div class="hero-meta">
-
-          <span>
-            Strategy
-          </span>
-
-          <span>
-            Design
-          </span>
-
-          <span>
-            Development
-          </span>
-
-        </div>
-
-
-        <div class="hero-year">
-          2026
         </div>
 
       </div>
 
 
-      <!-- WebGL label -->
+      <div class="hero-corner hero-corner-left">
+        <span>01</span>
+        <span>MH / DIGITAL</span>
+      </div>
 
-      <div class="webgl-label">
-
-        <span>
-          MH / DIGITAL OBJECT
-        </span>
-
-        <span>
-          01
-        </span>
-
+      <div class="hero-corner hero-corner-right">
+        <span>SCROLL</span>
+        <span class="scroll-line"></span>
       </div>
 
     </section>
 
 
-    <!-- ===================================================
-         STATEMENT
-         =================================================== -->
+    <!-- ================================================= -->
+    <!-- STATEMENT -->
+    <!-- ================================================= -->
 
     <section class="statement">
 
-      <div class="section-index">
-        02
-      </div>
+      <div class="section-number">01 — INTRO</div>
 
+      <div class="statement-content">
 
-      <div class="statement-main">
-
-        <div class="eyebrow">
-          THE MH APPROACH
-        </div>
-
+        <p class="statement-kicker">
+          DIGITAL SHOULD FEEL <em>INTENTIONAL.</em>
+        </p>
 
         <h2>
-
-          Your website is not
-          <span>decoration.</span>
-
-          It is how people
-          experience your business.
-
+          We create digital experiences
+          that combine <span>clarity,</span>
+          <span>character</span> and
+          <span>performance.</span>
         </h2>
-
-
-        <div class="statement-footer">
-
-          <p>
-            We combine strategy, design and development
-            into one focused digital experience.
-          </p>
-
-
-          <div class="statement-symbol">
-            MH
-          </div>
-
-        </div>
 
       </div>
 
     </section>
 
 
-    <!-- ===================================================
-         SERVICES
-         =================================================== -->
+    <!-- ================================================= -->
+    <!-- SERVICES -->
+    <!-- ================================================= -->
 
-    <section
-      class="services"
-      id="services"
-    >
+    <section class="services-section" id="services">
 
       <div class="section-header">
 
-        <div class="section-index">
-          03
+        <div class="section-number">
+          02 — SERVICES
         </div>
 
-        <div>
-
-          <div class="eyebrow">
-            WHAT WE DO
-          </div>
-
-          <p class="section-intro">
-            Everything needed to create a digital
-            presence built around your business.
-          </p>
-
-        </div>
+        <p>
+          From first concept to final launch,
+          we build the digital foundation
+          your business needs.
+        </p>
 
       </div>
 
 
       <div class="services-list">
 
+        <article class="service-row">
 
-        <a href="#contact" class="service">
+          <div class="service-index">01</div>
 
-          <span class="service-number">
-            01
-          </span>
-
-          <div class="service-name">
-
-            <span>
-              Web
-            </span>
-
-            <span class="outline-text">
-              Design
-            </span>
-
+          <div class="service-main">
+            <h3>Web Design</h3>
+            <p>
+              Strategic, responsive websites built
+              around your brand, audience and goals.
+            </p>
           </div>
 
-          <p>
-            High-end interfaces designed
-            around clarity, credibility and conversion.
-          </p>
+          <div class="service-arrow">↗</div>
 
-          <span class="service-icon">
-            ↗
-          </span>
-
-        </a>
+        </article>
 
 
-        <a href="#contact" class="service">
+        <article class="service-row">
 
-          <span class="service-number">
-            02
-          </span>
+          <div class="service-index">02</div>
 
-          <div class="service-name">
-
-            <span>
-              Web
-            </span>
-
-            <span class="outline-text">
-              Development
-            </span>
-
+          <div class="service-main">
+            <h3>Development</h3>
+            <p>
+              Fast, polished and scalable digital
+              experiences engineered for the modern web.
+            </p>
           </div>
 
-          <p>
-            Fast, responsive and carefully
-            engineered digital experiences.
-          </p>
+          <div class="service-arrow">↗</div>
 
-          <span class="service-icon">
-            ↗
-          </span>
-
-        </a>
+        </article>
 
 
-        <a href="#contact" class="service">
+        <article class="service-row">
 
-          <span class="service-number">
-            03
-          </span>
+          <div class="service-index">03</div>
 
-          <div class="service-name">
-
-            <span>
-              Digital
-            </span>
-
-            <span class="outline-text">
-              Solutions
-            </span>
-
+          <div class="service-main">
+            <h3>Digital Solutions</h3>
+            <p>
+              Practical digital systems that help
+              businesses communicate, operate and grow.
+            </p>
           </div>
 
-          <p>
-            Practical digital systems that
-            remove friction from your business.
-          </p>
+          <div class="service-arrow">↗</div>
 
-          <span class="service-icon">
-            ↗
-          </span>
-
-        </a>
+        </article>
 
 
-        <a href="#contact" class="service">
+        <article class="service-row">
 
-          <span class="service-number">
-            04
-          </span>
+          <div class="service-index">04</div>
 
-          <div class="service-name">
-
-            <span>
-              Digital
-            </span>
-
-            <span class="outline-text">
-              Strategy
-            </span>
-
+          <div class="service-main">
+            <h3>Ongoing Support</h3>
+            <p>
+              Continuous improvements, updates and
+              technical support after launch.
+            </p>
           </div>
 
-          <p>
-            Clear direction before pixels,
-            code or unnecessary complexity.
-          </p>
+          <div class="service-arrow">↗</div>
 
-          <span class="service-icon">
-            ↗
-          </span>
-
-        </a>
+        </article>
 
       </div>
 
     </section>
 
 
-    <!-- ===================================================
-         PROCESS
-         =================================================== -->
+    <!-- ================================================= -->
+    <!-- APPROACH -->
+    <!-- ================================================= -->
 
-    <section
-      class="process"
-      id="process"
-    >
+    <section class="approach-section" id="approach">
 
-      <div class="process-bg">
-        PROCESS
+      <div class="section-number">
+        03 — APPROACH
+      </div>
+
+      <div class="approach-intro">
+
+        <h2>
+          SIMPLE PROCESS.
+          <br>
+          <span>PRECISE EXECUTION.</span>
+        </h2>
+
+        <p>
+          No unnecessary layers. No complicated process.
+          Every project moves through a clear sequence
+          from idea to launch.
+        </p>
+
       </div>
 
 
-      <div class="process-header">
+      <div class="process-list">
 
-        <div class="section-index">
-          04
-        </div>
+        <div class="process-item">
 
-        <div>
+          <span>01</span>
 
-          <div class="eyebrow">
-            HOW WE WORK
+          <div>
+            <h3>Discover</h3>
+            <p>
+              Understand the business, audience,
+              objectives and opportunities.
+            </p>
           </div>
 
+        </div>
+
+
+        <div class="process-item">
+
+          <span>02</span>
+
+          <div>
+            <h3>Define</h3>
+            <p>
+              Establish the structure, direction
+              and visual language of the project.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="process-item">
+
+          <span>03</span>
+
+          <div>
+            <h3>Build</h3>
+            <p>
+              Design, develop and refine every
+              important detail.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="process-item">
+
+          <span>04</span>
+
+          <div>
+            <h3>Launch</h3>
+            <p>
+              Test, polish and deliver a finished
+              digital experience.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- AUDIENCE -->
+    <!-- ================================================= -->
+
+    <section class="audience-section">
+
+      <div class="audience-label">
+        WHO WE WORK WITH
+      </div>
+
+      <div class="audience-title">
+
+        <span>AMBITION</span>
+        <span>LOOKS GOOD</span>
+        <span>ONLINE.</span>
+
+      </div>
+
+      <div class="audience-description">
+
+        <p>
+          We work with businesses that understand
+          that their digital presence is part of
+          their reputation.
+        </p>
+
+      </div>
+
+      <div class="audience-tags">
+
+        <span>Professional Services</span>
+        <span>Technology</span>
+        <span>Real Estate</span>
+        <span>Healthcare</span>
+        <span>Home Services</span>
+        <span>Growing Businesses</span>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ABOUT -->
+    <!-- ================================================= -->
+
+    <section class="about-section" id="about">
+
+      <div class="section-number">
+        04 — MH GROUP
+      </div>
+
+      <div class="about-layout">
+
+        <div class="about-title">
           <h2>
-            Clear thinking.
-            <span>Sharp execution.</span>
+            BUILT WITH
+            <span>INTENT.</span>
           </h2>
-
         </div>
-
-      </div>
-
-
-      <div class="process-grid">
-
-
-        <div class="process-step">
-
-          <span class="process-step-number">
-            01
-          </span>
-
-          <h3>
-            Discover
-          </h3>
-
-          <p>
-            We understand your business,
-            audience and objectives.
-          </p>
-
-        </div>
-
-
-        <div class="process-step">
-
-          <span class="process-step-number">
-            02
-          </span>
-
-          <h3>
-            Define
-          </h3>
-
-          <p>
-            We establish the structure,
-            message and digital direction.
-          </p>
-
-        </div>
-
-
-        <div class="process-step">
-
-          <span class="process-step-number">
-            03
-          </span>
-
-          <h3>
-            Design
-          </h3>
-
-          <p>
-            We create a distinctive visual
-            system built around the strategy.
-          </p>
-
-        </div>
-
-
-        <div class="process-step">
-
-          <span class="process-step-number">
-            04
-          </span>
-
-          <h3>
-            Build
-          </h3>
-
-          <p>
-            We turn the approved direction
-            into a responsive digital experience.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         AUDIENCE
-         =================================================== -->
-
-    <section class="audience">
-
-      <div class="section-index">
-        05
-      </div>
-
-
-      <div class="audience-main">
-
-        <div class="eyebrow">
-          WHO WE WORK WITH
-        </div>
-
-
-        <h2>
-          Built for businesses
-          with <span>somewhere to go.</span>
-        </h2>
-
-
-        <div class="audience-grid">
-
-          <div>
-            <span>01</span>
-            Professional Services
-          </div>
-
-          <div>
-            <span>02</span>
-            Healthcare & Dental
-          </div>
-
-          <div>
-            <span>03</span>
-            Real Estate
-          </div>
-
-          <div>
-            <span>04</span>
-            Home Services
-          </div>
-
-          <div>
-            <span>05</span>
-            Technology & SaaS
-          </div>
-
-          <div>
-            <span>06</span>
-            Growing Businesses
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         ABOUT
-         =================================================== -->
-
-    <section
-      class="about"
-      id="about"
-    >
-
-      <div class="about-top">
-
-        <span class="section-index">
-          06
-        </span>
-
-        <span class="eyebrow">
-          MH GROUP
-        </span>
-
-      </div>
-
-
-      <div class="about-main">
-
-        <h2>
-
-          Small team.
-          <br>
-
-          Big attention
-          <br>
-
-          <span>to detail.</span>
-
-        </h2>
-
 
         <div class="about-copy">
 
-          <p>
+          <p class="about-lead">
             MH Group is an independent digital studio
-            focused on web design, development and
-            practical digital solutions.
+            focused on creating strong, modern digital
+            experiences for businesses ready to move forward.
           </p>
 
           <p>
-            We keep the model lean, the communication
-            direct and the work focused on what actually
-            matters to the business.
+            We keep the structure lean and the work focused.
+            Every project is approached around the business
+            itself — not around a generic template.
+          </p>
+
+          <p>
+            From strategy and design to development and
+            ongoing support, our goal is simple:
+            build digital work that earns attention
+            and deserves trust.
           </p>
 
         </div>
@@ -745,26 +460,20 @@
     </section>
 
 
-    <!-- ===================================================
-         CONTACT
-         =================================================== -->
+    <!-- ================================================= -->
+    <!-- CONTACT -->
+    <!-- ================================================= -->
 
-    <section
-      class="contact"
-      id="contact"
-    >
+    <section class="contact-section" id="contact">
 
       <div class="contact-grid"></div>
 
-
       <div class="contact-top">
 
-        <span>
-          07 / START A PROJECT
-        </span>
+        <span>05 — CONTACT</span>
 
         <span>
-          MH GROUP
+          HAVE A PROJECT IN MIND?
         </span>
 
       </div>
@@ -772,42 +481,18 @@
 
       <div class="contact-main">
 
-        <div class="contact-title">
-
-          <span>
-            LET'S
-          </span>
-
-          <span class="contact-outline">
-            BUILD
-          </span>
-
-          <span>
-            SOMETHING.
-          </span>
-
-        </div>
-
-
-        <!-- Replace email later -->
+        <h2>
+          LET'S BUILD
+          <br>
+          SOMETHING <em>GOOD.</em>
+        </h2>
 
         <a
           href="mailto:YOUR-EMAIL@example.com"
           class="contact-button"
         >
-
-          <span>
-            Start a
-          </span>
-
-          <span>
-            conversation
-          </span>
-
-          <strong>
-            ↗
-          </strong>
-
+          <span>Start a conversation</span>
+          <span>↗</span>
         </a>
 
       </div>
@@ -815,11 +500,13 @@
 
       <div class="contact-bottom">
 
-        <p>
-          Tell us what you're building,
-          where you are now and where
-          you want to go.
-        </p>
+        <span>
+          MH GROUP — WEB DESIGN & DIGITAL SOLUTIONS
+        </span>
+
+        <span>
+          AVAILABLE FOR SELECT PROJECTS
+        </span>
 
       </div>
 
@@ -828,64 +515,39 @@
   </main>
 
 
-  <!-- =====================================================
-       FOOTER
-       ===================================================== -->
+  <!-- ================================================= -->
+  <!-- FOOTER -->
+  <!-- ================================================= -->
 
-  <footer class="footer">
+  <footer class="site-footer">
 
-    <div class="footer-main">
+    <div class="footer-brand">
+      MH
+    </div>
 
-      <div class="footer-logo">
-        MH<span>.</span>
-      </div>
+    <div class="footer-info">
 
+      <span>
+        MH GROUP
+      </span>
 
-      <div class="footer-info">
-
-        <span>
-          MH Group
-        </span>
-
-        <span>
-          Web Design & Digital Solutions
-        </span>
-
-      </div>
+      <span>
+        WEB DESIGN & DIGITAL SOLUTIONS
+      </span>
 
     </div>
 
-
-    <div class="footer-bottom">
-
-      <span>
-        © <span id="year"></span> MH Group
-      </span>
-
-      <span>
-        Independent Digital Studio
-      </span>
-
-      <a href="#top">
-        Back to top ↑
-      </a>
-
+    <div class="footer-copy">
+      © <span id="year"></span> MH Group
     </div>
 
   </footer>
 
 
-  <!-- =====================================================
-       THREE.JS
-       ===================================================== -->
+  <!-- THREE.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
-  ></script>
-
-
-  <!-- Main JS -->
-
+  <!-- SITE SCRIPT -->
   <script src="script.js"></script>
 
 </body>
