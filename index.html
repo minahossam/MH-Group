@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MH Group — Web Design & Digital Solutions</title>
-<meta name="description" content="MH Group builds premium digital experiences for ambitious businesses.">
+
+<meta name="description" content="MH Group creates premium websites and digital experiences for ambitious businesses.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
   --bg:#08090b;
   --surface:#101216;
@@ -23,9 +27,15 @@
   --max:1180px;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   background:var(--bg);
@@ -35,7 +45,10 @@ body{
   overflow-x:hidden;
 }
 
-a{text-decoration:none;color:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 .container{
   width:min(var(--max),calc(100% - 40px));
@@ -74,7 +87,9 @@ a{text-decoration:none;color:inherit}
   letter-spacing:-1px;
 }
 
-.logo span{color:var(--blue)}
+.logo span{
+  color:var(--blue);
+}
 
 .nav-links{
   display:flex;
@@ -88,7 +103,9 @@ a{text-decoration:none;color:inherit}
   transition:.3s;
 }
 
-.nav-links a:hover{color:white}
+.nav-links a:hover{
+  color:white;
+}
 
 .nav-cta{
   border:1px solid var(--line);
@@ -117,10 +134,13 @@ a{text-decoration:none;color:inherit}
   position:absolute;
   inset:0;
   opacity:.23;
+
   background-image:
     linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+
   background-size:70px 70px;
+
   mask-image:linear-gradient(to bottom,black,transparent 90%);
 }
 
@@ -131,8 +151,16 @@ a{text-decoration:none;color:inherit}
   right:-180px;
   top:80px;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(77,141,255,.22),transparent 65%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(77,141,255,.22),
+      transparent 65%
+    );
+
   filter:blur(15px);
+  transition:.3s ease;
 }
 
 .hero-content{
@@ -145,12 +173,17 @@ a{text-decoration:none;color:inherit}
   display:inline-flex;
   align-items:center;
   gap:9px;
+
   padding:8px 13px;
+
   border:1px solid var(--line);
   background:rgba(255,255,255,.025);
+
   border-radius:100px;
+
   color:#c7cad1;
   font-size:12px;
+
   margin-bottom:30px;
 }
 
@@ -158,46 +191,70 @@ a{text-decoration:none;color:inherit}
   width:7px;
   height:7px;
   border-radius:50%;
+
   background:var(--blue);
-  box-shadow:0 0 15px var(--blue);
+
+  box-shadow:
+    0 0 15px var(--blue);
 }
 
 .hero h1{
   font-family:"Space Grotesk",sans-serif;
+
   font-size:clamp(54px,8vw,104px);
+
   line-height:.94;
+
   letter-spacing:-5px;
+
   max-width:1000px;
 }
 
 .gradient{
-  background:linear-gradient(100deg,#fff 10%,#8fb7ff 55%,#4d8dff);
+  background:
+    linear-gradient(
+      100deg,
+      #fff 10%,
+      #8fb7ff 55%,
+      #4d8dff
+    );
+
   -webkit-background-clip:text;
   color:transparent;
 }
 
 .hero p{
   color:var(--muted);
+
   max-width:610px;
+
   font-size:18px;
+
   margin-top:30px;
 }
 
 .buttons{
   display:flex;
   gap:13px;
+
   margin-top:38px;
+
   flex-wrap:wrap;
 }
 
 .btn{
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
+
   padding:14px 21px;
+
   border-radius:10px;
+
   font-size:14px;
   font-weight:600;
+
   transition:.3s;
 }
 
@@ -208,7 +265,9 @@ a{text-decoration:none;color:inherit}
 
 .btn-primary:hover{
   transform:translateY(-3px);
-  box-shadow:0 12px 40px rgba(255,255,255,.12);
+
+  box-shadow:
+    0 12px 40px rgba(255,255,255,.12);
 }
 
 .btn-secondary{
@@ -218,50 +277,72 @@ a{text-decoration:none;color:inherit}
 
 .btn-secondary:hover{
   border-color:rgba(77,141,255,.6);
-  background:rgba(77,141,255,.08);
+
+  background:
+    rgba(77,141,255,.08);
+
   transform:translateY(-3px);
 }
 
 .scroll{
   position:absolute;
+
   bottom:30px;
   left:50%;
+
   transform:translateX(-50%);
+
   color:#707580;
+
   font-size:11px;
+
   letter-spacing:2px;
 }
 
-/* SECTION */
+/* SECTIONS */
 
-section{padding:120px 0}
+section{
+  padding:120px 0;
+}
 
 .section-top{
   display:flex;
+
   justify-content:space-between;
   align-items:end;
+
   gap:40px;
+
   margin-bottom:55px;
 }
 
 .eyebrow{
   color:var(--blue2);
+
   font-size:12px;
+
   text-transform:uppercase;
+
   letter-spacing:2px;
+
   margin-bottom:13px;
 }
 
 .section-title{
   font-family:"Space Grotesk",sans-serif;
+
   font-size:clamp(38px,5vw,64px);
+
   letter-spacing:-3px;
+
   line-height:1;
 }
 
 .section-copy{
   color:var(--muted);
+
   max-width:430px;
+
   font-size:15px;
 }
 
@@ -269,218 +350,378 @@ section{padding:120px 0}
 
 .services{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:15px;
 }
 
 .card{
-  background:linear-gradient(145deg,#111318,#0c0e12);
+  background:
+    linear-gradient(
+      145deg,
+      #111318,
+      #0c0e12
+    );
+
   border:1px solid var(--line);
+
   border-radius:18px;
+
   padding:32px;
+
   transition:.4s;
 }
 
 .card:hover{
   transform:translateY(-6px);
-  border-color:rgba(77,141,255,.35);
+
+  border-color:
+    rgba(77,141,255,.35);
 }
 
 .icon{
   width:43px;
   height:43px;
+
   border:1px solid var(--line);
+
   border-radius:11px;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   margin-bottom:50px;
+
   color:var(--blue2);
+
   font-size:18px;
 }
 
 .card h3{
   font-family:"Space Grotesk",sans-serif;
+
   font-size:21px;
+
   margin-bottom:10px;
 }
 
 .card p{
   color:var(--muted);
+
   font-size:14px;
-}
-
-/* WORK */
-
-.work-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.project{
-  position:relative;
-  min-height:430px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  overflow:hidden;
-  padding:32px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  background:
-    radial-gradient(circle at 80% 20%,rgba(77,141,255,.18),transparent 35%),
-    linear-gradient(145deg,#16191f,#0d0f13);
-  transition:.5s;
-}
-
-.project:nth-child(1){
-  background:
-    radial-gradient(circle at 80% 15%,rgba(240,215,180,.15),transparent 32%),
-    linear-gradient(145deg,#171817,#0d0f10);
-}
-
-.project:nth-child(2){
-  background:
-    radial-gradient(circle at 75% 20%,rgba(180,180,180,.14),transparent 35%),
-    linear-gradient(145deg,#151619,#0d0e11);
-}
-
-.project:nth-child(3){
-  background:
-    radial-gradient(circle at 80% 20%,rgba(205,170,100,.18),transparent 35%),
-    linear-gradient(145deg,#191715,#0e0d0c);
-}
-
-.project:nth-child(4){
-  background:
-    radial-gradient(circle at 80% 20%,rgba(77,141,255,.2),transparent 35%),
-    linear-gradient(145deg,#10171d,#0c0f12);
-}
-
-.project:nth-child(5){
-  grid-column:span 2;
-  min-height:390px;
-  background:
-    radial-gradient(circle at 70% 10%,rgba(100,160,255,.2),transparent 35%),
-    linear-gradient(145deg,#111827,#090d14);
-}
-
-.project:hover{
-  transform:translateY(-7px);
-  border-color:rgba(255,255,255,.18);
-}
-
-.project-number{
-  position:absolute;
-  top:27px;
-  right:30px;
-  color:#676c77;
-  font-size:12px;
-}
-
-.project-tag{
-  display:inline-block;
-  width:max-content;
-  font-size:10px;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  color:#aab0bb;
-  border:1px solid var(--line);
-  border-radius:100px;
-  padding:6px 10px;
-  margin-bottom:15px;
-}
-
-.project h3{
-  font-family:"Space Grotesk",sans-serif;
-  font-size:34px;
-  letter-spacing:-1.5px;
-  margin-bottom:7px;
-}
-
-.project p{
-  color:#9a9faa;
-  font-size:14px;
-  max-width:470px;
-}
-
-.project-link{
-  margin-top:22px;
-  color:white;
-  font-size:13px;
 }
 
 /* MARQUEE */
 
 .marquee{
   overflow:hidden;
+
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
+
   padding:22px 0;
 }
 
 .marquee-track{
   display:flex;
+
   width:max-content;
-  animation:move 25s linear infinite;
+
+  animation:
+    move 25s linear infinite;
 }
 
 .marquee span{
   font-family:"Space Grotesk",sans-serif;
+
   font-size:17px;
+
   color:#696e78;
+
   padding:0 30px;
 }
 
 @keyframes move{
-  to{transform:translateX(-50%)}
+
+  to{
+    transform:translateX(-50%);
+  }
+
+}
+
+/* WORK */
+
+.work-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:18px;
+}
+
+.project{
+  position:relative;
+
+  min-height:430px;
+
+  border:1px solid var(--line);
+
+  border-radius:22px;
+
+  overflow:hidden;
+
+  padding:32px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:flex-end;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(77,141,255,.18),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #16191f,
+      #0d0f13
+    );
+
+  transition:.5s;
+}
+
+.project:nth-child(1){
+
+  background:
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(240,215,180,.15),
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      #171817,
+      #0d0f10
+    );
+
+}
+
+.project:nth-child(2){
+
+  background:
+    radial-gradient(
+      circle at 75% 20%,
+      rgba(180,180,180,.14),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #151619,
+      #0d0e11
+    );
+
+}
+
+.project:nth-child(3){
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(205,170,100,.18),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #191715,
+      #0e0d0c
+    );
+
+}
+
+.project:nth-child(4){
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(77,141,255,.2),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #10171d,
+      #0c0f12
+    );
+
+}
+
+.project:nth-child(5){
+
+  grid-column:span 2;
+
+  min-height:390px;
+
+  background:
+    radial-gradient(
+      circle at 70% 10%,
+      rgba(100,160,255,.2),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #111827,
+      #090d14
+    );
+
+}
+
+.project:hover{
+  transform:translateY(-7px);
+
+  border-color:
+    rgba(255,255,255,.18);
+}
+
+.project-number{
+  position:absolute;
+
+  top:27px;
+  right:30px;
+
+  color:#676c77;
+
+  font-size:12px;
+}
+
+.project-tag{
+  display:inline-block;
+
+  width:max-content;
+
+  font-size:10px;
+
+  letter-spacing:1.5px;
+
+  text-transform:uppercase;
+
+  color:#aab0bb;
+
+  border:1px solid var(--line);
+
+  border-radius:100px;
+
+  padding:6px 10px;
+
+  margin-bottom:15px;
+}
+
+.project h3{
+  font-family:"Space Grotesk",sans-serif;
+
+  font-size:34px;
+
+  letter-spacing:-1.5px;
+
+  margin-bottom:7px;
+}
+
+.project p{
+  color:#9a9faa;
+
+  font-size:14px;
+
+  max-width:470px;
+}
+
+.project-link{
+  margin-top:22px;
+
+  color:white;
+
+  font-size:13px;
+
+  display:inline-block;
+
+  transition:.3s;
+}
+
+.project-link:hover{
+  color:var(--blue2);
+
+  transform:translateX(5px);
 }
 
 /* ABOUT */
 
 .about{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:90px;
+
   align-items:center;
 }
 
 .about h2{
   font-family:"Space Grotesk",sans-serif;
-  font-size:clamp(40px,5vw,65px);
+
+  font-size:
+    clamp(40px,5vw,65px);
+
   line-height:1;
+
   letter-spacing:-3px;
 }
 
 .about p{
   color:var(--muted);
+
   margin-top:22px;
+
   max-width:570px;
 }
 
 .stats{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:12px;
 }
 
 .stat{
   padding:30px;
+
   border:1px solid var(--line);
+
   border-radius:16px;
+
   background:var(--surface);
 }
 
 .stat strong{
   font-family:"Space Grotesk",sans-serif;
+
   font-size:36px;
 }
 
 .stat span{
   display:block;
+
   color:var(--muted);
+
   font-size:13px;
+
   margin-top:4px;
 }
 
@@ -488,24 +729,38 @@ section{padding:120px 0}
 
 .cta{
   text-align:center;
+
   border:1px solid var(--line);
+
   border-radius:25px;
+
   padding:90px 30px;
+
   background:
-    radial-gradient(circle at 50% 0,rgba(77,141,255,.16),transparent 40%),
+    radial-gradient(
+      circle at 50% 0,
+      rgba(77,141,255,.16),
+      transparent 40%
+    ),
     #0d1015;
 }
 
 .cta h2{
   font-family:"Space Grotesk",sans-serif;
-  font-size:clamp(42px,6vw,75px);
+
+  font-size:
+    clamp(42px,6vw,75px);
+
   letter-spacing:-3px;
+
   line-height:1;
 }
 
 .cta p{
   color:var(--muted);
+
   margin:22px auto 32px;
+
   max-width:520px;
 }
 
@@ -513,43 +768,57 @@ section{padding:120px 0}
 
 footer{
   padding:45px 0;
+
   border-top:1px solid var(--line);
 }
 
 .footer-inner{
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   gap:20px;
 }
 
 .footer-copy{
   color:#676c76;
+
   font-size:12px;
 }
 
 .footer-links{
   display:flex;
+
   gap:20px;
 }
 
 .footer-links a{
   color:#858a95;
+
   font-size:12px;
 }
 
-.footer-links a:hover{color:white}
+.footer-links a:hover{
+  color:white;
+}
 
 /* REVEAL */
 
 .reveal{
   opacity:0;
+
   transform:translateY(30px);
-  transition:opacity .8s ease,transform .8s ease;
+
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
 }
 
 .reveal.show{
   opacity:1;
+
   transform:none;
 }
 
@@ -557,20 +826,30 @@ footer{
 
 @media(max-width:800px){
 
-  .nav-links{display:none}
-
-  .container{
-    width:min(100% - 28px,var(--max));
+  .nav-links{
+    display:none;
   }
 
-  section{padding:85px 0}
+  .container{
+    width:min(
+      100% - 28px,
+      var(--max)
+    );
+  }
+
+  section{
+    padding:85px 0;
+  }
 
   .hero h1{
     font-size:56px;
+
     letter-spacing:-3px;
   }
 
-  .hero p{font-size:16px}
+  .hero p{
+    font-size:16px;
+  }
 
   .section-top{
     display:block;
@@ -599,13 +878,16 @@ footer{
   }
 
   .stats{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+      1fr 1fr;
   }
 
   .footer-inner{
     flex-direction:column;
+
     align-items:flex-start;
   }
+
 }
 
 @media(max-width:500px){
@@ -625,211 +907,442 @@ footer{
   .stats{
     grid-template-columns:1fr;
   }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <!-- NAV -->
+
 <nav class="nav" id="nav">
+
   <div class="container nav-inner">
-    <a href="#" class="logo">MH<span>.</span></a>
+
+    <a href="#" class="logo">
+      MH<span>.</span>
+    </a>
 
     <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact" class="nav-cta">Start a Project</a>
+
+      <a href="#services">
+        Services
+      </a>
+
+      <a href="#work">
+        Work
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#contact" class="nav-cta">
+        Start a Project
+      </a>
+
     </div>
+
   </div>
+
 </nav>
 
+
 <!-- HERO -->
+
 <header class="hero">
+
   <div class="grid"></div>
+
   <div class="glow"></div>
 
   <div class="container">
+
     <div class="hero-content reveal">
 
       <div class="badge">
+
         <span class="dot"></span>
+
         Web Design & Digital Solutions
+
       </div>
 
       <h1>
+
         Digital experiences
-        <span class="gradient">built to stand out.</span>
+
+        <span class="gradient">
+          built to stand out.
+        </span>
+
       </h1>
 
       <p>
+
         MH Group creates premium websites and digital experiences
         for ambitious businesses ready to look sharper, work smarter,
         and grow online.
+
       </p>
 
       <div class="buttons">
-        <a href="#contact" class="btn btn-primary">Start a Project →</a>
-        <a href="#work" class="btn btn-secondary">View Our Work</a>
+
+        <a
+          href="#contact"
+          class="btn btn-primary"
+        >
+          Start a Project →
+        </a>
+
+        <a
+          href="#work"
+          class="btn btn-secondary"
+        >
+          View Our Work
+        </a>
+
       </div>
 
     </div>
+
   </div>
 
-  <div class="scroll">SCROLL TO EXPLORE ↓</div>
+  <div class="scroll">
+    SCROLL TO EXPLORE ↓
+  </div>
+
 </header>
 
+
 <!-- SERVICES -->
+
 <section id="services">
+
   <div class="container">
 
     <div class="section-top reveal">
+
       <div>
-        <div class="eyebrow">What we do</div>
-        <h2 class="section-title">Built around<br>your business.</h2>
+
+        <div class="eyebrow">
+          What we do
+        </div>
+
+        <h2 class="section-title">
+          Built around<br>
+          your business.
+        </h2>
+
       </div>
 
       <p class="section-copy">
-        Strategy, design and development combined into one focused
-        digital experience.
+
+        Strategy, design and development combined
+        into one focused digital experience.
+
       </p>
+
     </div>
+
 
     <div class="services">
 
       <div class="card reveal">
-        <div class="icon">✦</div>
-        <h3>Web Design</h3>
+
+        <div class="icon">
+          ✦
+        </div>
+
+        <h3>
+          Web Design
+        </h3>
+
         <p>
-          Premium websites designed to make your business look credible,
-          modern and memorable.
+          Premium websites designed to make your business
+          look credible, modern and memorable.
         </p>
+
       </div>
 
-      <div class="card reveal">
-        <div class="icon">◈</div>
-        <h3>Web Development</h3>
-        <p>
-          Fast, responsive and carefully built websites that work
-          beautifully across every screen.
-        </p>
-      </div>
 
       <div class="card reveal">
-        <div class="icon">↗</div>
-        <h3>Digital Solutions</h3>
+
+        <div class="icon">
+          ◈
+        </div>
+
+        <h3>
+          Web Development
+        </h3>
+
         <p>
-          Practical digital systems and experiences designed around
-          business goals and customer behavior.
+          Fast, responsive and carefully built websites
+          that work beautifully across every screen.
         </p>
+
+      </div>
+
+
+      <div class="card reveal">
+
+        <div class="icon">
+          ↗
+        </div>
+
+        <h3>
+          Digital Solutions
+        </h3>
+
+        <p>
+          Practical digital systems and experiences
+          designed around business goals.
+        </p>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
+
 <!-- MARQUEE -->
+
 <div class="marquee">
+
   <div class="marquee-track">
+
     <span>STRATEGY</span>
     <span>DESIGN</span>
     <span>DEVELOPMENT</span>
     <span>BRANDING</span>
     <span>DIGITAL</span>
+
     <span>STRATEGY</span>
     <span>DESIGN</span>
     <span>DEVELOPMENT</span>
     <span>BRANDING</span>
     <span>DIGITAL</span>
+
   </div>
+
 </div>
 
+
 <!-- WORK -->
+
 <section id="work">
+
   <div class="container">
 
     <div class="section-top reveal">
+
       <div>
-        <div class="eyebrow">Selected work</div>
-        <h2 class="section-title">Concepts<br>with purpose.</h2>
+
+        <div class="eyebrow">
+          Selected work
+        </div>
+
+        <h2 class="section-title">
+          Concepts<br>
+          with purpose.
+        </h2>
+
       </div>
 
       <p class="section-copy">
-        A selection of concept experiences created to demonstrate
-        different industries, styles and conversion goals.
+
+        A selection of concept experiences created
+        to demonstrate different industries and goals.
+
       </p>
+
     </div>
+
 
     <div class="work-grid">
 
-      <article class="project reveal">
-        <span class="project-number">01</span>
-        <span class="project-tag">Concept Project · Dental</span>
-        <h3>LUMINA DENTAL</h3>
-        <p>
-          A premium digital experience for a modern cosmetic dentistry
-          practice in the United States.
-        </p>
-        <div class="project-link">Explore concept →</div>
-      </article>
+
+      <!-- PROJECT 01 -->
 
       <article class="project reveal">
-        <span class="project-number">02</span>
-        <span class="project-tag">Concept Project · Law</span>
-        <h3>HART & CO.</h3>
+
+        <span class="project-number">
+          01
+        </span>
+
+        <span class="project-tag">
+          Concept Project · Dental
+        </span>
+
+        <h3>
+          LUMINA DENTAL
+        </h3>
+
         <p>
-          A sophisticated law firm experience focused on authority,
-          clarity and client trust.
+          A premium digital experience for a modern
+          cosmetic dentistry practice in the United States.
         </p>
-        <div class="project-link">Explore concept →</div>
+
+        <a
+          href="lumina-dental.html"
+          class="project-link"
+        >
+          Explore concept →
+        </a>
+
       </article>
 
-      <article class="project reveal">
-        <span class="project-number">03</span>
-        <span class="project-tag">Concept Project · Real Estate</span>
-        <h3>VELA ESTATES</h3>
-        <p>
-          A luxury property platform designed around premium listings,
-          visual storytelling and high-end positioning.
-        </p>
-        <div class="project-link">Explore concept →</div>
-      </article>
+
+      <!-- PROJECT 02 -->
 
       <article class="project reveal">
-        <span class="project-number">04</span>
-        <span class="project-tag">Concept Project · Home Services</span>
-        <h3>NORTHFLOW</h3>
+
+        <span class="project-number">
+          02
+        </span>
+
+        <span class="project-tag">
+          Concept Project · Law
+        </span>
+
+        <h3>
+          HART & CO.
+        </h3>
+
         <p>
-          A conversion-focused experience for a premium HVAC and
-          home services company.
+          A sophisticated law firm experience focused
+          on authority, clarity and client trust.
         </p>
-        <div class="project-link">Explore concept →</div>
+
+        <a
+          href="#"
+          class="project-link"
+        >
+          Coming soon →
+        </a>
+
       </article>
 
+
+      <!-- PROJECT 03 -->
+
       <article class="project reveal">
-        <span class="project-number">05</span>
-        <span class="project-tag">Concept Project · SaaS</span>
-        <h3>NOVAOS</h3>
+
+        <span class="project-number">
+          03
+        </span>
+
+        <span class="project-tag">
+          Concept Project · Real Estate
+        </span>
+
+        <h3>
+          VELA ESTATES
+        </h3>
+
         <p>
-          A modern SaaS landing experience built around technology,
-          clarity and product-led storytelling.
+          A luxury property platform designed around
+          premium listings and visual storytelling.
         </p>
-        <div class="project-link">Explore concept →</div>
+
+        <a
+          href="#"
+          class="project-link"
+        >
+          Coming soon →
+        </a>
+
       </article>
+
+
+      <!-- PROJECT 04 -->
+
+      <article class="project reveal">
+
+        <span class="project-number">
+          04
+        </span>
+
+        <span class="project-tag">
+          Concept Project · Home Services
+        </span>
+
+        <h3>
+          NORTHFLOW
+        </h3>
+
+        <p>
+          A conversion-focused experience for a premium
+          HVAC and home services company.
+        </p>
+
+        <a
+          href="#"
+          class="project-link"
+        >
+          Coming soon →
+        </a>
+
+      </article>
+
+
+      <!-- PROJECT 05 -->
+
+      <article class="project reveal">
+
+        <span class="project-number">
+          05
+        </span>
+
+        <span class="project-tag">
+          Concept Project · SaaS
+        </span>
+
+        <h3>
+          NOVAOS
+        </h3>
+
+        <p>
+          A modern SaaS landing experience built around
+          technology, clarity and product storytelling.
+        </p>
+
+        <a
+          href="#"
+          class="project-link"
+        >
+          Coming soon →
+        </a>
+
+      </article>
+
 
     </div>
+
   </div>
+
 </section>
 
+
 <!-- ABOUT -->
+
 <section id="about">
+
   <div class="container">
 
     <div class="about">
 
+
       <div class="reveal">
-        <div class="eyebrow">About MH Group</div>
+
+        <div class="eyebrow">
+          About MH Group
+        </div>
 
         <h2>
           Less noise.<br>
@@ -837,48 +1350,87 @@ footer{
         </h2>
 
         <p>
-          We believe great digital experiences don't need unnecessary
-          complexity. MH Group focuses on sharp design, clear messaging
-          and thoughtful technology to create websites that businesses
-          can be proud of.
+          We believe great digital experiences don't need
+          unnecessary complexity. MH Group focuses on sharp
+          design, clear messaging and thoughtful technology.
         </p>
+
       </div>
+
 
       <div class="stats reveal">
 
         <div class="stat">
-          <strong>05</strong>
-          <span>Industry Concepts</span>
+
+          <strong>
+            05
+          </strong>
+
+          <span>
+            Industry Concepts
+          </span>
+
         </div>
 
-        <div class="stat">
-          <strong>01</strong>
-          <span>Focused Digital Partner</span>
-        </div>
 
         <div class="stat">
-          <strong>∞</strong>
-          <span>Ideas to Explore</span>
+
+          <strong>
+            01
+          </strong>
+
+          <span>
+            Focused Digital Partner
+          </span>
+
         </div>
 
+
         <div class="stat">
-          <strong>24/7</strong>
-          <span>Digital Presence</span>
+
+          <strong>
+            ∞
+          </strong>
+
+          <span>
+            Ideas to Explore
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <strong>
+            24/7
+          </strong>
+
+          <span>
+            Digital Presence
+          </span>
+
         </div>
 
       </div>
 
     </div>
+
   </div>
+
 </section>
 
+
 <!-- CTA -->
+
 <section id="contact">
+
   <div class="container">
 
     <div class="cta reveal">
 
-      <div class="eyebrow">Have a project in mind?</div>
+      <div class="eyebrow">
+        Have a project in mind?
+      </div>
 
       <h2>
         Let's build<br>
@@ -886,9 +1438,11 @@ footer{
       </h2>
 
       <p>
-        Tell us what you're building and let's explore what
-        a stronger digital experience could look like.
+        Tell us what you're building and let's explore
+        what a stronger digital experience could look like.
       </p>
+
+      <!-- Replace this email later with your real business email -->
 
       <a
         href="mailto:YOUR-EMAIL@example.com"
@@ -900,68 +1454,130 @@ footer{
     </div>
 
   </div>
+
 </section>
 
+
 <!-- FOOTER -->
+
 <footer>
+
   <div class="container footer-inner">
 
-    <div class="logo">MH<span>.</span></div>
+    <div class="logo">
+      MH<span>.</span>
+    </div>
 
     <div class="footer-copy">
       © 2026 MH Group. All rights reserved.
     </div>
 
     <div class="footer-links">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
+
+      <a href="#services">
+        Services
+      </a>
+
+      <a href="#work">
+        Work
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
     </div>
 
   </div>
+
 </footer>
+
 
 <script>
 
-/* NAV SCROLL */
+/* NAV */
 
-const nav = document.getElementById("nav");
+const nav =
+document.getElementById("nav");
 
-window.addEventListener("scroll",()=>{
-  if(window.scrollY > 30){
-    nav.classList.add("scrolled");
-  }else{
-    nav.classList.remove("scrolled");
+window.addEventListener(
+  "scroll",
+  () => {
+
+    if(window.scrollY > 30){
+
+      nav.classList.add("scrolled");
+
+    }else{
+
+      nav.classList.remove("scrolled");
+
+    }
+
   }
-});
+);
+
 
 /* REVEAL */
 
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
-},{
-  threshold:.12
-});
+const observer =
+new IntersectionObserver(
+  (entries) => {
 
-document.querySelectorAll(".reveal").forEach(el=>{
-  observer.observe(el);
-});
+    entries.forEach(
+      entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("show");
+
+        }
+
+      }
+    );
+
+  },
+  {
+    threshold:.12
+  }
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(
+  element => {
+
+    observer.observe(element);
+
+  }
+);
+
 
 /* MOUSE GLOW */
 
-const glow = document.querySelector(".glow");
+const glow =
+document.querySelector(".glow");
 
-window.addEventListener("mousemove",(e)=>{
-  if(window.innerWidth > 800){
-    glow.style.transform =
-      `translate(${(e.clientX-window.innerWidth/2)*.04}px,
-       ${(e.clientY-window.innerHeight/2)*.04}px)`;
+window.addEventListener(
+  "mousemove",
+  (event) => {
+
+    if(window.innerWidth > 800){
+
+      const x =
+      (event.clientX - window.innerWidth / 2) * .04;
+
+      const y =
+      (event.clientY - window.innerHeight / 2) * .04;
+
+      glow.style.transform =
+      `translate(${x}px,${y}px)`;
+
+    }
+
   }
-});
+);
 
 </script>
 
