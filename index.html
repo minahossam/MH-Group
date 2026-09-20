@@ -8,14 +8,14 @@
 
   <meta
     name="description"
-    content="MH Group creates clear, modern and conversion-focused websites for ambitious businesses."
+    content="MH Group creates thoughtful digital experiences, websites, and digital solutions for ambitious businesses."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
     rel="stylesheet"
   >
 
@@ -24,63 +24,104 @@
 
 <body>
 
-  <!-- =====================================================
-       HEADER
-  ====================================================== -->
+  <!-- =========================
+       CURSOR
+  ========================== -->
 
-  <header class="header" id="header">
-    <div class="container header-inner">
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
 
-      <a href="#top" class="logo">
-        MH<span>.</span>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header class="site-header">
+
+    <div class="nav-shell">
+
+      <a href="#top" class="brand">
+        <span class="brand-mark">MH</span>
+        <span class="brand-name">GROUP</span>
       </a>
 
       <nav class="desktop-nav">
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+
+        <a href="#services">
+          <span>01</span>
+          Services
+        </a>
+
+        <a href="#process">
+          <span>02</span>
+          Process
+        </a>
+
+        <a href="#about">
+          <span>03</span>
+          About
+        </a>
+
+        <a href="#contact">
+          <span>04</span>
+          Contact
+        </a>
+
       </nav>
 
-      <a href="#contact" class="header-button">
-        Start a project
+      <a href="#contact" class="nav-cta">
+        <span>Start a project</span>
+        <span class="nav-cta-arrow">↗</span>
       </a>
 
-      <button
-        class="menu-button"
-        type="button"
-        aria-label="Open menu"
-        aria-expanded="false"
-      >
+      <button class="menu-toggle" aria-label="Open menu">
         <span></span>
         <span></span>
       </button>
 
     </div>
+
   </header>
 
 
-  <!-- =====================================================
+  <!-- =========================
        MOBILE MENU
-  ====================================================== -->
+  ========================== -->
 
   <div class="mobile-menu">
 
     <div class="mobile-menu-inner">
 
       <div class="mobile-menu-top">
-        <span>MENU</span>
         <span>MH GROUP</span>
+        <span>MENU</span>
       </div>
 
       <nav>
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+
+        <a href="#services">
+          <span>01</span>
+          Services
+        </a>
+
+        <a href="#process">
+          <span>02</span>
+          Process
+        </a>
+
+        <a href="#about">
+          <span>03</span>
+          About
+        </a>
+
+        <a href="#contact">
+          <span>04</span>
+          Contact
+        </a>
+
       </nav>
 
-      <div class="mobile-menu-footer">
+      <div class="mobile-menu-bottom">
         Web Design & Digital Solutions
       </div>
 
@@ -89,28 +130,31 @@
   </div>
 
 
-  <!-- =====================================================
+  <!-- =========================
        MAIN
-  ====================================================== -->
+  ========================== -->
 
   <main id="top">
 
 
-    <!-- ===================================================
+    <!-- =========================
          HERO
-    ==================================================== -->
+    ========================== -->
 
     <section class="hero">
 
-      <div class="hero-noise"></div>
+      <div class="hero-grid"></div>
 
-      <div class="container hero-inner">
+      <div class="hero-orbit hero-orbit-one"></div>
+      <div class="hero-orbit hero-orbit-two"></div>
+
+      <div class="hero-inner">
 
         <div class="hero-top">
 
-          <div class="hero-location">
-            <span class="status-dot"></span>
-            Digital studio
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Independent digital studio
           </div>
 
           <div class="hero-year">
@@ -120,29 +164,53 @@
         </div>
 
 
-        <div class="hero-main">
+        <div class="hero-content">
 
-          <div class="hero-label">
-            WEB DESIGN & DIGITAL SOLUTIONS
+          <div class="hero-kicker">
+            WEB DESIGN
+            <span>×</span>
+            DIGITAL SOLUTIONS
           </div>
 
-          <h1>
-            We build
-            <span>digital presence</span>
-            <em>with purpose.</em>
+
+          <h1 class="hero-title">
+
+            <span class="hero-line hero-line-one">
+              Digital
+            </span>
+
+            <span class="hero-line hero-line-two">
+              <em>presence</em>
+            </span>
+
+            <span class="hero-line hero-line-three">
+              with purpose.
+            </span>
+
           </h1>
+
 
           <div class="hero-bottom">
 
-            <p class="hero-description">
-              MH Group creates modern websites for businesses
-              that want to look credible, communicate clearly,
-              and turn attention into opportunity.
-            </p>
+            <div class="hero-description">
+              <p>
+                We create considered digital experiences
+                for businesses that want to be seen,
+                understood, and remembered.
+              </p>
+            </div>
 
-            <a href="#contact" class="hero-link">
-              <span>Start a project</span>
-              <span class="hero-link-arrow">↗</span>
+
+            <a href="#services" class="hero-discover">
+
+              <span class="discover-circle">
+                ↓
+              </span>
+
+              <span>
+                Explore
+              </span>
+
             </a>
 
           </div>
@@ -150,9 +218,14 @@
         </div>
 
 
-        <div class="hero-scroll">
-          <span>Scroll to explore</span>
-          <div class="scroll-line"></div>
+        <div class="hero-footer">
+
+          <span>SCROLL TO EXPLORE</span>
+
+          <div class="hero-line"></div>
+
+          <span>01 / 06</span>
+
         </div>
 
       </div>
@@ -160,42 +233,46 @@
     </section>
 
 
-    <!-- ===================================================
+    <!-- =========================
          INTRO
-    ==================================================== -->
+    ========================== -->
 
     <section class="intro section">
 
       <div class="container">
 
-        <div class="section-meta">
+        <div class="section-label">
           <span>01</span>
-          <span>What we do</span>
+          <span>Perspective</span>
         </div>
 
-        <div class="intro-grid">
+
+        <div class="intro-layout">
 
           <h2>
-            Digital should feel
-            <span>simple.</span>
+            Good digital design
+            should feel
+            <em>inevitable.</em>
           </h2>
 
-          <div class="intro-copy">
 
-            <p class="large-copy">
-              Your website is often the first impression
-              your business makes.
+          <div class="intro-side">
+
+            <p class="intro-large">
+              Not louder.
+              Not more complicated.
+              Just more intentional.
             </p>
 
             <p>
-              We design focused digital experiences that
-              combine clear strategy, strong visual direction,
-              thoughtful UX, and clean development.
+              MH Group creates modern websites and
+              digital experiences built around clarity,
+              character, and purpose.
             </p>
 
-            <a href="#services" class="text-link">
-              Explore our services
-              <span>→</span>
+            <a href="#about" class="underlined-link">
+              More about MH Group
+              <span>↗</span>
             </a>
 
           </div>
@@ -207,24 +284,24 @@
     </section>
 
 
-    <!-- ===================================================
+    <!-- =========================
          SERVICES
-    ==================================================== -->
+    ========================== -->
 
     <section class="services section" id="services">
 
       <div class="container">
 
-        <div class="section-heading-row">
+        <div class="section-heading">
 
-          <div class="section-meta">
+          <div class="section-label">
             <span>02</span>
             <span>Capabilities</span>
           </div>
 
           <p>
             Focused digital services for businesses
-            that care about how they are perceived.
+            that care about how they show up online.
           </p>
 
         </div>
@@ -232,72 +309,122 @@
 
         <div class="service-list">
 
-          <article class="service-row">
 
-            <div class="service-number">01</div>
+          <a href="#contact" class="service-item">
 
-            <div class="service-content">
-              <h3>Web Design</h3>
-              <p>
-                Strategic, modern websites designed around
-                your business, audience, and goals.
-              </p>
+            <div class="service-number">
+              01
             </div>
 
-            <div class="service-arrow">↗</div>
+            <div class="service-main">
 
-          </article>
+              <h3>
+                Web
+                <em>Design</em>
+              </h3>
 
-
-          <article class="service-row">
-
-            <div class="service-number">02</div>
-
-            <div class="service-content">
-              <h3>Web Development</h3>
               <p>
-                Responsive, polished implementation built
-                for speed, clarity, and reliability.
+                Thoughtful visual systems,
+                intuitive layouts, and digital
+                experiences shaped around your business.
               </p>
+
             </div>
 
-            <div class="service-arrow">↗</div>
-
-          </article>
-
-
-          <article class="service-row">
-
-            <div class="service-number">03</div>
-
-            <div class="service-content">
-              <h3>Digital Solutions</h3>
-              <p>
-                Practical digital improvements that help
-                businesses present themselves more effectively.
-              </p>
+            <div class="service-action">
+              <span>Explore</span>
+              <strong>↗</strong>
             </div>
 
-            <div class="service-arrow">↗</div>
-
-          </article>
+          </a>
 
 
-          <article class="service-row">
+          <a href="#contact" class="service-item">
 
-            <div class="service-number">04</div>
-
-            <div class="service-content">
-              <h3>Website Support</h3>
-              <p>
-                Ongoing updates, improvements, and maintenance
-                after your website goes live.
-              </p>
+            <div class="service-number">
+              02
             </div>
 
-            <div class="service-arrow">↗</div>
+            <div class="service-main">
 
-          </article>
+              <h3>
+                Web
+                <em>Development</em>
+              </h3>
+
+              <p>
+                Responsive, refined websites
+                developed with performance,
+                reliability, and detail in mind.
+              </p>
+
+            </div>
+
+            <div class="service-action">
+              <span>Explore</span>
+              <strong>↗</strong>
+            </div>
+
+          </a>
+
+
+          <a href="#contact" class="service-item">
+
+            <div class="service-number">
+              03
+            </div>
+
+            <div class="service-main">
+
+              <h3>
+                Digital
+                <em>Solutions</em>
+              </h3>
+
+              <p>
+                Practical digital improvements
+                designed to make your business
+                clearer and more effective online.
+              </p>
+
+            </div>
+
+            <div class="service-action">
+              <span>Explore</span>
+              <strong>↗</strong>
+            </div>
+
+          </a>
+
+
+          <a href="#contact" class="service-item">
+
+            <div class="service-number">
+              04
+            </div>
+
+            <div class="service-main">
+
+              <h3>
+                Ongoing
+                <em>Support</em>
+              </h3>
+
+              <p>
+                Continued updates, refinements,
+                maintenance, and improvements
+                after your website launches.
+              </p>
+
+            </div>
+
+            <div class="service-action">
+              <span>Explore</span>
+              <strong>↗</strong>
+            </div>
+
+          </a>
+
 
         </div>
 
@@ -306,25 +433,37 @@
     </section>
 
 
-    <!-- ===================================================
-         STATEMENT
-    ==================================================== -->
+    <!-- =========================
+         DARK STATEMENT
+    ========================== -->
 
     <section class="statement">
 
+      <div class="statement-grid"></div>
+
       <div class="container">
 
-        <p class="statement-small">
-          GOOD DESIGN IS NOT ABOUT MORE.
-        </p>
+        <div class="statement-label">
+          MH / PHILOSOPHY
+        </div>
 
         <h2>
-          It's about knowing
-          <span>what matters.</span>
+          Less noise.
+          <br>
+          More
+          <em>meaning.</em>
         </h2>
 
-        <div class="statement-mark">
-          MH
+        <div class="statement-bottom">
+
+          <span>
+            Design with intention.
+          </span>
+
+          <span>
+            MH GROUP — 2026
+          </span>
+
         </div>
 
       </div>
@@ -332,24 +471,24 @@
     </section>
 
 
-    <!-- ===================================================
+    <!-- =========================
          PROCESS
-    ==================================================== -->
+    ========================== -->
 
     <section class="process section" id="process">
 
       <div class="container">
 
-        <div class="section-heading-row process-heading">
+        <div class="section-heading">
 
-          <div class="section-meta">
+          <div class="section-label">
             <span>03</span>
-            <span>Our process</span>
+            <span>Process</span>
           </div>
 
           <p>
-            A clear process keeps the project focused,
-            efficient, and easy to understand.
+            A clear process from first conversation
+            to final launch.
           </p>
 
         </div>
@@ -357,94 +496,121 @@
 
         <div class="process-list">
 
-          <article class="process-item">
 
-            <div class="process-index">01</div>
+          <div class="process-item">
 
-            <div class="process-title">
+            <div class="process-index">
+              01
+            </div>
+
+            <div class="process-name">
               Discover
             </div>
 
-            <div class="process-description">
-              We understand your business, audience,
-              goals, and what the website needs to achieve.
+            <div class="process-copy">
+              We learn about your business,
+              audience, goals, and what needs
+              to change.
             </div>
 
-            <div class="process-arrow">↗</div>
+            <div class="process-icon">
+              ↗
+            </div>
 
-          </article>
+          </div>
 
 
-          <article class="process-item">
+          <div class="process-item">
 
-            <div class="process-index">02</div>
+            <div class="process-index">
+              02
+            </div>
 
-            <div class="process-title">
+            <div class="process-name">
               Define
             </div>
 
-            <div class="process-description">
-              We establish the structure, content direction,
-              visual language, and priorities.
+            <div class="process-copy">
+              We shape the structure,
+              direction, content hierarchy,
+              and visual language.
             </div>
 
-            <div class="process-arrow">↗</div>
+            <div class="process-icon">
+              ↗
+            </div>
 
-          </article>
+          </div>
 
 
-          <article class="process-item">
+          <div class="process-item">
 
-            <div class="process-index">03</div>
+            <div class="process-index">
+              03
+            </div>
 
-            <div class="process-title">
+            <div class="process-name">
               Design
             </div>
 
-            <div class="process-description">
-              We turn the strategy into a refined interface
-              with strong hierarchy and intuitive UX.
+            <div class="process-copy">
+              We turn the strategy into
+              a refined visual experience
+              with strong UX.
             </div>
 
-            <div class="process-arrow">↗</div>
+            <div class="process-icon">
+              ↗
+            </div>
 
-          </article>
+          </div>
 
 
-          <article class="process-item">
+          <div class="process-item">
 
-            <div class="process-index">04</div>
+            <div class="process-index">
+              04
+            </div>
 
-            <div class="process-title">
+            <div class="process-name">
               Build
             </div>
 
-            <div class="process-description">
-              The approved direction becomes a responsive,
-              functional website.
+            <div class="process-copy">
+              The approved direction becomes
+              a responsive, functional,
+              carefully crafted website.
             </div>
 
-            <div class="process-arrow">↗</div>
+            <div class="process-icon">
+              ↗
+            </div>
 
-          </article>
+          </div>
 
 
-          <article class="process-item">
+          <div class="process-item">
 
-            <div class="process-index">05</div>
+            <div class="process-index">
+              05
+            </div>
 
-            <div class="process-title">
+            <div class="process-name">
               Launch
             </div>
 
-            <div class="process-description">
-              We review everything, make the final refinements,
-              and prepare the website for launch.
+            <div class="process-copy">
+              Final refinements, testing,
+              handover, and preparation
+              for going live.
             </div>
 
-            <div class="process-arrow">↗</div>
+            <div class="process-icon">
+              ↗
+            </div>
 
-          </article>
+          </div>
+
 
         </div>
 
@@ -453,104 +619,62 @@
     </section>
 
 
-    <!-- ===================================================
-         AUDIENCE
-    ==================================================== -->
-
-    <section class="audience">
-
-      <div class="container">
-
-        <div class="section-meta light">
-          <span>04</span>
-          <span>Who we work with</span>
-        </div>
-
-        <div class="audience-top">
-
-          <h2>
-            Built for businesses
-            <span>ready to move forward.</span>
-          </h2>
-
-          <p>
-            We work with ambitious businesses that need
-            a stronger digital presence without unnecessary
-            complexity.
-          </p>
-
-        </div>
-
-
-        <div class="audience-grid">
-
-          <div>
-            <span>01</span>
-            <h3>Growing businesses</h3>
-            <p>
-              Companies ready to improve how they
-              present themselves online.
-            </p>
-          </div>
-
-          <div>
-            <span>02</span>
-            <h3>New ventures</h3>
-            <p>
-              New businesses that want a strong
-              foundation from day one.
-            </p>
-          </div>
-
-          <div>
-            <span>03</span>
-            <h3>Established companies</h3>
-            <p>
-              Businesses whose current website no longer
-              reflects the quality of what they offer.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
+    <!-- =========================
          ABOUT
-    ==================================================== -->
+    ========================== -->
 
     <section class="about section" id="about">
 
       <div class="container">
 
-        <div class="section-meta">
-          <span>05</span>
+        <div class="section-label">
+          <span>04</span>
           <span>About MH Group</span>
         </div>
+
 
         <div class="about-layout">
 
           <h2>
-            Small by design.
-            <span>Focused by nature.</span>
+            Small studio.
+            <br>
+            <em>Serious intent.</em>
           </h2>
+
 
           <div class="about-copy">
 
-            <p>
-              MH Group is a digital studio focused on web
-              design and practical digital solutions.
+            <p class="about-lead">
+              MH Group is a digital studio focused
+              on creating thoughtful websites and
+              practical digital solutions.
             </p>
 
             <p>
-              We keep the model lean and the process focused:
-              understand the problem, create the right direction,
-              build it properly, and deliver without unnecessary
-              complexity.
+              We believe strong digital work does
+              not need unnecessary complexity.
+              It needs a clear idea, a strong visual
+              direction, and careful execution.
             </p>
+
+            <div class="about-meta">
+
+              <div>
+                <span>Focus</span>
+                <strong>Digital experiences</strong>
+              </div>
+
+              <div>
+                <span>Based</span>
+                <strong>Built globally</strong>
+              </div>
+
+              <div>
+                <span>Approach</span>
+                <strong>Intentional</strong>
+              </div>
+
+            </div>
 
           </div>
 
@@ -561,54 +685,77 @@
     </section>
 
 
-    <!-- ===================================================
+    <!-- =========================
          CONTACT
-    ==================================================== -->
+    ========================== -->
 
-    <section class="contact" id="contact">
+    <section class="contact section" id="contact">
+
+      <div class="contact-shape"></div>
 
       <div class="container">
 
         <div class="contact-top">
 
-          <div class="section-meta light">
-            <span>06</span>
+          <div class="section-label light">
+            <span>05</span>
             <span>Start a project</span>
           </div>
 
-          <span class="contact-small">
+          <span class="contact-note">
             HAVE AN IDEA?
           </span>
 
         </div>
 
 
-        <div class="contact-main">
+        <div class="contact-content">
 
           <h2>
-            Let's build
-            <span>something clear.</span>
+            Let's create
+            <em>something</em>
+            worth remembering.
           </h2>
 
           <p>
-            Tell us what you are building, what is not
-            working today, and where you want to go.
+            Tell us about your business,
+            your idea, or the problem
+            you want to solve.
           </p>
 
-          <!-- Replace the email address later -->
+
           <a
-            href="mailto:YOUR-EMAIL@example.com"
+            href="mailto:hello@mhgroup.com"
             class="contact-button"
           >
-            Let's talk
-            <span>↗</span>
+
+            <span>
+              Start a conversation
+            </span>
+
+            <strong>
+              ↗
+            </strong>
+
           </a>
 
         </div>
 
 
-        <div class="contact-bottom">
-          Web Design & Digital Solutions
+        <div class="contact-footer">
+
+          <span>
+            MH GROUP
+          </span>
+
+          <span>
+            WEB DESIGN & DIGITAL SOLUTIONS
+          </span>
+
+          <span>
+            2026
+          </span>
+
         </div>
 
       </div>
@@ -619,25 +766,43 @@
   </main>
 
 
-  <!-- =====================================================
+  <!-- =========================
        FOOTER
-  ====================================================== -->
+  ========================== -->
 
   <footer class="footer">
 
-    <div class="container footer-inner">
+    <div class="container">
 
-      <div class="footer-brand">
-        MH<span>.</span>
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          MH<span>.</span>
+        </div>
+
+        <a href="#top" class="back-top">
+          Back to top
+          <span>↑</span>
+        </a>
+
       </div>
 
-      <div class="footer-copy">
-        © <span id="year"></span> MH Group. All rights reserved.
-      </div>
 
-      <a href="#top" class="footer-top">
-        Back to top ↑
-      </a>
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="year"></span> MH Group
+        </span>
+
+        <span>
+          Web Design & Digital Solutions
+        </span>
+
+        <span>
+          All rights reserved.
+        </span>
+
+      </div>
 
     </div>
 
