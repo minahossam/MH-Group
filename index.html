@@ -10,7 +10,7 @@
 
   <meta
     name="description"
-    content="MH Group — Web Design & Digital Solutions for ambitious businesses."
+    content="MH Group — Web Design & Digital Solutions."
   >
 
   <title>MH Group — Web Design & Digital Solutions</title>
@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -28,153 +28,132 @@
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
 
-  <header class="site-header" id="siteHeader">
+  <!-- HEADER -->
+  <header class="header" id="header">
 
-    <div class="header-inner">
+    <a href="#top" class="logo">
+      <span class="logo-box">MH</span>
+      <span>GROUP</span>
+    </a>
 
-      <a href="#top" class="brand">
-        <span class="brand-mark">MH</span>
-        <span class="brand-name">MH Group</span>
-      </a>
+    <nav class="nav" id="nav">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Let's talk ↗</a>
+    </nav>
 
-      <nav class="main-nav" id="mainNav">
-
-        <a href="#services">Services</a>
-        <a href="#approach">Approach</a>
-        <a href="#industries">Industries</a>
-        <a href="#about">About</a>
-
-        <a href="#contact" class="nav-contact">
-          Let's talk
-          <span>↗</span>
-        </a>
-
-      </nav>
-
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Open menu"
-        aria-expanded="false"
-      >
-        <span></span>
-        <span></span>
-      </button>
-
-    </div>
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+    </button>
 
   </header>
 
 
   <main id="top">
 
-    <!-- =========================
-         HERO
-    ========================== -->
-
+    <!-- HERO -->
     <section class="hero">
 
-      <div class="hero-top">
+      <div class="hero-grid">
 
-        <p class="hero-kicker">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
           Independent digital studio
-        </p>
+        </div>
 
-        <p class="hero-location">
-          Web design<br>
-          Digital solutions
-        </p>
+        <div class="hero-index">
+          01 / 07
+        </div>
 
       </div>
 
 
-      <div class="hero-main">
+      <div class="hero-center">
 
-        <h1 class="hero-title">
+        <div class="hero-word">
+          <span>MAKE</span>
+          <span class="hero-word-outline">DIGITAL</span>
+          <span>MATTER.</span>
+        </div>
 
-          <span>Digital</span>
+        <div class="hero-orbit">
 
-          <span class="hero-title-offset">
-            presence.
-          </span>
+          <div class="orbit-ring ring-one"></div>
+          <div class="orbit-ring ring-two"></div>
+          <div class="orbit-ring ring-three"></div>
 
-          <span class="hero-title-small">
-            Built with intent.
-          </span>
-
-        </h1>
-
-
-        <div class="hero-side">
-
-          <p>
-            We create sharp, modern digital experiences
-            for businesses that want to be taken seriously.
-          </p>
-
-          <a href="#services" class="circle-link">
-            <span>Explore</span>
-            <span>↓</span>
-          </a>
+          <div class="orbit-core">
+            MH
+          </div>
 
         </div>
 
       </div>
 
 
-      <div class="hero-bottom">
+      <div class="hero-footer">
 
-        <div class="hero-line"></div>
+        <p>
+          Web design & digital solutions<br>
+          for ambitious businesses.
+        </p>
 
-        <div class="hero-meta">
-          <span>Strategy</span>
-          <span>Design</span>
-          <span>Development</span>
-        </div>
+        <a href="#services" class="scroll-link">
+          <span>Scroll to explore</span>
+          <span class="scroll-arrow">↓</span>
+        </a>
+
+        <span class="hero-year">
+          2026
+        </span>
 
       </div>
 
     </section>
 
 
-    <!-- =========================
-         STATEMENT
-    ========================== -->
+    <!-- INTRO -->
+    <section class="intro">
 
-    <section class="statement">
-
-      <div class="statement-number">
-        01
+      <div class="section-number">
+        02
       </div>
 
-      <div class="statement-content">
+      <div class="intro-content">
 
-        <p class="section-label">
-          What we believe
+        <p class="small-label">
+          The point of view
         </p>
 
         <h2>
-          Your website is not
-          <span>decoration.</span>
-          It is part of your business.
+          We don't build
+          <span>websites.</span>
+          We build the way
+          your business is
+          <i>seen.</i>
         </h2>
 
-        <div class="statement-bottom">
+        <div class="intro-bottom">
 
           <p>
-            MH Group combines strategy, design and technology
-            to create digital experiences that feel clear,
-            credible and considered.
+            Your digital presence should make your business
+            easier to understand, easier to trust and harder
+            to forget.
           </p>
 
-          <a href="#contact" class="text-link">
-            Start a conversation
-            <span>↗</span>
-          </a>
+          <span class="intro-mark">
+            MH<span>×</span>
+          </span>
 
         </div>
 
@@ -183,347 +162,89 @@
     </section>
 
 
-    <!-- =========================
-         SERVICES
-    ========================== -->
-
+    <!-- SERVICES -->
     <section class="services" id="services">
 
-      <div class="section-intro">
+      <div class="section-head">
 
-        <span class="section-label">
-          02 / Services
-        </span>
-
-        <h2>
-          What we<br>
-          <em>do.</em>
-        </h2>
-
-      </div>
-
-
-      <div class="services-list">
-
-        <article class="service-row">
-
-          <div class="service-number">
-            01
-          </div>
-
-          <div class="service-name">
-            <h3>Digital Strategy</h3>
-          </div>
-
-          <div class="service-description">
-            <p>
-              Clear direction before design begins.
-              We help shape the structure, messaging
-              and digital priorities of your website.
-            </p>
-          </div>
-
-          <div class="service-arrow">
-            ↗
-          </div>
-
-        </article>
-
-
-        <article class="service-row">
-
-          <div class="service-number">
-            02
-          </div>
-
-          <div class="service-name">
-            <h3>Web Design</h3>
-          </div>
-
-          <div class="service-description">
-            <p>
-              Distinctive, responsive interfaces designed
-              around your brand, your audience and the
-              action you want visitors to take.
-            </p>
-          </div>
-
-          <div class="service-arrow">
-            ↗
-          </div>
-
-        </article>
-
-
-        <article class="service-row">
-
-          <div class="service-number">
-            03
-          </div>
-
-          <div class="service-name">
-            <h3>Web Development</h3>
-          </div>
-
-          <div class="service-description">
-            <p>
-              Clean, responsive and reliable implementation
-              that turns the approved design into a polished
-              digital experience.
-            </p>
-          </div>
-
-          <div class="service-arrow">
-            ↗
-          </div>
-
-        </article>
-
-
-        <article class="service-row">
-
-          <div class="service-number">
-            04
-          </div>
-
-          <div class="service-name">
-            <h3>Digital Solutions</h3>
-          </div>
-
-          <div class="service-description">
-            <p>
-              Practical digital improvements that support
-              the way your business communicates, operates
-              and grows online.
-            </p>
-          </div>
-
-          <div class="service-arrow">
-            ↗
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         APPROACH
-    ========================== -->
-
-    <section class="approach" id="approach">
-
-      <div class="approach-index">
-        03
-      </div>
-
-      <div class="approach-main">
-
-        <p class="section-label">
-          Our approach
-        </p>
-
-        <h2>
-          Less noise.
-          <br>
-          <span>More direction.</span>
-        </h2>
-
-        <p class="approach-copy">
-          Good digital work does not need to shout.
-          It needs to communicate clearly, look intentional
-          and make the right next step obvious.
-        </p>
-
-      </div>
-
-
-      <div class="approach-side">
-
-        <div class="approach-item">
-          <span>01</span>
-          <strong>Clarity</strong>
-          <p>
-            We simplify the message before
-            we complicate the interface.
-          </p>
-        </div>
-
-        <div class="approach-item">
-          <span>02</span>
-          <strong>Character</strong>
-          <p>
-            Your digital presence should feel
-            like your business, not a template.
-          </p>
-        </div>
-
-        <div class="approach-item">
-          <span>03</span>
-          <strong>Precision</strong>
-          <p>
-            Every layout, interaction and detail
-            should have a reason to exist.
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         PROCESS
-    ========================== -->
-
-    <section class="process">
-
-      <div class="process-heading">
-
-        <span class="section-label">
-          04 / Process
-        </span>
-
-        <h2>
-          From idea<br>
-          <span>to execution.</span>
-        </h2>
-
-      </div>
-
-
-      <div class="process-list">
-
-        <div class="process-item">
-
-          <span class="process-number">
-            01
-          </span>
-
-          <h3>Discover</h3>
-
-          <p>
-            Understand the business, audience,
-            goals and digital opportunity.
-          </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <span class="process-number">
-            02
-          </span>
-
-          <h3>Define</h3>
-
-          <p>
-            Establish the structure, positioning,
-            content direction and priorities.
-          </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <span class="process-number">
-            03
-          </span>
-
-          <h3>Design</h3>
-
-          <p>
-            Turn the strategy into a distinctive,
-            refined and responsive experience.
-          </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <span class="process-number">
-            04
-          </span>
-
-          <h3>Build</h3>
-
-          <p>
-            Develop, test and prepare the final
-            experience for launch.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         INDUSTRIES
-    ========================== -->
-
-    <section class="industries" id="industries">
-
-      <div class="industries-top">
-
-        <span class="section-label">
-          05 / Industries
+        <span class="small-label">
+          03 / What we do
         </span>
 
         <p>
-          We work across industries where credibility,
-          clarity and a strong digital presence matter.
+          Strategy, design and development —
+          connected into one clear digital experience.
         </p>
 
       </div>
 
 
-      <div class="industries-title">
+      <div class="services-stage">
 
-        <h2>
-          Built for<br>
-          <span>ambition.</span>
-        </h2>
+        <div class="service-feature">
 
-      </div>
+          <span class="feature-number">01</span>
 
+          <h2>
+            DIGITAL<br>
+            <em>STRATEGY</em>
+          </h2>
 
-      <div class="industry-list">
+          <p>
+            Direction before decoration.
+            We define the structure, message and
+            priorities that give the website a purpose.
+          </p>
 
-        <div class="industry-item">
-          <span>01</span>
-          <strong>Professional Services</strong>
-          <small>Law · Consulting · Finance</small>
         </div>
 
-        <div class="industry-item">
-          <span>02</span>
-          <strong>Healthcare & Dental</strong>
-          <small>Clinics · Practices · Specialists</small>
-        </div>
 
-        <div class="industry-item">
-          <span>03</span>
-          <strong>Real Estate</strong>
-          <small>Property · Brokerage · Development</small>
-        </div>
+        <div class="service-list">
 
-        <div class="industry-item">
-          <span>04</span>
-          <strong>Home Services</strong>
-          <small>HVAC · Plumbing · Roofing</small>
-        </div>
+          <a href="#contact" class="service-item">
 
-        <div class="industry-item">
-          <span>05</span>
-          <strong>Technology & SaaS</strong>
-          <small>Software · Startups · Digital products</small>
+            <span>02</span>
+
+            <strong>
+              Web Design
+            </strong>
+
+            <span class="service-arrow">
+              ↗
+            </span>
+
+          </a>
+
+
+          <a href="#contact" class="service-item">
+
+            <span>03</span>
+
+            <strong>
+              Web Development
+            </strong>
+
+            <span class="service-arrow">
+              ↗
+            </span>
+
+          </a>
+
+
+          <a href="#contact" class="service-item">
+
+            <span>04</span>
+
+            <strong>
+              Digital Solutions
+            </strong>
+
+            <span class="service-arrow">
+              ↗
+            </span>
+
+          </a>
+
         </div>
 
       </div>
@@ -531,37 +252,166 @@
     </section>
 
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
+    <!-- APPROACH -->
+    <section class="approach" id="approach">
 
+      <div class="approach-background">
+        <span>THINK</span>
+        <span>BUILD</span>
+        <span>REFINE</span>
+      </div>
+
+      <div class="approach-content">
+
+        <div class="section-number">
+          04
+        </div>
+
+        <div>
+
+          <p class="small-label">
+            How we work
+          </p>
+
+          <h2>
+            Simple process.<br>
+            <span>Serious execution.</span>
+          </h2>
+
+          <div class="approach-steps">
+
+            <div class="step">
+              <span>01</span>
+              <strong>Discover</strong>
+              <p>
+                Understand the business,
+                audience and objective.
+              </p>
+            </div>
+
+            <div class="step">
+              <span>02</span>
+              <strong>Define</strong>
+              <p>
+                Shape the structure,
+                message and direction.
+              </p>
+            </div>
+
+            <div class="step">
+              <span>03</span>
+              <strong>Design</strong>
+              <p>
+                Create the visual system
+                and digital experience.
+              </p>
+            </div>
+
+            <div class="step">
+              <span>04</span>
+              <strong>Build</strong>
+              <p>
+                Develop, test and prepare
+                the final experience.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- AUDIENCE -->
+    <section class="audience">
+
+      <div class="section-number">
+        05
+      </div>
+
+      <div class="audience-content">
+
+        <p class="small-label">
+          Who we build for
+        </p>
+
+        <h2>
+          Businesses with
+          <span>somewhere to go.</span>
+        </h2>
+
+        <div class="audience-list">
+
+          <div>
+            <span>01</span>
+            <strong>Professional Services</strong>
+          </div>
+
+          <div>
+            <span>02</span>
+            <strong>Healthcare & Dental</strong>
+          </div>
+
+          <div>
+            <span>03</span>
+            <strong>Real Estate</strong>
+          </div>
+
+          <div>
+            <span>04</span>
+            <strong>Home Services</strong>
+          </div>
+
+          <div>
+            <span>05</span>
+            <strong>Technology & SaaS</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
     <section class="about" id="about">
 
-      <div class="about-label">
-        06 / About MH Group
+      <div class="about-top">
+
+        <span class="small-label">
+          06 / MH Group
+        </span>
+
+        <span>
+          Independent · Focused · Digital
+        </span>
+
       </div>
 
-      <div class="about-content">
+      <div class="about-main">
 
         <h2>
-          Small by design.
-          <br>
-          <span>Serious about quality.</span>
+          Small enough<br>
+          to care about<br>
+          <span>every detail.</span>
         </h2>
 
-        <div class="about-text">
+        <div class="about-copy">
 
           <p>
-            MH Group is an independent digital studio focused
-            on building modern websites and practical digital
-            solutions for ambitious businesses.
+            MH Group is an independent digital studio
+            focused on web design, development and
+            practical digital solutions.
           </p>
 
           <p>
-            We keep the model lean, the communication direct
-            and the work focused on what actually matters:
-            creating a digital presence that represents the
-            business properly.
+            We keep the model lean and the communication
+            direct — giving each project the attention it
+            deserves.
           </p>
 
         </div>
@@ -571,16 +421,13 @@
     </section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
+    <!-- CONTACT -->
     <section class="contact" id="contact">
 
       <div class="contact-top">
 
-        <span class="section-label">
-          07 / Contact
+        <span>
+          07 / Start a project
         </span>
 
         <span>
@@ -592,18 +439,22 @@
 
       <div class="contact-main">
 
-        <h2>
-          Have something
-          <br>
-          <span>worth building?</span>
-        </h2>
+        <div class="contact-title">
+
+          <span>LET'S</span>
+          <span class="outline">BUILD</span>
+          <span>SOMETHING.</span>
+
+        </div>
+
 
         <a
           href="mailto:YOUR-EMAIL@example.com"
-          class="contact-button"
+          class="contact-circle"
         >
-          <span>Let's talk</span>
-          <span>↗</span>
+          <span>Start</span>
+          <span>a conversation</span>
+          <strong>↗</strong>
         </a>
 
       </div>
@@ -612,8 +463,9 @@
       <div class="contact-bottom">
 
         <p>
-          Tell us what you're working on.
-          We'll take it from there.
+          Tell us what you're building,
+          where you are now and where
+          you want to go.
         </p>
 
       </div>
@@ -623,24 +475,27 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+  <!-- FOOTER -->
+  <footer class="footer">
 
-  <footer class="site-footer">
+    <div class="footer-top">
 
-    <div class="footer-brand">
-      MH Group
+      <div class="footer-logo">
+        MH<span>GROUP</span>
+      </div>
+
+      <div class="footer-description">
+        Web Design &<br>
+        Digital Solutions
+      </div>
+
     </div>
 
-    <div class="footer-tagline">
-      Web Design & Digital Solutions
-    </div>
 
     <div class="footer-bottom">
 
       <span>
-        © <span id="currentYear"></span> MH Group
+        © <span id="year"></span> MH Group
       </span>
 
       <span>
