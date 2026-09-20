@@ -1,172 +1,218 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================
-     MOBILE MENU
-  ========================== */
+    /* =========================
+       MOBILE MENU
+    ========================== */
 
-  const menuToggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".site-nav");
-  const navLinks = document.querySelector(".nav-links");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const siteNav = document.querySelector(".site-nav");
+    const navLinks = document.querySelectorAll(".site-nav a");
 
-  if (menuToggle && navLinks) {
+    if (menuToggle && siteNav) {
 
-    menuToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", () => {
 
-      const isOpen = document.body.classList.toggle("menu-open");
+            const isOpen = document.body.classList.toggle("menu-open");
 
-      menuToggle.classList.toggle("active", isOpen);
+            menuToggle.classList.toggle("active", isOpen);
 
-      menuToggle.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-      );
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
 
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation" : "Open navigation"
-      );
-
-    });
-
-
-    /* Close menu after clicking a link */
-
-    navLinks.querySelectorAll("a").forEach((link) => {
-
-      link.addEventListener("click", () => {
-
-        document.body.classList.remove("menu-open");
-
-        menuToggle.classList.remove("active");
-
-        menuToggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        menuToggle.setAttribute(
-          "aria-label",
-          "Open navigation"
-        );
-
-      });
-
-    });
-
-  }
-
-
-  /* =========================
-     NAVIGATION ON SCROLL
-  ========================== */
-
-  const handleScroll = () => {
-
-    if (!nav) return;
-
-    if (window.scrollY > 20) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
-
-  };
-
-  handleScroll();
-
-  window.addEventListener(
-    "scroll",
-    handleScroll,
-    { passive: true }
-  );
-
-
-  /* =========================
-     REVEAL ANIMATIONS
-  ========================== */
-
-  const revealElements =
-    document.querySelectorAll(".reveal");
-
-  if ("IntersectionObserver" in window) {
-
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-
-        entries.forEach((entry) => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("visible");
-
-            observer.unobserve(entry.target);
-
-          }
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close menu" : "Open menu"
+            );
 
         });
 
-      },
-      {
-        threshold: 0.12
-      }
+    }
+
+
+    /* =========================
+       CLOSE MOBILE MENU
+    ========================== */
+
+    navLinks.forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+            document.body.classList.remove("menu-open");
+
+            if (menuToggle) {
+                menuToggle.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+            }
+
+        });
+
+    });
+
+
+    /* =========================
+       HEADER SCROLL
+    ========================== */
+
+    const header = document.querySelector(".site-header");
+
+    const updateHeader = () => {
+
+        if (!header) return;
+
+        if (window.scrollY > 30) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+
+    };
+
+    updateHeader();
+
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
     );
 
 
-    revealElements.forEach((element) => {
-      observer.observe(element);
+    /* =========================
+       SMOOTH ANCHOR SCROLL
+    ========================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+
+        link.addEventListener("click", (event) => {
+
+            const targetId = link.getAttribute("href");
+
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            const headerHeight = header
+                ? header.offsetHeight
+                : 0;
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                headerHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+
+        });
+
     });
 
-  } else {
 
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
-    });
+    /* =========================
+       REVEAL ON SCROLL
+    ========================== */
 
-  }
+    const revealElements = document.querySelectorAll(
+        ".intro-content, " +
+        ".service-item, " +
+        ".approach-content, " +
+        ".process-step, " +
+        ".industry-item, " +
+        ".about-content"
+    );
 
+    if ("IntersectionObserver" in window) {
 
-  /* =========================
-     CURRENT YEAR
-  ========================== */
+        const observer = new IntersectionObserver(
+            (entries, obs) => {
 
-  const yearElement =
-    document.getElementById("year");
+                entries.forEach((entry) => {
 
-  if (yearElement) {
-    yearElement.textContent =
-      new Date().getFullYear();
-  }
+                    if (!entry.isIntersecting) return;
 
+                    entry.target.classList.add("is-visible");
 
-  /* =========================
-     ESC KEY
-     CLOSE MOBILE MENU
-  ========================== */
+                    obs.unobserve(entry.target);
 
-  document.addEventListener("keydown", (event) => {
+                });
 
-    if (event.key === "Escape") {
-
-      document.body.classList.remove("menu-open");
-
-      if (menuToggle) {
-
-        menuToggle.classList.remove("active");
-
-        menuToggle.setAttribute(
-          "aria-expanded",
-          "false"
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -50px 0px"
+            }
         );
 
-        menuToggle.setAttribute(
-          "aria-label",
-          "Open navigation"
-        );
+        revealElements.forEach((element) => {
 
-      }
+            element.classList.add("reveal-element");
+
+            observer.observe(element);
+
+        });
+
+    } else {
+
+        revealElements.forEach((element) => {
+            element.classList.add("is-visible");
+        });
 
     }
 
-  });
+
+    /* =========================
+       CURRENT YEAR
+    ========================== */
+
+    const yearElement = document.getElementById("year");
+
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
+
+    /* =========================
+       ESCAPE KEY
+    ========================== */
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key !== "Escape") return;
+
+        document.body.classList.remove("menu-open");
+
+        if (menuToggle) {
+
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+
+        }
+
+    });
 
 });
