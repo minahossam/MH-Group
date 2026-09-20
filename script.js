@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      CUSTOM CURSOR
-     ========================= */
+  ========================= */
 
   if (
     cursor &&
@@ -315,13 +315,63 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
-     HERO PARALLAX
+     HERO MOTION
   ========================= */
+
+  const hero =
+    document.querySelector(".hero");
+
+  const heroTitle =
+    document.querySelector(".hero-title");
 
   const heroOrbits =
     document.querySelectorAll(
       ".hero-orbit"
     );
+
+  if (hero && heroTitle) {
+
+    hero.addEventListener(
+      "mousemove",
+      (event) => {
+        if (
+          !window.matchMedia(
+            "(pointer: fine)"
+          ).matches
+        ) {
+          return;
+        }
+
+        const rect =
+          hero.getBoundingClientRect();
+
+        const x =
+          (event.clientX - rect.left) /
+          rect.width -
+          0.5;
+
+        const y =
+          (event.clientY - rect.top) /
+          rect.height -
+          0.5;
+
+        heroTitle.style.transform =
+          `translate(${x * 8}px, ${y * 6}px)`;
+      }
+    );
+
+    hero.addEventListener(
+      "mouseleave",
+      () => {
+        heroTitle.style.transform =
+          "translate(0, 0)";
+      }
+    );
+  }
+
+  /* =========================
+     HERO PARALLAX
+  ========================= */
 
   if (heroOrbits.length > 0) {
     let ticking = false;
@@ -355,6 +405,77 @@ document.addEventListener("DOMContentLoaded", () => {
       { passive: true }
     );
   }
+
+  /* =========================
+     HERO MICRO INTERACTIONS
+  ========================= */
+
+  const heroDiscover =
+    document.querySelector(
+      ".hero-discover"
+    );
+
+  if (heroDiscover) {
+    heroDiscover.addEventListener(
+      "mouseenter",
+      () => {
+        heroDiscover.style.transform =
+          "translateY(-3px)";
+      }
+    );
+
+    heroDiscover.addEventListener(
+      "mouseleave",
+      () => {
+        heroDiscover.style.transform =
+          "translateY(0)";
+      }
+    );
+  }
+
+  /* =========================
+     SERVICE INTERACTIONS
+  ========================= */
+
+  document
+    .querySelectorAll(".service-item")
+    .forEach((item) => {
+      item.addEventListener(
+        "mouseenter",
+        () => {
+          item.style.zIndex = "2";
+        }
+      );
+
+      item.addEventListener(
+        "mouseleave",
+        () => {
+          item.style.zIndex = "1";
+        }
+      );
+    });
+
+  /* =========================
+     PROCESS INTERACTIONS
+  ========================= */
+
+  document
+    .querySelectorAll(".process-item")
+    .forEach((item) => {
+      item.addEventListener(
+        "mouseenter",
+        () => {
+          item.style.zIndex = "2";
+        }
+      );
+
+      item.addEventListener(
+        "mouseleave",
+        () => {
+          item.style.zIndex = "1";
+        }
+      );
+    });
 
   /* =========================
      TOUCH SAFETY
