@@ -1,25 +1,13 @@
 /* =========================================================
-   MH GROUP — INTERACTIONS
-========================================================= */
+   MH GROUP
+   PREMIUM DIGITAL STUDIO
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =======================================================
-     LOADER
-  ======================================================= */
-
-  const loader = document.getElementById("loader");
-
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      loader?.classList.add("hidden");
-    }, 650);
-  });
-
-
-  /* =======================================================
      YEAR
-  ======================================================= */
+     ======================================================= */
 
   document.querySelectorAll(".year").forEach((element) => {
     element.textContent = new Date().getFullYear();
@@ -27,100 +15,166 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     HEADER
-  ======================================================= */
+     PAGE LOADER
+     ======================================================= */
+
+  const loader = document.getElementById("loader");
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      loader?.classList.add("loaded");
+    }, 500);
+  });
+
+
+  /* =======================================================
+     THEME
+     ======================================================= */
+
+  const themeToggle = document.getElementById("themeToggle");
+
+  const savedTheme = localStorage.getItem("mh-theme");
+
+  if (savedTheme === "dark") {
+    document.documentElement.classList.add("dark");
+  } else if (savedTheme === "light") {
+    document.documentElement.classList.remove("dark");
+  } else {
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (prefersDark) {
+      document.documentElement.classList.add("dark");
+    }
+  }
+
+  themeToggle?.addEventListener("click", () => {
+
+    document.documentElement.classList.toggle("dark");
+
+    const isDark =
+      document.documentElement.classList.contains("dark");
+
+    localStorage.setItem(
+      "mh-theme",
+      isDark ? "dark" : "light"
+    );
+
+  });
+
+
+  /* =======================================================
+     HEADER SCROLL
+     ======================================================= */
 
   const header = document.getElementById("siteHeader");
 
   const updateHeader = () => {
-    if (window.scrollY > 40) {
+
+    if (window.scrollY > 30) {
       header?.classList.add("scrolled");
     } else {
       header?.classList.remove("scrolled");
     }
+
   };
 
   updateHeader();
 
-  window.addEventListener("scroll", updateHeader, {
-    passive: true
-  });
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
 
 
   /* =======================================================
      MOBILE MENU
-  ======================================================= */
+     ======================================================= */
 
   const menuToggle = document.getElementById("menuToggle");
-  const mobileNav = document.getElementById("mobileNav");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-  const closeMenu = () => {
+  const closeMobileMenu = () => {
+
     menuToggle?.classList.remove("active");
-    mobileNav?.classList.remove("active");
+    mobileMenu?.classList.remove("active");
+
+    menuToggle?.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
     document.body.classList.remove("menu-open");
 
-    menuToggle?.setAttribute("aria-expanded", "false");
-  };
-
-  const openMenu = () => {
-    menuToggle?.classList.add("active");
-    mobileNav?.classList.add("active");
-    document.body.classList.add("menu-open");
-
-    menuToggle?.setAttribute("aria-expanded", "true");
   };
 
   menuToggle?.addEventListener("click", () => {
 
-    const isOpen = mobileNav?.classList.contains("active");
+    const active =
+      mobileMenu?.classList.toggle("active");
 
-    if (isOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    menuToggle.classList.toggle(
+      "active",
+      active
+    );
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(Boolean(active))
+    );
+
+    document.body.classList.toggle(
+      "menu-open",
+      active
+    );
 
   });
 
+  document.querySelectorAll(".mobile-link").forEach((link) => {
 
-  mobileNav?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
+    link.addEventListener(
+      "click",
+      closeMobileMenu
+    );
+
   });
-
 
   document.addEventListener("keydown", (event) => {
 
     if (event.key === "Escape") {
-      closeMenu();
+      closeMobileMenu();
     }
 
   });
 
-
   window.addEventListener("resize", () => {
 
-    if (window.innerWidth > 700) {
-      closeMenu();
+    if (window.innerWidth > 800) {
+      closeMobileMenu();
     }
 
   });
 
 
   /* =======================================================
-     SMOOTH INTERNAL LINKS
-  ======================================================= */
+     SMOOTH ANCHOR LINKS
+     ======================================================= */
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
     link.addEventListener("click", (event) => {
 
-      const targetId = link.getAttribute("href");
+      const targetId =
+        link.getAttribute("href");
 
       if (!targetId || targetId === "#") {
         return;
       }
 
-      const target = document.querySelector(targetId);
+      const target =
+        document.querySelector(targetId);
 
       if (!target) {
         return;
@@ -128,15 +182,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       event.preventDefault();
 
-      const headerOffset = 70;
+      const headerOffset = 80;
 
-      const targetPosition =
+      const position =
         target.getBoundingClientRect().top +
         window.scrollY -
         headerOffset;
 
       window.scrollTo({
-        top: targetPosition,
+        top: position,
         behavior: "smooth"
       });
 
@@ -147,36 +201,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =======================================================
      REVEAL ON SCROLL
-  ======================================================= */
+     ======================================================= */
 
-  const revealElements = document.querySelectorAll(".reveal");
+  const revealElements =
+    document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
 
-    const observer = new IntersectionObserver(
-      (entries, observerInstance) => {
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
 
-        entries.forEach((entry) => {
+          entries.forEach((entry) => {
 
-          if (!entry.isIntersecting) {
-            return;
-          }
+            if (!entry.isIntersecting) {
+              return;
+            }
 
-          entry.target.classList.add("visible");
+            entry.target.classList.add("visible");
 
-          observerInstance.unobserve(entry.target);
+            observer.unobserve(entry.target);
 
-        });
+          });
 
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -60px 0px"
-      }
-    );
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -40px 0px"
+        }
+      );
 
     revealElements.forEach((element) => {
-      observer.observe(element);
+      revealObserver.observe(element);
     });
 
   } else {
@@ -189,75 +245,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     STAGGERED PROJECT ANIMATION
-  ======================================================= */
+     STAGGER PROJECTS
+     ======================================================= */
 
-  document.querySelectorAll(".project-list").forEach((list) => {
+  document
+    .querySelectorAll(".project-card")
+    .forEach((card, index) => {
 
-    const cards = list.querySelectorAll(".project-card");
-
-    cards.forEach((card, index) => {
-
-      card.style.transitionDelay = `${Math.min(index * 70, 420)}ms`;
-
-    });
-
-  });
-
-
-  /* =======================================================
-     SERVICES STAGGER
-  ======================================================= */
-
-  document.querySelectorAll(".services-grid").forEach((grid) => {
-
-    grid.querySelectorAll(".service").forEach((service, index) => {
-
-      service.style.transitionDelay =
-        `${Math.min(index * 60, 300)}ms`;
+      card.style.transitionDelay =
+        `${Math.min(index * 80, 400)}ms`;
 
     });
 
-  });
+
+  /* =======================================================
+     SERVICE STAGGER
+     ======================================================= */
+
+  document
+    .querySelectorAll(".service-row")
+    .forEach((row, index) => {
+
+      row.style.transitionDelay =
+        `${Math.min(index * 50, 250)}ms`;
+
+    });
 
 
   /* =======================================================
-     FAQ ACCORDION
-  ======================================================= */
+     FAQ
+     ======================================================= */
 
-  const faqItems = document.querySelectorAll(".faq-item");
+  const faqItems =
+    document.querySelectorAll(".faq-item");
 
   faqItems.forEach((item) => {
 
-    const button = item.querySelector(".faq-question");
+    const question =
+      item.querySelector(".faq-question");
 
-    button?.addEventListener("click", () => {
+    question?.addEventListener("click", () => {
 
-      const isOpen = item.classList.contains("open");
+      const wasActive =
+        item.classList.contains("active");
 
-      faqItems.forEach((otherItem) => {
-
-        otherItem.classList.remove("open");
-
-        const otherButton =
-          otherItem.querySelector(".faq-question");
-
-        otherButton?.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
+      faqItems.forEach((faq) => {
+        faq.classList.remove("active");
       });
 
-      if (!isOpen) {
-
-        item.classList.add("open");
-
-        button.setAttribute(
-          "aria-expanded",
-          "true"
-        );
-
+      if (!wasActive) {
+        item.classList.add("active");
       }
 
     });
@@ -267,131 +304,252 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =======================================================
      CONTACT FORM
-  ======================================================= */
+     ======================================================= */
 
-  const contactForm =
+  const form =
     document.getElementById("contactForm");
 
   const submitButton =
-    contactForm?.querySelector(".submit-button");
+    document.getElementById("submitButton");
 
-  const submitLabel =
-    contactForm?.querySelector(".submit-label");
+  const formStatus =
+    document.getElementById("formStatus");
 
-  if (contactForm && submitButton && submitLabel) {
+  form?.addEventListener("submit", async (event) => {
 
-    contactForm.addEventListener("submit", () => {
+    event.preventDefault();
 
-      submitButton.disabled = true;
-
-      submitLabel.textContent = "Sending Inquiry...";
-
-    });
-
-  }
-
-
-  /* =======================================================
-     HERO PARALLAX
-  ======================================================= */
-
-  const hero =
-    document.querySelector(".hero");
-
-  const orbits =
-    document.querySelectorAll(".hero-orbit");
-
-  if (
-    hero &&
-    orbits.length &&
-    window.matchMedia("(pointer: fine)").matches
-  ) {
-
-    hero.addEventListener("mousemove", (event) => {
-
-      const rect = hero.getBoundingClientRect();
-
-      const x =
-        (event.clientX - rect.left) / rect.width - 0.5;
-
-      const y =
-        (event.clientY - rect.top) / rect.height - 0.5;
-
-      orbits.forEach((orbit, index) => {
-
-        const intensity =
-          (index + 1) * 8;
-
-        orbit.style.marginLeft =
-          `${x * intensity}px`;
-
-        orbit.style.marginTop =
-          `${y * intensity}px`;
-
-      });
-
-    });
-
-    hero.addEventListener("mouseleave", () => {
-
-      orbits.forEach((orbit) => {
-
-        orbit.style.marginLeft = "";
-        orbit.style.marginTop = "";
-
-      });
-
-    });
-
-  }
-
-
-  /* =======================================================
-     PROJECT HOVER MICRO-INTERACTION
-  ======================================================= */
-
-  const projectCards =
-    document.querySelectorAll(".project-card");
-
-  projectCards.forEach((card) => {
-
-    const arrow =
-      card.querySelector(".project-arrow");
-
-    card.addEventListener("mouseenter", () => {
-
-      if (arrow) {
-        arrow.style.transform = "rotate(45deg)";
-      }
-
-    });
-
-    card.addEventListener("mouseleave", () => {
-
-      if (arrow) {
-        arrow.style.transform = "";
-      }
-
-    });
-
-  });
-
-
-  /* =======================================================
-     PREVENT DOUBLE FORM SUBMISSION
-  ======================================================= */
-
-  let formSubmitted = false;
-
-  contactForm?.addEventListener("submit", (event) => {
-
-    if (formSubmitted) {
-      event.preventDefault();
+    if (!submitButton) {
       return;
     }
 
-    formSubmitted = true;
+    submitButton.disabled = true;
+
+    const originalHTML =
+      submitButton.innerHTML;
+
+    submitButton.innerHTML =
+      "<span>Sending inquiry...</span><span>...</span>";
+
+    if (formStatus) {
+      formStatus.textContent = "";
+    }
+
+    try {
+
+      const response =
+        await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+      if (response.ok) {
+
+        form.reset();
+
+        if (formStatus) {
+          formStatus.textContent =
+            "Thank you. Your inquiry has been sent. We will get back to you shortly.";
+        }
+
+        submitButton.innerHTML =
+          "<span>Inquiry sent</span><span>✓</span>";
+
+      } else {
+
+        throw new Error("Form submission failed.");
+
+      }
+
+    } catch (error) {
+
+      if (formStatus) {
+        formStatus.textContent =
+          "Something went wrong. Please email mhgroup4u@gmail.com directly.";
+      }
+
+      submitButton.innerHTML =
+        originalHTML;
+
+      submitButton.disabled = false;
+
+    }
 
   });
+
+
+  /* =======================================================
+     CUSTOM CURSOR
+     ======================================================= */
+
+  const cursorDot =
+    document.querySelector(".cursor-dot");
+
+  const cursorRing =
+    document.querySelector(".cursor-ring");
+
+  if (
+    cursorDot &&
+    cursorRing &&
+    window.matchMedia("(pointer: fine)").matches
+  ) {
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    let ringX = mouseX;
+    let ringY = mouseY;
+
+    window.addEventListener("mousemove", (event) => {
+
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+
+      cursorDot.style.left =
+        `${mouseX}px`;
+
+      cursorDot.style.top =
+        `${mouseY}px`;
+
+    });
+
+    const animateCursor = () => {
+
+      ringX +=
+        (mouseX - ringX) * 0.13;
+
+      ringY +=
+        (mouseY - ringY) * 0.13;
+
+      cursorRing.style.left =
+        `${ringX}px`;
+
+      cursorRing.style.top =
+        `${ringY}px`;
+
+      requestAnimationFrame(animateCursor);
+
+    };
+
+    animateCursor();
+
+
+    document
+      .querySelectorAll("a, button, input, textarea, select")
+      .forEach((element) => {
+
+        element.addEventListener(
+          "mouseenter",
+          () => {
+            document.body.classList.add(
+              "cursor-hover"
+            );
+          }
+        );
+
+        element.addEventListener(
+          "mouseleave",
+          () => {
+            document.body.classList.remove(
+              "cursor-hover"
+            );
+          }
+        );
+
+      });
+
+  }
+
+
+  /* =======================================================
+     HERO ORBIT PARALLAX
+     ======================================================= */
+
+  const orbitOne =
+    document.querySelector(".orbit-one");
+
+  const orbitTwo =
+    document.querySelector(".orbit-two");
+
+  if (
+    orbitOne &&
+    orbitTwo &&
+    window.matchMedia("(pointer: fine)").matches
+  ) {
+
+    window.addEventListener("mousemove", (event) => {
+
+      const x =
+        (event.clientX / window.innerWidth - 0.5);
+
+      const y =
+        (event.clientY / window.innerHeight - 0.5);
+
+      orbitOne.style.transform =
+        `translate(${x * 22}px, ${y * 22}px)`;
+
+      orbitTwo.style.transform =
+        `translate(${x * -16}px, ${y * -16}px)`;
+
+    });
+
+  }
+
+
+  /* =======================================================
+     PROJECT MICRO INTERACTION
+     ======================================================= */
+
+  document
+    .querySelectorAll(".project-card")
+    .forEach((card) => {
+
+      const visual =
+        card.querySelector(".project-visual");
+
+      if (!visual) {
+        return;
+      }
+
+      card.addEventListener(
+        "mousemove",
+        (event) => {
+
+          if (
+            !window.matchMedia("(pointer: fine)").matches
+          ) {
+            return;
+          }
+
+          const rect =
+            card.getBoundingClientRect();
+
+          const x =
+            (event.clientX - rect.left) /
+            rect.width -
+            0.5;
+
+          const y =
+            (event.clientY - rect.top) /
+            rect.height -
+            0.5;
+
+          visual.style.transform =
+            `scale(.985) translate(${x * 4}px, ${y * 4}px)`;
+
+        }
+      );
+
+      card.addEventListener(
+        "mouseleave",
+        () => {
+          visual.style.transform = "";
+        }
+      );
+
+    });
 
 });
