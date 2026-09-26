@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const header =
-    document.querySelector(".nav-shell");
+  /* =====================================================
+     ELEMENTS
+  ====================================================== */
+
+  const body = document.body;
+
+  const header = document.querySelector(".nav-shell");
 
   const menuButton =
     document.querySelector(".menu-toggle");
@@ -21,10 +26,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const year =
     document.querySelector("#year");
 
+  const hero =
+    document.querySelector(".hero");
 
-  /* =========================================================
+  const heroTitle =
+    document.querySelector(".hero-title");
+
+  const heroOrbs =
+    document.querySelectorAll(".hero-orb");
+
+  const magneticElements =
+    document.querySelectorAll(".magnetic");
+
+  const workTrack =
+    document.querySelector(".work-track");
+
+  const workProgress =
+    document.querySelector(".work-progress span");
+
+
+  /* =====================================================
+     BODY READY
+  ====================================================== */
+
+  body.classList.add("js-ready");
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      body.classList.add("hero-loaded");
+    }, 100);
+  });
+
+
+  /* =====================================================
      YEAR
-  ========================================================= */
+  ====================================================== */
 
   if (year) {
     year.textContent =
@@ -32,9 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================================
-     HEADER
-  ========================================================= */
+  /* =====================================================
+     HEADER SCROLL
+  ====================================================== */
 
   const updateHeader = () => {
 
@@ -42,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     header.classList.toggle(
       "scrolled",
-      window.scrollY > 30
+      window.scrollY > 35
     );
 
   };
@@ -56,9 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
   updateHeader();
 
 
-  /* =========================================================
+  /* =====================================================
      MOBILE MENU
-  ========================================================= */
+  ====================================================== */
 
   const closeMobileMenu = () => {
 
@@ -68,15 +104,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mobileMenu.classList.remove("open");
 
-    document.body.classList.remove(
-      "menu-open"
-    );
+    body.classList.remove("menu-open");
 
     menuButton.setAttribute(
       "aria-expanded",
       "false"
     );
 
+    menuButton.setAttribute(
+      "aria-label",
+      "Open menu"
+    );
   };
 
 
@@ -88,24 +126,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mobileMenu.classList.add("open");
 
-    document.body.classList.add(
-      "menu-open"
-    );
+    body.classList.add("menu-open");
 
     menuButton.setAttribute(
       "aria-expanded",
       "true"
     );
 
+    menuButton.setAttribute(
+      "aria-label",
+      "Close menu"
+    );
   };
 
 
   if (menuButton && mobileMenu) {
-
-    menuButton.setAttribute(
-      "aria-expanded",
-      "false"
-    );
 
     menuButton.addEventListener(
       "click",
@@ -113,14 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         event.preventDefault();
 
-        event.stopPropagation();
+        const open =
+          mobileMenu.classList.contains("open");
 
-        const isOpen =
-          mobileMenu.classList.contains(
-            "open"
-          );
-
-        if (isOpen) {
+        if (open) {
           closeMobileMenu();
         } else {
           openMobileMenu();
@@ -132,66 +163,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================================
-     MOBILE LINKS
-  ========================================================= */
-
-  mobileLinks.forEach((link) => {
-
-    link.addEventListener(
-      "click",
-      (event) => {
-
-        const targetId =
-          link.getAttribute("href");
-
-        if (
-          !targetId ||
-          !targetId.startsWith("#")
-        ) {
-          closeMobileMenu();
-
-          return;
-        }
-
-        const target =
-          document.querySelector(
-            targetId
-          );
-
-        if (!target) {
-          closeMobileMenu();
-
-          return;
-        }
-
-        event.preventDefault();
-
-        closeMobileMenu();
-
-        setTimeout(() => {
-
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-        }, 120);
-
-      }
-    );
-
-  });
-
-
-  /* =========================================================
-     INTERNAL LINKS
-  ========================================================= */
+  /* =====================================================
+     SMOOTH INTERNAL LINKS
+  ====================================================== */
 
   document
-    .querySelectorAll(
-      'a[href^="#"]'
-    )
+    .querySelectorAll('a[href^="#"]')
     .forEach((link) => {
 
       link.addEventListener(
@@ -223,9 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           const target =
-            document.querySelector(
-              targetId
-            );
+            document.querySelector(targetId);
 
           if (!target) {
             return;
@@ -235,9 +210,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
           closeMobileMenu();
 
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+          const headerHeight =
+            header
+              ? header.offsetHeight + 25
+              : 0;
+
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
           });
 
         }
@@ -246,9 +231,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =========================================================
-     ESCAPE KEY
-  ========================================================= */
+  /* =====================================================
+     MOBILE MENU LINKS
+  ====================================================== */
+
+  mobileLinks.forEach((link) => {
+
+    link.addEventListener(
+      "click",
+      () => {
+        setTimeout(
+          closeMobileMenu,
+          50
+        );
+      }
+    );
+
+  });
+
+
+  /* =====================================================
+     ESCAPE
+  ====================================================== */
 
   document.addEventListener(
     "keydown",
@@ -262,9 +266,9 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  /* =========================================================
-     CLOSE MENU ON RESIZE
-  ========================================================= */
+  /* =====================================================
+     RESIZE
+  ====================================================== */
 
   window.addEventListener(
     "resize",
@@ -278,82 +282,71 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  /* =========================================================
+  /* =====================================================
      REVEAL ANIMATIONS
-  ========================================================= */
+  ====================================================== */
+
+  const revealSelectors = [
+    ".section-top",
+    ".intro-title-wrap",
+    ".intro-copy",
+    ".project-card",
+    ".statement h2",
+    ".service-row",
+    ".process-intro",
+    ".process-item",
+    ".about-heading",
+    ".about-content",
+    ".cta-inner",
+    ".contact-heading",
+    ".contact-form"
+  ];
 
   const revealElements =
     document.querySelectorAll(
-      [
-        ".section-label",
-        ".intro-layout",
-        ".project-card",
-        ".service-item",
-        ".process-item",
-        ".about-layout",
-        ".cta-band-inner",
-        ".contact-content"
-      ].join(", ")
+      revealSelectors.join(",")
     );
 
 
-  revealElements.forEach(
-    (element) => {
-
-      element.classList.add(
-        "reveal"
-      );
-
-    }
-  );
+  revealElements.forEach((element) => {
+    element.classList.add("reveal");
+  });
 
 
-  if (
-    "IntersectionObserver"
-    in window
-  ) {
+  if ("IntersectionObserver" in window) {
 
     const revealObserver =
       new IntersectionObserver(
         (entries, observer) => {
 
-          entries.forEach(
-            (entry) => {
+          entries.forEach((entry) => {
 
-              if (
-                !entry.isIntersecting
-              ) {
-                return;
-              }
-
-              entry.target.classList.add(
-                "visible"
-              );
-
-              observer.unobserve(
-                entry.target
-              );
-
+            if (!entry.isIntersecting) {
+              return;
             }
-          );
+
+            entry.target.classList.add(
+              "visible"
+            );
+
+            observer.unobserve(
+              entry.target
+            );
+
+          });
 
         },
         {
           threshold: 0.08,
-
           rootMargin:
-            "0px 0px -50px 0px"
+            "0px 0px -60px 0px"
         }
       );
 
 
     revealElements.forEach(
       (element) => {
-
-        revealObserver.observe(
-          element
-        );
-
+        revealObserver.observe(element);
       }
     );
 
@@ -361,31 +354,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach(
       (element) => {
-
-        element.classList.add(
-          "visible"
-        );
-
+        element.classList.add("visible");
       }
     );
 
   }
 
 
-  /* =========================================================
+  /* =====================================================
      CUSTOM CURSOR
-  ========================================================= */
+  ====================================================== */
 
   const finePointer =
     window.matchMedia(
       "(pointer: fine)"
-    );
+    ).matches;
 
 
   if (
+    finePointer &&
     cursor &&
-    cursorRing &&
-    finePointer.matches
+    cursorRing
   ) {
 
     let mouseX =
@@ -395,7 +384,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.innerHeight / 2;
 
     let ringX = mouseX;
-
     let ringY = mouseY;
 
 
@@ -424,11 +412,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       ringX +=
         (mouseX - ringX) *
-        0.12;
+        0.13;
 
       ringY +=
         (mouseY - ringY) *
-        0.12;
+        0.13;
 
       cursorRing.style.left =
         `${ringX}px`;
@@ -448,98 +436,134 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document
       .querySelectorAll(
-        [
-          "a",
-          "button",
-          ".service-item",
-          ".process-item",
-          ".project-card"
-        ].join(", ")
+        "a, button, select, textarea, input, .project-card, .service-row, .process-item"
       )
-      .forEach(
-        (element) => {
+      .forEach((element) => {
 
-          element.addEventListener(
-            "mouseenter",
-            () => {
+        element.addEventListener(
+          "mouseenter",
+          () => {
+            cursorRing.classList.add(
+              "active"
+            );
+          }
+        );
 
-              cursorRing.classList.add(
-                "active"
-              );
+        element.addEventListener(
+          "mouseleave",
+          () => {
+            cursorRing.classList.remove(
+              "active"
+            );
+          }
+        );
 
-            }
-          );
-
-
-          element.addEventListener(
-            "mouseleave",
-            () => {
-
-              cursorRing.classList.remove(
-                "active"
-              );
-
-            }
-          );
-
-        }
-      );
+      });
 
   }
 
 
-  /* =========================================================
-     HERO MOTION
-  ========================================================= */
+  /* =====================================================
+     MAGNETIC BUTTONS
+  ====================================================== */
 
-  const hero =
-    document.querySelector(".hero");
+  if (finePointer) {
 
-  const heroTitle =
-    document.querySelector(
-      ".hero-title"
+    magneticElements.forEach(
+      (element) => {
+
+        element.addEventListener(
+          "mousemove",
+          (event) => {
+
+            const rect =
+              element.getBoundingClientRect();
+
+            const x =
+              event.clientX -
+              rect.left -
+              rect.width / 2;
+
+            const y =
+              event.clientY -
+              rect.top -
+              rect.height / 2;
+
+            const strength =
+              element.classList.contains(
+                "submit-button"
+              )
+                ? 0.08
+                : 0.18;
+
+            element.style.transform =
+              `translate(${x * strength}px, ${y * strength}px)`;
+
+          }
+        );
+
+
+        element.addEventListener(
+          "mouseleave",
+          () => {
+
+            element.style.transform =
+              "translate(0, 0)";
+
+          }
+        );
+
+      }
     );
 
-  const heroOrbits =
-    document.querySelectorAll(
-      ".hero-orbit"
-    );
+  }
 
 
-  if (hero && heroTitle) {
+  /* =====================================================
+     HERO MOUSE PARALLAX
+  ====================================================== */
+
+  if (
+    finePointer &&
+    hero &&
+    heroTitle
+  ) {
 
     hero.addEventListener(
       "mousemove",
       (event) => {
 
-        if (
-          !window.matchMedia(
-            "(pointer: fine)"
-          ).matches
-        ) {
-          return;
-        }
-
         const rect =
           hero.getBoundingClientRect();
 
         const x =
-          (event.clientX -
-            rect.left) /
-            rect.width -
+          (event.clientX - rect.left) /
+          rect.width -
           0.5;
 
         const y =
-          (event.clientY -
-            rect.top) /
-            rect.height -
+          (event.clientY - rect.top) /
+          rect.height -
           0.5;
 
+
         heroTitle.style.transform =
-          `translate(
-            ${x * 8}px,
-            ${y * 6}px
-          )`;
+          `translate(${x * 8}px, ${y * 6}px)`;
+
+
+        heroOrbs.forEach(
+          (orb, index) => {
+
+            const amount =
+              index === 0
+                ? 18
+                : -12;
+
+            orb.style.transform =
+              `translate(${x * amount}px, ${y * amount}px)`;
+
+          }
+        );
 
       }
     );
@@ -552,57 +576,59 @@ document.addEventListener("DOMContentLoaded", () => {
         heroTitle.style.transform =
           "translate(0, 0)";
 
+        heroOrbs.forEach(
+          (orb) => {
+            orb.style.transform =
+              "translate(0, 0)";
+          }
+        );
+
       }
     );
 
   }
 
 
-  /* =========================================================
-     HERO PARALLAX
-  ========================================================= */
+  /* =====================================================
+     HERO SCROLL PARALLAX
+  ====================================================== */
 
-  if (
-    heroOrbits.length > 0
-  ) {
+  if (heroOrbs.length) {
 
     let ticking = false;
-
 
     window.addEventListener(
       "scroll",
       () => {
 
-        if (ticking) return;
+        if (ticking) {
+          return;
+        }
 
-
-        window.requestAnimationFrame(
+        requestAnimationFrame(
           () => {
 
-            const scrollPosition =
+            const scroll =
               window.scrollY;
 
-
-            heroOrbits.forEach(
-              (orbit, index) => {
+            heroOrbs.forEach(
+              (orb, index) => {
 
                 const speed =
                   index === 0
                     ? 0.08
                     : -0.05;
 
-                orbit.style.marginTop =
-                  `${scrollPosition * speed}px`;
+                orb.style.marginTop =
+                  `${scroll * speed}px`;
 
               }
             );
-
 
             ticking = false;
 
           }
         );
-
 
         ticking = true;
 
@@ -613,161 +639,248 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================================
-     HERO CTA
-  ========================================================= */
+  /* =====================================================
+     HORIZONTAL PORTFOLIO DRAG
+  ====================================================== */
 
-  const heroDiscover =
-    document.querySelector(
-      ".hero-discover"
-    );
+  if (workTrack) {
+
+    let isDown = false;
+
+    let startX = 0;
+
+    let scrollStart = 0;
 
 
-  if (heroDiscover) {
+    const getMaxScroll = () => {
 
-    heroDiscover.addEventListener(
-      "mouseenter",
-      () => {
+      return Math.max(
+        1,
+        workTrack.scrollWidth -
+        window.innerWidth
+      );
 
-        heroDiscover.style.transform =
-          "translateY(-3px)";
+    };
+
+
+    const updateProgress = () => {
+
+      if (!workProgress) {
+        return;
+      }
+
+      const max =
+        getMaxScroll();
+
+      const current =
+        Math.max(
+          0,
+          window.scrollX
+        );
+
+      const progress =
+        Math.min(
+          100,
+          (current / max) * 100
+        );
+
+      workProgress.style.width =
+        `${Math.max(15, progress)}%`;
+
+    };
+
+
+    workTrack.addEventListener(
+      "mousedown",
+      (event) => {
+
+        isDown = true;
+
+        workTrack.classList.add(
+          "dragging"
+        );
+
+        startX =
+          event.pageX -
+          workTrack.offsetLeft;
+
+        scrollStart =
+          window.scrollX;
 
       }
     );
 
 
-    heroDiscover.addEventListener(
-      "mouseleave",
+    window.addEventListener(
+      "mouseup",
       () => {
 
-        heroDiscover.style.transform =
-          "translateY(0)";
+        isDown = false;
+
+        workTrack.classList.remove(
+          "dragging"
+        );
 
       }
     );
+
+
+    workTrack.addEventListener(
+      "mousemove",
+      (event) => {
+
+        if (!isDown) {
+          return;
+        }
+
+        event.preventDefault();
+
+        const x =
+          event.pageX -
+          workTrack.offsetLeft;
+
+        const walk =
+          (x - startX) * 1.2;
+
+        window.scrollTo({
+          left:
+            scrollStart - walk
+        });
+
+      }
+    );
+
+
+    workTrack.addEventListener(
+      "wheel",
+      (event) => {
+
+        if (
+          Math.abs(event.deltaY) >
+          Math.abs(event.deltaX)
+        ) {
+
+          event.preventDefault();
+
+          window.scrollBy({
+            left:
+              event.deltaY * 1.5
+          });
+
+        }
+
+      },
+      { passive: false }
+    );
+
+
+    window.addEventListener(
+      "scroll",
+      updateProgress,
+      { passive: true }
+    );
+
+    updateProgress();
 
   }
 
 
-  /* =========================================================
-     PROJECT INTERACTIONS
-  ========================================================= */
+  /* =====================================================
+     PROJECT HOVER TILT
+  ====================================================== */
+
+  if (finePointer) {
+
+    document
+      .querySelectorAll(".project-visual")
+      .forEach((visual) => {
+
+        visual.addEventListener(
+          "mousemove",
+          (event) => {
+
+            const rect =
+              visual.getBoundingClientRect();
+
+            const x =
+              (event.clientX - rect.left) /
+              rect.width -
+              0.5;
+
+            const y =
+              (event.clientY - rect.top) /
+              rect.height -
+              0.5;
+
+            visual.style.transform =
+              `perspective(900px) rotateX(${y * -2.5}deg) rotateY(${x * 2.5}deg) scale(.99)`;
+
+          }
+        );
+
+
+        visual.addEventListener(
+          "mouseleave",
+          () => {
+
+            visual.style.transform =
+              "perspective(900px) rotateX(0) rotateY(0) scale(1)";
+
+          }
+        );
+
+      });
+
+  }
+
+
+  /* =====================================================
+     SERVICE ROW HOVER
+  ====================================================== */
 
   document
-    .querySelectorAll(
-      ".project-card"
-    )
-    .forEach((card) => {
+    .querySelectorAll(".service-row")
+    .forEach((row) => {
 
-      card.addEventListener(
+      row.addEventListener(
         "mouseenter",
         () => {
-
-          card.style.zIndex =
-            "3";
-
+          row.style.zIndex = "2";
         }
       );
 
-
-      card.addEventListener(
+      row.addEventListener(
         "mouseleave",
         () => {
-
-          card.style.zIndex =
-            "1";
-
+          row.style.zIndex = "1";
         }
       );
 
     });
 
 
-  /* =========================================================
-     SERVICE INTERACTIONS
-  ========================================================= */
+  /* =====================================================
+     PROCESS STAGGER
+  ====================================================== */
 
   document
-    .querySelectorAll(
-      ".service-item"
-    )
-    .forEach((item) => {
+    .querySelectorAll(".process-item")
+    .forEach((item, index) => {
 
-      item.addEventListener(
-        "mouseenter",
-        () => {
-
-          item.style.zIndex =
-            "2";
-
-        }
-      );
-
-
-      item.addEventListener(
-        "mouseleave",
-        () => {
-
-          item.style.zIndex =
-            "1";
-
-        }
-      );
+      item.style.transitionDelay =
+        `${index * 40}ms`;
 
     });
 
 
-  /* =========================================================
-     PROCESS INTERACTIONS
-  ========================================================= */
-
-  document
-    .querySelectorAll(
-      ".process-item"
-    )
-    .forEach((item) => {
-
-      item.addEventListener(
-        "mouseenter",
-        () => {
-
-          item.style.zIndex =
-            "2";
-
-        }
-      );
-
-
-      item.addEventListener(
-        "mouseleave",
-        () => {
-
-          item.style.zIndex =
-            "1";
-
-        }
-      );
-
-    });
-
-
-  /* =========================================================
-     TOUCH SAFETY
-  ========================================================= */
+  /* =====================================================
+     MOBILE TOUCH SAFETY
+  ====================================================== */
 
   document.addEventListener(
     "touchstart",
     () => {},
     { passive: true }
-  );
-
-
-  /* =========================================================
-     INITIAL STATE
-  ========================================================= */
-
-  document.body.classList.add(
-    "js-ready"
   );
 
 });
