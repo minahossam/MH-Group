@@ -1,86 +1,90 @@
 /* =========================================================
    MH GROUP
-   PREMIUM DIGITAL STUDIO
-   ========================================================= */
+   Main JavaScript
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  "use strict";
+
+
+  /* =======================================================
+     ELEMENTS
+  ======================================================== */
+
+  const body = document.body;
+
+  const header =
+    document.querySelector(".site-header");
+
+  const menuToggle =
+    document.querySelector(".menu-toggle");
+
+  const mobileMenu =
+    document.querySelector(".mobile-menu");
+
+  const mobileLinks =
+    document.querySelectorAll(".mobile-menu a");
+
+  const themeToggle =
+    document.querySelector(".theme-toggle");
+
+  const cursorDot =
+    document.querySelector(".cursor-dot");
+
+  const cursorRing =
+    document.querySelector(".cursor-ring");
+
+  const revealElements =
+    document.querySelectorAll(".reveal");
+
+  const yearElements =
+    document.querySelectorAll(".year");
+
+  const faqItems =
+    document.querySelectorAll(".faq-item");
+
+  const projectForm =
+    document.querySelector("#projectForm");
+
+  const toast =
+    document.querySelector(".toast");
+
+  const hero =
+    document.querySelector(".hero");
+
+  const heroTitle =
+    document.querySelector(".hero-title");
+
+  const heroOrbits =
+    document.querySelectorAll(".hero-orbit");
+
+
   /* =======================================================
      YEAR
-     ======================================================= */
+  ======================================================== */
 
-  document.querySelectorAll(".year").forEach((element) => {
-    element.textContent = new Date().getFullYear();
-  });
+  const currentYear =
+    new Date().getFullYear();
 
-
-  /* =======================================================
-     PAGE LOADER
-     ======================================================= */
-
-  const loader = document.getElementById("loader");
-
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      loader?.classList.add("loaded");
-    }, 500);
-  });
-
-
-  /* =======================================================
-     THEME
-     ======================================================= */
-
-  const themeToggle = document.getElementById("themeToggle");
-
-  const savedTheme = localStorage.getItem("mh-theme");
-
-  if (savedTheme === "dark") {
-    document.documentElement.classList.add("dark");
-  } else if (savedTheme === "light") {
-    document.documentElement.classList.remove("dark");
-  } else {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    if (prefersDark) {
-      document.documentElement.classList.add("dark");
-    }
-  }
-
-  themeToggle?.addEventListener("click", () => {
-
-    document.documentElement.classList.toggle("dark");
-
-    const isDark =
-      document.documentElement.classList.contains("dark");
-
-    localStorage.setItem(
-      "mh-theme",
-      isDark ? "dark" : "light"
-    );
-
+  yearElements.forEach((element) => {
+    element.textContent = currentYear;
   });
 
 
   /* =======================================================
      HEADER SCROLL
-     ======================================================= */
-
-  const header = document.getElementById("siteHeader");
+  ======================================================== */
 
   const updateHeader = () => {
 
-    if (window.scrollY > 30) {
-      header?.classList.add("scrolled");
-    } else {
-      header?.classList.remove("scrolled");
-    }
+    if (!header) return;
 
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 40
+    );
   };
-
-  updateHeader();
 
   window.addEventListener(
     "scroll",
@@ -88,123 +92,225 @@ document.addEventListener("DOMContentLoaded", () => {
     { passive: true }
   );
 
+  updateHeader();
+
+
+  /* =======================================================
+     THEME
+  ======================================================== */
+
+  const savedTheme =
+    localStorage.getItem("mh-theme");
+
+  if (savedTheme === "dark") {
+    body.classList.add("dark");
+  }
+
+  const updateThemeColor = () => {
+
+    const metaTheme =
+      document.querySelector(
+        'meta[name="theme-color"]'
+      );
+
+    if (!metaTheme) return;
+
+    metaTheme.setAttribute(
+      "content",
+      body.classList.contains("dark")
+        ? "#0b0b0a"
+        : "#f4f0e8"
+    );
+  };
+
+  updateThemeColor();
+
+
+  if (themeToggle) {
+
+    themeToggle.addEventListener(
+      "click",
+      () => {
+
+        body.classList.toggle("dark");
+
+        const isDark =
+          body.classList.contains("dark");
+
+        localStorage.setItem(
+          "mh-theme",
+          isDark
+            ? "dark"
+            : "light"
+        );
+
+        updateThemeColor();
+
+      }
+    );
+  }
+
 
   /* =======================================================
      MOBILE MENU
-     ======================================================= */
+  ======================================================== */
 
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
+  const openMenu = () => {
 
-  const closeMobileMenu = () => {
+    if (!mobileMenu || !menuToggle) {
+      return;
+    }
 
-    menuToggle?.classList.remove("active");
-    mobileMenu?.classList.remove("active");
+    mobileMenu.classList.add("open");
 
-    menuToggle?.setAttribute(
+    body.classList.add("menu-open");
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+    menuToggle.setAttribute(
+      "aria-label",
+      "Close menu"
+    );
+
+  };
+
+
+  const closeMenu = () => {
+
+    if (!mobileMenu || !menuToggle) {
+      return;
+    }
+
+    mobileMenu.classList.remove("open");
+
+    body.classList.remove("menu-open");
+
+    menuToggle.setAttribute(
       "aria-expanded",
       "false"
     );
 
-    document.body.classList.remove("menu-open");
+    menuToggle.setAttribute(
+      "aria-label",
+      "Open menu"
+    );
 
   };
 
-  menuToggle?.addEventListener("click", () => {
 
-    const active =
-      mobileMenu?.classList.toggle("active");
+  if (menuToggle) {
 
-    menuToggle.classList.toggle(
-      "active",
-      active
+    menuToggle.addEventListener(
+      "click",
+      () => {
+
+        const open =
+          mobileMenu.classList.contains("open");
+
+        if (open) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+
+      }
     );
+  }
 
-    menuToggle.setAttribute(
-      "aria-expanded",
-      String(Boolean(active))
-    );
 
-    document.body.classList.toggle(
-      "menu-open",
-      active
-    );
-
-  });
-
-  document.querySelectorAll(".mobile-link").forEach((link) => {
+  mobileLinks.forEach((link) => {
 
     link.addEventListener(
       "click",
-      closeMobileMenu
+      () => {
+        closeMenu();
+      }
     );
 
   });
 
-  document.addEventListener("keydown", (event) => {
 
-    if (event.key === "Escape") {
-      closeMobileMenu();
+  document.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+
     }
+  );
 
-  });
 
-  window.addEventListener("resize", () => {
+  window.addEventListener(
+    "resize",
+    () => {
 
-    if (window.innerWidth > 800) {
-      closeMobileMenu();
+      if (window.innerWidth > 1000) {
+        closeMenu();
+      }
+
     }
-
-  });
+  );
 
 
   /* =======================================================
-     SMOOTH ANCHOR LINKS
-     ======================================================= */
+     SMOOTH INTERNAL LINKS
+  ======================================================== */
 
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach((link) => {
 
-    link.addEventListener("click", (event) => {
+      link.addEventListener(
+        "click",
+        (event) => {
 
-      const targetId =
-        link.getAttribute("href");
+          const targetId =
+            link.getAttribute("href");
 
-      if (!targetId || targetId === "#") {
-        return;
-      }
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
+          }
 
-      const target =
-        document.querySelector(targetId);
+          const target =
+            document.querySelector(targetId);
 
-      if (!target) {
-        return;
-      }
+          if (!target) {
+            return;
+          }
 
-      event.preventDefault();
+          event.preventDefault();
 
-      const headerOffset = 80;
+          closeMenu();
 
-      const position =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        headerOffset;
+          const headerOffset = 75;
 
-      window.scrollTo({
-        top: position,
-        behavior: "smooth"
-      });
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            headerOffset;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
+          });
+
+        }
+      );
 
     });
 
-  });
-
 
   /* =======================================================
-     REVEAL ON SCROLL
-     ======================================================= */
-
-  const revealElements =
-    document.querySelectorAll(".reveal");
+     REVEAL OBSERVER
+  ======================================================== */
 
   if ("IntersectionObserver" in window) {
 
@@ -218,211 +324,130 @@ document.addEventListener("DOMContentLoaded", () => {
               return;
             }
 
-            entry.target.classList.add("visible");
+            entry.target.classList.add(
+              "visible"
+            );
 
-            observer.unobserve(entry.target);
+            observer.unobserve(
+              entry.target
+            );
 
           });
 
         },
         {
           threshold: 0.12,
-          rootMargin: "0px 0px -40px 0px"
+          rootMargin:
+            "0px 0px -50px 0px"
         }
       );
 
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
+    revealElements.forEach(
+      (element) => {
+        revealObserver.observe(element);
+      }
+    );
 
   } else {
 
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
-    });
+    revealElements.forEach(
+      (element) => {
+        element.classList.add("visible");
+      }
+    );
 
   }
 
 
   /* =======================================================
-     STAGGER PROJECTS
-     ======================================================= */
-
-  document
-    .querySelectorAll(".project-card")
-    .forEach((card, index) => {
-
-      card.style.transitionDelay =
-        `${Math.min(index * 80, 400)}ms`;
-
-    });
-
-
-  /* =======================================================
-     SERVICE STAGGER
-     ======================================================= */
-
-  document
-    .querySelectorAll(".service-row")
-    .forEach((row, index) => {
-
-      row.style.transitionDelay =
-        `${Math.min(index * 50, 250)}ms`;
-
-    });
-
-
-  /* =======================================================
      FAQ
-     ======================================================= */
-
-  const faqItems =
-    document.querySelectorAll(".faq-item");
+  ======================================================== */
 
   faqItems.forEach((item) => {
 
-    const question =
+    const button =
       item.querySelector(".faq-question");
 
-    question?.addEventListener("click", () => {
+    if (!button) return;
 
-      const wasActive =
-        item.classList.contains("active");
+    button.addEventListener(
+      "click",
+      () => {
 
-      faqItems.forEach((faq) => {
-        faq.classList.remove("active");
-      });
+        const wasOpen =
+          item.classList.contains("open");
 
-      if (!wasActive) {
-        item.classList.add("active");
-      }
-
-    });
-
-  });
-
-
-  /* =======================================================
-     CONTACT FORM
-     ======================================================= */
-
-  const form =
-    document.getElementById("contactForm");
-
-  const submitButton =
-    document.getElementById("submitButton");
-
-  const formStatus =
-    document.getElementById("formStatus");
-
-  form?.addEventListener("submit", async (event) => {
-
-    event.preventDefault();
-
-    if (!submitButton) {
-      return;
-    }
-
-    submitButton.disabled = true;
-
-    const originalHTML =
-      submitButton.innerHTML;
-
-    submitButton.innerHTML =
-      "<span>Sending inquiry...</span><span>...</span>";
-
-    if (formStatus) {
-      formStatus.textContent = "";
-    }
-
-    try {
-
-      const response =
-        await fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: {
-            Accept: "application/json"
+        faqItems.forEach(
+          (otherItem) => {
+            otherItem.classList.remove(
+              "open"
+            );
           }
-        });
+        );
 
-      if (response.ok) {
-
-        form.reset();
-
-        if (formStatus) {
-          formStatus.textContent =
-            "Thank you. Your inquiry has been sent. We will get back to you shortly.";
+        if (!wasOpen) {
+          item.classList.add("open");
         }
 
-        submitButton.innerHTML =
-          "<span>Inquiry sent</span><span>✓</span>";
-
-      } else {
-
-        throw new Error("Form submission failed.");
-
       }
-
-    } catch (error) {
-
-      if (formStatus) {
-        formStatus.textContent =
-          "Something went wrong. Please email mhgroup4u@gmail.com directly.";
-      }
-
-      submitButton.innerHTML =
-        originalHTML;
-
-      submitButton.disabled = false;
-
-    }
+    );
 
   });
 
 
   /* =======================================================
      CUSTOM CURSOR
-     ======================================================= */
+  ======================================================== */
 
-  const cursorDot =
-    document.querySelector(".cursor-dot");
-
-  const cursorRing =
-    document.querySelector(".cursor-ring");
+  const finePointer =
+    window.matchMedia(
+      "(pointer: fine)"
+    ).matches;
 
   if (
+    finePointer &&
     cursorDot &&
-    cursorRing &&
-    window.matchMedia("(pointer: fine)").matches
+    cursorRing
   ) {
 
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
+    let mouseX =
+      window.innerWidth / 2;
+
+    let mouseY =
+      window.innerHeight / 2;
 
     let ringX = mouseX;
     let ringY = mouseY;
 
-    window.addEventListener("mousemove", (event) => {
 
-      mouseX = event.clientX;
-      mouseY = event.clientY;
+    window.addEventListener(
+      "mousemove",
+      (event) => {
 
-      cursorDot.style.left =
-        `${mouseX}px`;
+        mouseX =
+          event.clientX;
 
-      cursorDot.style.top =
-        `${mouseY}px`;
+        mouseY =
+          event.clientY;
 
-    });
+        cursorDot.style.left =
+          `${mouseX}px`;
+
+        cursorDot.style.top =
+          `${mouseY}px`;
+
+      },
+      { passive: true }
+    );
+
 
     const animateCursor = () => {
 
       ringX +=
-        (mouseX - ringX) * 0.13;
+        (mouseX - ringX) * 0.12;
 
       ringY +=
-        (mouseY - ringY) * 0.13;
+        (mouseY - ringY) * 0.12;
 
       cursorRing.style.left =
         `${ringX}px`;
@@ -430,126 +455,355 @@ document.addEventListener("DOMContentLoaded", () => {
       cursorRing.style.top =
         `${ringY}px`;
 
-      requestAnimationFrame(animateCursor);
+      requestAnimationFrame(
+        animateCursor
+      );
 
     };
 
     animateCursor();
 
 
-    document
-      .querySelectorAll("a, button, input, textarea, select")
-      .forEach((element) => {
+    const interactiveElements =
+      document.querySelectorAll(
+        "a, button, input, textarea, select, .service-item, .project-card"
+      );
+
+
+    interactiveElements.forEach(
+      (element) => {
 
         element.addEventListener(
           "mouseenter",
           () => {
-            document.body.classList.add(
-              "cursor-hover"
+
+            cursorRing.classList.add(
+              "active"
             );
+
           }
         );
 
         element.addEventListener(
           "mouseleave",
           () => {
-            document.body.classList.remove(
-              "cursor-hover"
+
+            cursorRing.classList.remove(
+              "active"
             );
+
           }
         );
 
-      });
+      }
+    );
 
   }
 
 
   /* =======================================================
-     HERO ORBIT PARALLAX
-     ======================================================= */
-
-  const orbitOne =
-    document.querySelector(".orbit-one");
-
-  const orbitTwo =
-    document.querySelector(".orbit-two");
+     HERO MOUSE MOTION
+  ======================================================== */
 
   if (
-    orbitOne &&
-    orbitTwo &&
-    window.matchMedia("(pointer: fine)").matches
+    hero &&
+    heroTitle &&
+    finePointer
   ) {
 
-    window.addEventListener("mousemove", (event) => {
+    hero.addEventListener(
+      "mousemove",
+      (event) => {
 
-      const x =
-        (event.clientX / window.innerWidth - 0.5);
+        const rect =
+          hero.getBoundingClientRect();
 
-      const y =
-        (event.clientY / window.innerHeight - 0.5);
+        const x =
+          (
+            event.clientX -
+            rect.left
+          ) /
+            rect.width -
+          0.5;
 
-      orbitOne.style.transform =
-        `translate(${x * 22}px, ${y * 22}px)`;
+        const y =
+          (
+            event.clientY -
+            rect.top
+          ) /
+            rect.height -
+          0.5;
 
-      orbitTwo.style.transform =
-        `translate(${x * -16}px, ${y * -16}px)`;
+        heroTitle.style.transform =
+          `
+          translate(
+            ${x * 7}px,
+            ${y * 5}px
+          )
+          `;
 
-    });
+      }
+    );
+
+
+    hero.addEventListener(
+      "mouseleave",
+      () => {
+
+        heroTitle.style.transform =
+          "translate(0,0)";
+
+      }
+    );
 
   }
 
 
   /* =======================================================
-     PROJECT MICRO INTERACTION
-     ======================================================= */
+     HERO PARALLAX
+  ======================================================== */
+
+  if (heroOrbits.length) {
+
+    let ticking = false;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (ticking) return;
+
+        window.requestAnimationFrame(
+          () => {
+
+            const scroll =
+              window.scrollY;
+
+            heroOrbits.forEach(
+              (orbit, index) => {
+
+                const speed =
+                  index === 0
+                    ? 0.06
+                    : -0.035;
+
+                orbit.style.marginTop =
+                  `${scroll * speed}px`;
+
+              }
+            );
+
+            ticking = false;
+
+          }
+        );
+
+        ticking = true;
+
+      },
+      { passive: true }
+    );
+
+  }
+
+
+  /* =======================================================
+     MAGNETIC BUTTON
+  ======================================================== */
+
+  const magneticElements =
+    document.querySelectorAll(
+      ".magnetic"
+    );
+
+  if (finePointer) {
+
+    magneticElements.forEach(
+      (element) => {
+
+        element.addEventListener(
+          "mousemove",
+          (event) => {
+
+            const rect =
+              element.getBoundingClientRect();
+
+            const x =
+              event.clientX -
+              rect.left -
+              rect.width / 2;
+
+            const y =
+              event.clientY -
+              rect.top -
+              rect.height / 2;
+
+            element.style.transform =
+              `
+              translate(
+                ${x * 0.08}px,
+                ${y * 0.08}px
+              )
+              `;
+
+          }
+        );
+
+
+        element.addEventListener(
+          "mouseleave",
+          () => {
+
+            element.style.transform =
+              "";
+
+          }
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     SERVICE HOVER
+  ======================================================== */
 
   document
-    .querySelectorAll(".project-card")
-    .forEach((card) => {
+    .querySelectorAll(".service-item")
+    .forEach((item) => {
 
-      const visual =
-        card.querySelector(".project-visual");
-
-      if (!visual) {
-        return;
-      }
-
-      card.addEventListener(
-        "mousemove",
-        (event) => {
-
-          if (
-            !window.matchMedia("(pointer: fine)").matches
-          ) {
-            return;
-          }
-
-          const rect =
-            card.getBoundingClientRect();
-
-          const x =
-            (event.clientX - rect.left) /
-            rect.width -
-            0.5;
-
-          const y =
-            (event.clientY - rect.top) /
-            rect.height -
-            0.5;
-
-          visual.style.transform =
-            `scale(.985) translate(${x * 4}px, ${y * 4}px)`;
-
+      item.addEventListener(
+        "mouseenter",
+        () => {
+          item.style.zIndex = "3";
         }
       );
 
-      card.addEventListener(
+      item.addEventListener(
         "mouseleave",
         () => {
-          visual.style.transform = "";
+          item.style.zIndex = "1";
         }
       );
 
     });
+
+
+  /* =======================================================
+     FORM
+  ======================================================== */
+
+  if (projectForm) {
+
+    projectForm.addEventListener(
+      "submit",
+      (event) => {
+
+        event.preventDefault();
+
+        const formData =
+          new FormData(projectForm);
+
+        const name =
+          formData.get("name");
+
+        const email =
+          formData.get("email");
+
+        const message =
+          formData.get("message");
+
+        const budget =
+          formData.get("budget");
+
+        const timeline =
+          formData.get("timeline");
+
+        const services =
+          formData.getAll("service");
+
+
+        /*
+          IMPORTANT:
+
+          This currently prepares the inquiry
+          locally.
+
+          Connect this form later to your
+          backend / CRM / email service.
+        */
+
+        const inquiry = {
+
+          name,
+          email,
+
+          services,
+
+          budget,
+
+          timeline,
+
+          message
+
+        };
+
+
+        console.log(
+          "MH Group Project Inquiry:",
+          inquiry
+        );
+
+
+        showToast();
+
+        projectForm.reset();
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     TOAST
+  ======================================================== */
+
+  let toastTimer;
+
+
+  const showToast = () => {
+
+    if (!toast) return;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+      setTimeout(() => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      }, 4000);
+
+  };
+
+
+  /* =======================================================
+     PAGE READY
+  ======================================================== */
+
+  requestAnimationFrame(() => {
+
+    body.classList.add(
+      "js-ready"
+    );
+
+  });
 
 });
