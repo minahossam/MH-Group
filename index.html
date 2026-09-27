@@ -1,228 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
-  <title>MH Group — Digital Experiences Built to Move Business</title>
+  <title>MH Group — Digital Experiences</title>
+
   <meta
     name="description"
-    content="MH Group is a digital design and development studio creating refined websites and digital experiences for ambitious businesses."
-  >
+    content="MH Group creates premium websites and digital experiences for ambitious businesses worldwide."
+  />
 
-  <meta name="theme-color" content="#f4f3ef">
+  <meta name="theme-color" content="#f4f0e8" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
     rel="stylesheet"
-  >
+  />
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- PAGE LOADER -->
-  <div class="page-loader" id="loader">
-    <div class="loader-brand">MH<span>.</span></div>
-    <div class="loader-line">
-      <span></span>
-    </div>
-  </div>
+  <!-- =====================================================
+       CURSOR
+  ====================================================== -->
 
-  <!-- CURSOR -->
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
 
-  <!-- HEADER -->
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
 
-      <a href="#top" class="logo" aria-label="MH Group home">
-        <span class="logo-mark">MH</span>
-        <span class="logo-name">GROUP</span>
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header class="site-header" id="top">
+
+    <a href="#home" class="brand" aria-label="MH Group Home">
+      <span class="brand-mark">MH</span>
+      <span class="brand-name">GROUP</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <div class="header-actions">
+
+      <button
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle color theme"
+      >
+        <span class="theme-icon theme-sun">☼</span>
+        <span class="theme-icon theme-moon">☾</span>
+      </button>
+
+      <a href="#contact" class="header-cta">
+        Start a Project
+        <span>↗</span>
       </a>
 
-      <nav class="desktop-nav">
-        <a href="#work">Work</a>
-        <a href="#services">Services</a>
-        <a href="#studio">Studio</a>
-        <a href="#process">Process</a>
-      </nav>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+      </button>
 
-      <div class="header-actions">
-
-        <button
-          class="theme-toggle"
-          id="themeToggle"
-          aria-label="Toggle color theme"
-          type="button"
-        >
-          <span class="theme-icon sun">☼</span>
-          <span class="theme-icon moon">◐</span>
-        </button>
-
-        <a href="#contact" class="header-cta">
-          Start a project
-          <span>↗</span>
-        </a>
-
-        <button
-          class="menu-toggle"
-          id="menuToggle"
-          aria-label="Open menu"
-          aria-expanded="false"
-          type="button"
-        >
-          <span></span>
-          <span></span>
-        </button>
-
-      </div>
     </div>
+
   </header>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
+
+  <!-- =====================================================
+       MOBILE MENU
+  ====================================================== -->
+
+  <div class="mobile-menu">
+
     <div class="mobile-menu-inner">
 
-      <div class="mobile-label">Navigation</div>
+      <p class="eyebrow">Navigation</p>
 
-      <a href="#work" class="mobile-link">
-        <span>01</span>
-        Work
-      </a>
+      <nav>
+        <a href="#services">Services <span>01</span></a>
+        <a href="#approach">Approach <span>02</span></a>
+        <a href="#work">Selected Work <span>03</span></a>
+        <a href="#about">About <span>04</span></a>
+        <a href="#contact">Start a Project <span>05</span></a>
+      </nav>
 
-      <a href="#services" class="mobile-link">
-        <span>02</span>
-        Services
-      </a>
-
-      <a href="#studio" class="mobile-link">
-        <span>03</span>
-        Studio
-      </a>
-
-      <a href="#process" class="mobile-link">
-        <span>04</span>
-        Process
-      </a>
-
-      <a href="#contact" class="mobile-link mobile-contact">
-        <span>05</span>
-        Start a project ↗
-      </a>
+      <div class="mobile-menu-footer">
+        <span>Worldwide</span>
+        <span>© <span class="year"></span> MH Group</span>
+      </div>
 
     </div>
+
   </div>
 
-  <main id="top">
 
-    <!-- HERO -->
-    <section class="hero section">
+  <main>
 
-      <div class="hero-grid"></div>
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
 
-      <div class="container hero-container">
+    <section class="hero section" id="home">
 
-        <div class="hero-top reveal">
-          <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            Independent digital studio
-          </div>
-
-          <div class="hero-index">
-            01 — 05
-          </div>
-        </div>
-
-        <div class="hero-content">
-
-          <div class="hero-kicker reveal">
-            Strategy · Design · Development
-          </div>
-
-          <h1 class="hero-title reveal">
-            Digital presence
-            <span>built to move</span>
-            business.
-          </h1>
-
-          <div class="hero-bottom reveal">
-
-            <p class="hero-description">
-              MH Group creates refined websites and digital experiences
-              designed to make ambitious businesses look credible,
-              communicate clearly, and convert attention into action.
-            </p>
-
-            <div class="hero-actions">
-
-              <a href="#work" class="btn btn-primary">
-                Explore our work
-                <span>↓</span>
-              </a>
-
-              <a href="#contact" class="text-link">
-                Start a conversation
-                <span>↗</span>
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="hero-meta reveal">
-          <span>Based globally</span>
-          <span>Working across US · EU · Worldwide</span>
-          <span>© <span class="year"></span> MH Group</span>
-        </div>
-
-      </div>
+      <div class="hero-noise"></div>
 
       <div class="hero-orbit orbit-one"></div>
       <div class="hero-orbit orbit-two"></div>
 
+      <div class="hero-content">
+
+        <div class="hero-topline reveal">
+          <span class="status-dot"></span>
+          <span>Independent Digital Agency</span>
+
+          <span class="hero-location">
+            Global / Remote
+          </span>
+        </div>
+
+        <div class="hero-heading-wrap">
+
+          <p class="hero-small reveal">
+            WE DESIGN FOR
+          </p>
+
+          <h1 class="hero-title">
+            <span class="line reveal">AMBITION.</span>
+            <span class="line reveal">
+              <em>CLARITY.</em>
+            </span>
+            <span class="line reveal">GROWTH.</span>
+          </h1>
+
+        </div>
+
+        <div class="hero-bottom">
+
+          <p class="hero-description reveal">
+            Premium websites and digital experiences
+            built for businesses that refuse to look ordinary.
+          </p>
+
+          <a href="#contact" class="hero-button magnetic reveal">
+            <span>Start a Project</span>
+            <span class="button-arrow">↗</span>
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-scroll">
+        <span>Scroll to explore</span>
+        <span class="scroll-line"></span>
+      </div>
+
     </section>
 
 
-    <!-- INTRO -->
+    <!-- ===================================================
+         INTRO
+    ==================================================== -->
+
     <section class="intro section">
 
       <div class="container">
 
-        <div class="section-label reveal">
-          <span>02</span>
-          The studio
+        <div class="section-meta reveal">
+          <span>01</span>
+          <span>Who We Are</span>
         </div>
 
-        <div class="intro-layout">
+        <div class="intro-grid">
 
-          <h2 class="intro-title reveal">
-            We don't build websites
-            <em>just to look good.</em>
+          <h2 class="display-title reveal">
+            Your website should not simply
+            <span>exist.</span>
+            It should
+            <i>perform.</i>
           </h2>
 
           <div class="intro-copy reveal">
 
             <p>
-              A website is often the first serious interaction someone
-              has with a business. We design that interaction to feel
-              intentional from the first second.
+              MH Group is a digital agency focused on creating
+              refined, strategic and conversion-minded websites
+              for ambitious businesses.
             </p>
 
             <p>
-              Our approach combines strategy, visual design and development
-              into one focused process — giving businesses a digital
-              presence that feels considered and works commercially.
+              We combine thoughtful design, modern development
+              and a sharp understanding of business goals to
+              create digital experiences that feel premium
+              and work hard.
             </p>
 
-            <a href="#studio" class="arrow-link">
+            <a href="#about" class="text-link">
               Discover MH Group
               <span>↗</span>
             </a>
@@ -236,474 +229,118 @@
     </section>
 
 
-    <!-- WORK -->
-    <section class="work section" id="work">
+    <!-- ===================================================
+         SERVICES
+    ==================================================== -->
 
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div class="section-label">
-            <span>03</span>
-            Selected work
-          </div>
-
-          <div class="section-heading-right">
-            A selection of digital projects delivered
-            across different industries.
-          </div>
-
-        </div>
-
-
-        <div class="projects">
-
-          <!-- PROJECT 01 -->
-          <article class="project-card reveal">
-
-            <div class="project-number">01</div>
-
-            <div class="project-main">
-
-              <div class="project-top">
-
-                <div>
-                  <div class="project-category">
-                    Home Services
-                  </div>
-
-                  <h3>Thomas Pools</h3>
-                </div>
-
-                <a
-                  href="https://thomaspools.us/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-arrow"
-                  aria-label="Visit Thomas Pools"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-              <div class="project-visual visual-01">
-                <div class="visual-grid"></div>
-                <div class="visual-word">POOLS</div>
-                <div class="visual-badge">01 / HOME</div>
-              </div>
-
-              <div class="project-info">
-
-                <p>
-                  A clean digital presence designed to communicate
-                  premium service, trust and local expertise.
-                </p>
-
-                <div class="project-tags">
-                  <span>Web Design</span>
-                  <span>Development</span>
-                  <span>Conversion</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PROJECT 02 -->
-          <article class="project-card project-offset reveal">
-
-            <div class="project-number">02</div>
-
-            <div class="project-main">
-
-              <div class="project-top">
-
-                <div>
-                  <div class="project-category">
-                    Luxury Services
-                  </div>
-
-                  <h3>Platinum Rides</h3>
-                </div>
-
-                <a
-                  href="https://platinumrides.ca/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-arrow"
-                  aria-label="Visit Platinum Rides"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-              <div class="project-visual visual-02">
-                <div class="visual-grid"></div>
-                <div class="visual-word">PLATINUM</div>
-                <div class="visual-badge">02 / LUXURY</div>
-              </div>
-
-              <div class="project-info">
-
-                <p>
-                  A premium service experience built around clarity,
-                  confidence and a stronger luxury positioning.
-                </p>
-
-                <div class="project-tags">
-                  <span>Brand Direction</span>
-                  <span>UX</span>
-                  <span>Development</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PROJECT 03 -->
-          <article class="project-card reveal">
-
-            <div class="project-number">03</div>
-
-            <div class="project-main">
-
-              <div class="project-top">
-
-                <div>
-                  <div class="project-category">
-                    Real Estate
-                  </div>
-
-                  <h3>Realtor on the Riviera</h3>
-                </div>
-
-                <a
-                  href="https://realtorontheriviera.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-arrow"
-                  aria-label="Visit Realtor on the Riviera"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-              <div class="project-visual visual-03">
-                <div class="visual-grid"></div>
-                <div class="visual-word">RIVIERA</div>
-                <div class="visual-badge">03 / PROPERTY</div>
-              </div>
-
-              <div class="project-info">
-
-                <p>
-                  An editorial-inspired experience created to position
-                  a personal real estate brand with confidence.
-                </p>
-
-                <div class="project-tags">
-                  <span>Web Design</span>
-                  <span>Personal Brand</span>
-                  <span>UX</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PROJECT 04 -->
-          <article class="project-card project-offset reveal">
-
-            <div class="project-number">04</div>
-
-            <div class="project-main">
-
-              <div class="project-top">
-
-                <div>
-                  <div class="project-category">
-                    Healthcare
-                  </div>
-
-                  <h3>BioFlex Aesthetics</h3>
-                </div>
-
-                <a
-                  href="https://bioflexaesthetics.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-arrow"
-                  aria-label="Visit BioFlex Aesthetics"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-              <div class="project-visual visual-04">
-                <div class="visual-grid"></div>
-                <div class="visual-word">BIOFLEX</div>
-                <div class="visual-badge">04 / HEALTH</div>
-              </div>
-
-              <div class="project-info">
-
-                <p>
-                  A refined digital experience balancing clinical
-                  credibility with a modern, premium aesthetic.
-                </p>
-
-                <div class="project-tags">
-                  <span>UX Design</span>
-                  <span>Web Design</span>
-                  <span>Development</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PROJECT 05 -->
-          <article class="project-card reveal">
-
-            <div class="project-number">05</div>
-
-            <div class="project-main">
-
-              <div class="project-top">
-
-                <div>
-                  <div class="project-category">
-                    Organization
-                  </div>
-
-                  <h3>Innovation Depot</h3>
-                </div>
-
-                <a
-                  href="https://innovationdepot.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-arrow"
-                  aria-label="Visit Innovation Depot"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-              <div class="project-visual visual-05">
-                <div class="visual-grid"></div>
-                <div class="visual-word">INNOVATE</div>
-                <div class="visual-badge">05 / BUSINESS</div>
-              </div>
-
-              <div class="project-info">
-
-                <p>
-                  A structured corporate experience focused on hierarchy,
-                  communication and a stronger digital presence.
-                </p>
-
-                <div class="project-tags">
-                  <span>Strategy</span>
-                  <span>UX</span>
-                  <span>Web Development</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PROJECT 06 -->
-          <article class="project-card project-offset reveal">
-
-            <div class="project-number">06</div>
-
-            <div class="project-main">
-
-              <div class="project-top">
-
-                <div>
-                  <div class="project-category">
-                    SaaS / AI
-                  </div>
-
-                  <h3>Virpa</h3>
-                </div>
-
-                <a
-                  href="https://virpa.ai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-arrow"
-                  aria-label="Visit Virpa"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-              <div class="project-visual visual-06">
-                <div class="visual-grid"></div>
-                <div class="visual-word">VIRPA</div>
-                <div class="visual-badge">06 / TECHNOLOGY</div>
-              </div>
-
-              <div class="project-info">
-
-                <p>
-                  A technology-led experience designed to communicate
-                  a complex digital product with greater clarity.
-                </p>
-
-                <div class="project-tags">
-                  <span>SaaS</span>
-                  <span>UX</span>
-                  <span>Digital Product</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SERVICES -->
     <section class="services section" id="services">
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <div class="section-label">
-            <span>04</span>
-            Capabilities
+          <div class="section-meta">
+            <span>02</span>
+            <span>Capabilities</span>
           </div>
 
-          <div class="section-heading-right">
-            Focused services for businesses that care
-            about how they show up online.
-          </div>
+          <h2>
+            Built around
+            <em>your goals.</em>
+          </h2>
 
         </div>
-
 
         <div class="service-list">
 
-          <div class="service-row reveal">
+          <article class="service-item reveal">
 
-            <div class="service-index">01</div>
+            <div class="service-number">01</div>
 
-            <div class="service-name">
-              Strategy
+            <div class="service-main">
+              <h3>Web Design</h3>
+
+              <p>
+                High-end interfaces that balance
+                visual impact, usability and brand identity.
+              </p>
             </div>
 
-            <div class="service-description">
-              Positioning, structure and digital direction
-              before pixels are pushed.
+            <div class="service-arrow">↗</div>
+
+          </article>
+
+
+          <article class="service-item reveal">
+
+            <div class="service-number">02</div>
+
+            <div class="service-main">
+              <h3>Web Development</h3>
+
+              <p>
+                Fast, responsive and carefully engineered
+                websites designed to perform across devices.
+              </p>
             </div>
 
-            <div class="service-icon">↗</div>
+            <div class="service-arrow">↗</div>
 
-          </div>
+          </article>
 
 
-          <div class="service-row reveal">
+          <article class="service-item reveal">
 
-            <div class="service-index">02</div>
+            <div class="service-number">03</div>
 
-            <div class="service-name">
-              Web Design
+            <div class="service-main">
+              <h3>Business Websites</h3>
+
+              <p>
+                Strategic websites designed to establish
+                credibility, communicate value and generate action.
+              </p>
             </div>
 
-            <div class="service-description">
-              High-end interfaces built around hierarchy,
-              usability and brand perception.
+            <div class="service-arrow">↗</div>
+
+          </article>
+
+
+          <article class="service-item reveal">
+
+            <div class="service-number">04</div>
+
+            <div class="service-main">
+              <h3>Landing Pages</h3>
+
+              <p>
+                Focused experiences built around one objective:
+                turning attention into meaningful action.
+              </p>
             </div>
 
-            <div class="service-icon">↗</div>
+            <div class="service-arrow">↗</div>
 
-          </div>
+          </article>
 
 
-          <div class="service-row reveal">
+          <article class="service-item reveal">
 
-            <div class="service-index">03</div>
+            <div class="service-number">05</div>
 
-            <div class="service-name">
-              Development
+            <div class="service-main">
+              <h3>Redesign &amp; Optimization</h3>
+
+              <p>
+                We transform outdated websites into sharper,
+                faster and more effective digital experiences.
+              </p>
             </div>
 
-            <div class="service-description">
-              Fast, responsive and carefully implemented
-              websites that work across devices.
-            </div>
+            <div class="service-arrow">↗</div>
 
-            <div class="service-icon">↗</div>
-
-          </div>
-
-
-          <div class="service-row reveal">
-
-            <div class="service-index">04</div>
-
-            <div class="service-name">
-              Conversion
-            </div>
-
-            <div class="service-description">
-              Clear messaging and user journeys designed
-              to move visitors toward action.
-            </div>
-
-            <div class="service-icon">↗</div>
-
-          </div>
-
-
-          <div class="service-row reveal">
-
-            <div class="service-index">05</div>
-
-            <div class="service-name">
-              Ongoing Support
-            </div>
-
-            <div class="service-description">
-              Continued improvements, updates and support
-              after launch when your business needs it.
-            </div>
-
-            <div class="service-icon">↗</div>
-
-          </div>
+          </article>
 
         </div>
 
@@ -712,272 +349,124 @@
     </section>
 
 
-    <!-- STATEMENT -->
-    <section class="statement section">
+    <!-- ===================================================
+         MARQUEE
+    ==================================================== -->
 
-      <div class="container">
+    <section class="marquee-section">
 
-        <div class="statement-label reveal">
-          Our perspective
+      <div class="marquee">
+
+        <div class="marquee-track">
+
+          <span>DESIGN</span>
+          <i>✦</i>
+          <span>DEVELOPMENT</span>
+          <i>✦</i>
+          <span>STRATEGY</span>
+          <i>✦</i>
+          <span>EXPERIENCE</span>
+          <i>✦</i>
+
+          <span>DESIGN</span>
+          <i>✦</i>
+          <span>DEVELOPMENT</span>
+          <i>✦</i>
+          <span>STRATEGY</span>
+          <i>✦</i>
+          <span>EXPERIENCE</span>
+          <i>✦</i>
+
         </div>
-
-        <h2 class="statement-title reveal">
-          Your website should not
-          <span>explain that you are serious.</span>
-          It should make people feel it.
-        </h2>
 
       </div>
 
     </section>
 
 
-    <!-- WHY MH -->
-    <section class="why section">
+    <!-- ===================================================
+         APPROACH
+    ==================================================== -->
+
+    <section class="approach section" id="approach">
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <div class="section-label">
-            <span>05</span>
-            Why MH Group
-          </div>
-
-          <div class="section-heading-right">
-            A lean model designed around quality,
-            flexibility and direct communication.
-          </div>
-
-        </div>
-
-
-        <div class="why-grid">
-
-          <div class="why-card reveal">
-            <span>01</span>
-            <h3>Lean by design</h3>
-            <p>
-              No unnecessary layers between the business,
-              the strategy and the people doing the work.
-            </p>
-          </div>
-
-
-          <div class="why-card reveal">
-            <span>02</span>
-            <h3>Specialist talent</h3>
-            <p>
-              Projects can be matched with focused designers
-              and developers according to the work required.
-            </p>
-          </div>
-
-
-          <div class="why-card reveal">
+          <div class="section-meta">
             <span>03</span>
-            <h3>Business first</h3>
-            <p>
-              Visual quality matters, but every design decision
-              should have a reason behind it.
-            </p>
+            <span>Our Approach</span>
           </div>
 
-
-          <div class="why-card reveal">
-            <span>04</span>
-            <h3>One clear process</h3>
-            <p>
-              Discovery, proposal, production, review and launch
-              are handled through one focused workflow.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- STUDIO -->
-    <section class="studio section" id="studio">
-
-      <div class="container">
-
-        <div class="studio-layout">
-
-          <div class="studio-left reveal">
-
-            <div class="section-label">
-              <span>06</span>
-              The studio
-            </div>
-
-            <div class="studio-symbol">
-              <span>MH</span>
-            </div>
-
-          </div>
-
-
-          <div class="studio-right">
-
-            <h2 class="studio-title reveal">
-              Small team.
-              <br>
-              <em>Big digital thinking.</em>
-            </h2>
-
-            <div class="studio-copy reveal">
-
-              <p>
-                MH Group is a lean digital studio built around a simple
-                idea: businesses should not need a huge agency to get
-                thoughtful digital work.
-              </p>
-
-              <p>
-                We coordinate strategy, design and development through
-                a flexible network of specialist talent, while keeping
-                communication and project direction centralized.
-              </p>
-
-            </div>
-
-            <div class="studio-details reveal">
-
-              <div>
-                <span>01</span>
-                Strategy
-              </div>
-
-              <div>
-                <span>02</span>
-                Design
-              </div>
-
-              <div>
-                <span>03</span>
-                Development
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROCESS -->
-    <section class="process section" id="process">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div class="section-label">
-            <span>07</span>
-            Process
-          </div>
-
-          <div class="section-heading-right">
-            Straightforward from first conversation
-            to final launch.
-          </div>
+          <h2>
+            Simple process.
+            <em>Serious results.</em>
+          </h2>
 
         </div>
 
 
         <div class="process-list">
 
-          <div class="process-item reveal">
+          <article class="process-item reveal">
 
             <div class="process-number">01</div>
 
-            <div class="process-content">
-              <h3>Discovery</h3>
+            <div>
+              <h3>Discover</h3>
               <p>
-                We understand your business, audience, goals,
-                current digital presence and what needs to improve.
+                We understand the business, audience,
+                goals and opportunity before design begins.
               </p>
             </div>
 
-            <div class="process-arrow">↗</div>
-
-          </div>
+          </article>
 
 
-          <div class="process-item reveal">
+          <article class="process-item reveal">
 
             <div class="process-number">02</div>
 
-            <div class="process-content">
-              <h3>Proposal</h3>
+            <div>
+              <h3>Define</h3>
               <p>
-                You receive a clear project scope, deliverables,
-                timeline and investment before production begins.
+                We establish the structure, visual direction
+                and experience required to move the project forward.
               </p>
             </div>
 
-            <div class="process-arrow">↗</div>
-
-          </div>
+          </article>
 
 
-          <div class="process-item reveal">
+          <article class="process-item reveal">
 
             <div class="process-number">03</div>
 
-            <div class="process-content">
-              <h3>Design & Build</h3>
+            <div>
+              <h3>Build</h3>
               <p>
-                Our design and development team turns the agreed
-                direction into a polished digital experience.
+                Design becomes a responsive, polished and
+                performance-focused digital experience.
               </p>
             </div>
 
-            <div class="process-arrow">↗</div>
-
-          </div>
+          </article>
 
 
-          <div class="process-item reveal">
+          <article class="process-item reveal">
 
             <div class="process-number">04</div>
 
-            <div class="process-content">
-              <h3>Review</h3>
+            <div>
+              <h3>Refine</h3>
               <p>
-                We refine the work through the agreed review process
-                and make sure everything is ready for launch.
+                Every important detail is reviewed, tested
+                and refined before the final handoff.
               </p>
             </div>
 
-            <div class="process-arrow">↗</div>
-
-          </div>
-
-
-          <div class="process-item reveal">
-
-            <div class="process-number">05</div>
-
-            <div class="process-content">
-              <h3>Launch</h3>
-              <p>
-                Final checks, deployment and handover — with optional
-                ongoing support after the project is live.
-              </p>
-            </div>
-
-            <div class="process-arrow">↗</div>
-
-          </div>
+          </article>
 
         </div>
 
@@ -986,44 +475,146 @@
     </section>
 
 
-    <!-- INVESTMENT -->
-    <section class="investment section">
+    <!-- ===================================================
+         WORK
+    ==================================================== -->
+
+    <section class="work section" id="work">
 
       <div class="container">
 
-        <div class="investment-box reveal">
+        <div class="section-heading work-heading reveal">
 
-          <div class="investment-top">
-
-            <div class="section-label">
-              <span>08</span>
-              Project investment
-            </div>
-
-            <span class="investment-note">
-              Every project is scoped individually
-            </span>
-
+          <div class="section-meta">
+            <span>04</span>
+            <span>Selected Work</span>
           </div>
 
-          <div class="investment-content">
+          <h2>
+            Made to be
+            <em>remembered.</em>
+          </h2>
 
-            <h2>
-              Built around
-              <em>your business.</em>
-            </h2>
+        </div>
 
-            <p>
-              We scope each project around its goals, complexity,
-              required pages, functionality and timeline. That means
-              the proposal reflects the actual project rather than
-              forcing every business into the same package.
+
+        <div class="work-grid">
+
+          <article class="project-card project-large reveal">
+
+            <div class="project-visual project-visual-one">
+              <span>01</span>
+              <strong>01</strong>
+            </div>
+
+            <div class="project-info">
+              <div>
+                <h3>Brand / Business</h3>
+                <p>Strategy · Design · Development</p>
+              </div>
+
+              <span>↗</span>
+            </div>
+
+          </article>
+
+
+          <article class="project-card reveal">
+
+            <div class="project-visual project-visual-two">
+              <span>02</span>
+              <strong>02</strong>
+            </div>
+
+            <div class="project-info">
+              <div>
+                <h3>Digital Product</h3>
+                <p>UX · UI · Development</p>
+              </div>
+
+              <span>↗</span>
+            </div>
+
+          </article>
+
+
+          <article class="project-card reveal">
+
+            <div class="project-visual project-visual-three">
+              <span>03</span>
+              <strong>03</strong>
+            </div>
+
+            <div class="project-info">
+              <div>
+                <h3>Modern Commerce</h3>
+                <p>Strategy · E-commerce · UX</p>
+              </div>
+
+              <span>↗</span>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         ABOUT
+    ==================================================== -->
+
+    <section class="about section" id="about">
+
+      <div class="container">
+
+        <div class="section-meta reveal">
+          <span>05</span>
+          <span>About MH Group</span>
+        </div>
+
+        <div class="about-layout">
+
+          <h2 class="display-title reveal">
+            Small by design.
+            <span>Focused by nature.</span>
+          </h2>
+
+          <div class="about-content reveal">
+
+            <p class="about-lead">
+              We believe great digital work does not require
+              unnecessary complexity.
             </p>
 
-            <a href="#contact" class="btn btn-light">
-              Request a project brief
-              <span>↗</span>
-            </a>
+            <p>
+              MH Group is built around a simple idea:
+              bring together the right creative and technical
+              expertise for each project, while keeping the
+              experience focused, transparent and personal.
+            </p>
+
+            <div class="about-stats">
+
+              <div>
+                <strong>01</strong>
+                <span>Focused partner</span>
+              </div>
+
+              <div>
+                <strong>∞</strong>
+                <span>Possibilities</span>
+              </div>
+
+              <div>
+                <strong>01</strong>
+                <span>Clear objective</span>
+              </div>
+
+            </div>
 
           </div>
 
@@ -1034,21 +625,25 @@
     </section>
 
 
-    <!-- FAQ -->
+    <!-- ===================================================
+         FAQ
+    ==================================================== -->
+
     <section class="faq section">
 
       <div class="container">
 
         <div class="section-heading reveal">
 
-          <div class="section-label">
-            <span>09</span>
-            Questions
+          <div class="section-meta">
+            <span>06</span>
+            <span>FAQ</span>
           </div>
 
-          <div class="section-heading-right">
-            A few things clients usually want to know.
-          </div>
+          <h2>
+            Before we
+            <em>begin.</em>
+          </h2>
 
         </div>
 
@@ -1057,16 +652,16 @@
 
           <div class="faq-item reveal">
 
-            <button class="faq-question" type="button">
-              <span>How does a project start?</span>
-              <span class="faq-plus">+</span>
+            <button class="faq-question">
+              What type of projects do you take on?
+              <span>+</span>
             </button>
 
             <div class="faq-answer">
               <p>
-                Start by sending us your project details. We review the
-                information, discuss the goals with you, and then prepare
-                a project scope and proposal.
+                We work with businesses, brands and
+                organizations that need a new website,
+                redesign, landing page or digital experience.
               </p>
             </div>
 
@@ -1075,16 +670,16 @@
 
           <div class="faq-item reveal">
 
-            <button class="faq-question" type="button">
-              <span>Do you work with businesses outside your country?</span>
-              <span class="faq-plus">+</span>
+            <button class="faq-question">
+              How long does a project take?
+              <span>+</span>
             </button>
 
             <div class="faq-answer">
               <p>
-                Yes. MH Group is structured for remote collaboration
-                and can work with businesses across the US, Europe
-                and other international markets.
+                Timelines depend on the scope and complexity
+                of the project. After understanding your needs,
+                we establish a clear delivery timeline.
               </p>
             </div>
 
@@ -1093,17 +688,15 @@
 
           <div class="faq-item reveal">
 
-            <button class="faq-question" type="button">
-              <span>How are payments handled?</span>
-              <span class="faq-plus">+</span>
+            <button class="faq-question">
+              Do you work internationally?
+              <span>+</span>
             </button>
 
             <div class="faq-answer">
               <p>
-                Projects typically begin with an initial deposit, with
-                the remaining balance due before final launch. Exact
-                payment terms are confirmed in the project proposal
-                and agreement.
+                Yes. MH Group is designed to work remotely
+                with clients across different markets and time zones.
               </p>
             </div>
 
@@ -1112,35 +705,16 @@
 
           <div class="faq-item reveal">
 
-            <button class="faq-question" type="button">
-              <span>Can you maintain the website after launch?</span>
-              <span class="faq-plus">+</span>
+            <button class="faq-question">
+              How do I start a project?
+              <span>+</span>
             </button>
 
             <div class="faq-answer">
               <p>
-                Yes. Ongoing support, updates and maintenance can be
-                arranged when required and scoped according to the
-                client's needs.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div class="faq-item reveal">
-
-            <button class="faq-question" type="button">
-              <span>Do you use specialist freelancers?</span>
-              <span class="faq-plus">+</span>
-            </button>
-
-            <div class="faq-answer">
-              <p>
-                MH Group operates with a flexible distributed team.
-                Depending on the project, specialist designers and
-                developers may contribute to the work while project
-                communication and direction remain centralized.
+                Submit a project inquiry with the basic details
+                of your project. We will review the information
+                and determine the next steps.
               </p>
             </div>
 
@@ -1153,263 +727,218 @@
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- ===================================================
+         CONTACT
+    ==================================================== -->
+
     <section class="contact section" id="contact">
+
+      <div class="contact-glow"></div>
 
       <div class="container">
 
-        <div class="contact-grid">
+        <div class="contact-header reveal">
 
-          <div class="contact-intro reveal">
+          <div class="section-meta">
+            <span>07</span>
+            <span>Start a Project</span>
+          </div>
 
-            <div class="section-label">
-              <span>10</span>
-              Start a project
+          <h2>
+            Have something
+            <em>worth building?</em>
+          </h2>
+
+          <p>
+            Tell us what you're working on.
+            We'll take it from there.
+          </p>
+
+        </div>
+
+
+        <form class="project-form" id="projectForm">
+
+          <div class="form-row">
+
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="John Smith"
+                required
+              />
             </div>
 
-            <h2>
-              Have a business
-              <em>worth building online?</em>
-            </h2>
-
-            <p>
-              Tell us what you're working on. We'll review the details
-              and get back to you with the next step.
-            </p>
-
-            <a
-              href="mailto:mhgroup4u@gmail.com"
-              class="contact-email"
-            >
-              mhgroup4u@gmail.com
-              <span>↗</span>
-            </a>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="john@company.com"
+                required
+              />
+            </div>
 
           </div>
 
 
-          <form
-            class="contact-form reveal"
-            id="contactForm"
-            action="https://formspree.io/f/xzezeejq"
-            method="POST"
-          >
+          <div class="field">
 
-            <input
-              type="hidden"
-              name="_subject"
-              value="New MH Group Project Inquiry"
-            >
+            <label>What do you need?</label>
 
-            <div class="form-row">
+            <div class="choice-grid">
 
-              <div class="field">
-                <label for="name">Your name *</label>
+              <label class="choice">
                 <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="John Smith"
-                  required
-                >
-              </div>
-
-              <div class="field">
-                <label for="email">Email *</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="john@company.com"
-                  required
-                >
-              </div>
-
-            </div>
-
-
-            <div class="form-row">
-
-              <div class="field">
-                <label for="company">Company</label>
-                <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  placeholder="Your company"
-                >
-              </div>
-
-              <div class="field">
-                <label for="website">Current website</label>
-                <input
-                  id="website"
-                  name="website"
-                  type="url"
-                  placeholder="https://"
-                >
-              </div>
-
-            </div>
-
-
-            <div class="field">
-
-              <label>What do you need?</label>
-
-              <div class="checkbox-grid">
-
-                <label class="checkbox">
-                  <input
-                    type="checkbox"
-                    name="service"
-                    value="Website Design"
-                  >
-                  <span>Website Design</span>
-                </label>
-
-                <label class="checkbox">
-                  <input
-                    type="checkbox"
-                    name="service"
-                    value="Website Development"
-                  >
-                  <span>Development</span>
-                </label>
-
-                <label class="checkbox">
-                  <input
-                    type="checkbox"
-                    name="service"
-                    value="Redesign"
-                  >
-                  <span>Redesign</span>
-                </label>
-
-                <label class="checkbox">
-                  <input
-                    type="checkbox"
-                    name="service"
-                    value="Maintenance"
-                  >
-                  <span>Ongoing Support</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <div class="form-row">
-
-              <div class="field">
-
-                <label for="budget">
-                  Approximate budget
-                </label>
-
-                <select id="budget" name="budget">
-
-                  <option value="">
-                    Select a range
-                  </option>
-
-                  <option value="Under $1,500">
-                    Under $1,500
-                  </option>
-
-                  <option value="$1,500 - $3,000">
-                    $1,500 — $3,000
-                  </option>
-
-                  <option value="$3,000 - $5,000">
-                    $3,000 — $5,000
-                  </option>
-
-                  <option value="$5,000+">
-                    $5,000+
-                  </option>
-
-                  <option value="Not sure yet">
-                    Not sure yet
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="field">
-
-                <label for="timeline">
-                  Desired timeline
-                </label>
-
-                <select id="timeline" name="timeline">
-
-                  <option value="">
-                    Select a timeline
-                  </option>
-
-                  <option value="As soon as possible">
-                    As soon as possible
-                  </option>
-
-                  <option value="2 - 4 weeks">
-                    2 — 4 weeks
-                  </option>
-
-                  <option value="1 - 2 months">
-                    1 — 2 months
-                  </option>
-
-                  <option value="Flexible">
-                    Flexible
-                  </option>
-
-                </select>
-
-              </div>
-
-            </div>
-
-
-            <div class="field">
-
-              <label for="message">
-                Tell us about the project *
+                  type="checkbox"
+                  name="service"
+                  value="New Website"
+                />
+                <span>New Website</span>
               </label>
 
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="What are you trying to build, improve or achieve?"
-                required
-              ></textarea>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="service"
+                  value="Redesign"
+                />
+                <span>Redesign</span>
+              </label>
+
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="service"
+                  value="Landing Page"
+                />
+                <span>Landing Page</span>
+              </label>
+
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="service"
+                  value="E-commerce"
+                />
+                <span>E-commerce</span>
+              </label>
+
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="service"
+                  value="Other"
+                />
+                <span>Something else</span>
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="field">
+
+              <label for="budget">Estimated Budget</label>
+
+              <select id="budget" name="budget">
+
+                <option value="">
+                  Select a range
+                </option>
+
+                <option value="Under $1,000">
+                  Under $1,000
+                </option>
+
+                <option value="$1,000 — $3,000">
+                  $1,000 — $3,000
+                </option>
+
+                <option value="$3,000 — $5,000">
+                  $3,000 — $5,000
+                </option>
+
+                <option value="$5,000+">
+                  $5,000+
+                </option>
+
+              </select>
 
             </div>
 
 
-            <button
-              type="submit"
-              class="form-submit"
-              id="submitButton"
-            >
-              <span>Send project inquiry</span>
-              <span>↗</span>
-            </button>
+            <div class="field">
+
+              <label for="timeline">Desired Timeline</label>
+
+              <select id="timeline" name="timeline">
+
+                <option value="">
+                  Select timeline
+                </option>
+
+                <option value="ASAP">
+                  As soon as possible
+                </option>
+
+                <option value="2-4 weeks">
+                  2–4 weeks
+                </option>
+
+                <option value="1-2 months">
+                  1–2 months
+                </option>
+
+                <option value="Flexible">
+                  Flexible
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
 
 
-            <div
-              class="form-status"
-              id="formStatus"
-              aria-live="polite"
-            ></div>
+          <div class="field">
 
-          </form>
+            <label for="message">
+              Tell us about the project
+            </label>
 
-        </div>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="What are you looking to build?"
+            ></textarea>
+
+          </div>
+
+
+          <button class="form-submit" type="submit">
+
+            <span>Send Project Inquiry</span>
+
+            <span>↗</span>
+
+          </button>
+
+
+          <p class="form-note">
+            By submitting this form, you agree to be contacted
+            regarding your project inquiry.
+          </p>
+
+        </form>
 
       </div>
 
@@ -1418,23 +947,24 @@
   </main>
 
 
-  <!-- FOOTER -->
-  <footer class="footer">
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="site-footer">
 
     <div class="container">
 
       <div class="footer-top">
 
-        <div class="footer-brand">
+        <div>
 
-          <a href="#top" class="logo footer-logo">
-            <span class="logo-mark">MH</span>
-            <span class="logo-name">GROUP</span>
+          <a href="#home" class="footer-brand">
+            MH<span>GROUP</span>
           </a>
 
           <p>
-            Digital experiences for businesses
-            ready to move forward.
+            Digital experiences for ambitious businesses.
           </p>
 
         </div>
@@ -1442,28 +972,24 @@
 
         <div class="footer-links">
 
-          <div class="footer-column">
+          <div>
 
-            <span class="footer-heading">
-              Navigate
-            </span>
+            <span class="footer-label">Explore</span>
 
-            <a href="#work">Work</a>
             <a href="#services">Services</a>
-            <a href="#studio">Studio</a>
-            <a href="#process">Process</a>
+            <a href="#approach">Approach</a>
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
 
           </div>
 
 
-          <div class="footer-column">
+          <div>
 
-            <span class="footer-heading">
-              Contact
-            </span>
+            <span class="footer-label">Contact</span>
 
             <a href="mailto:mhgroup4u@gmail.com">
-              Email us
+              mhgroup4u@gmail.com
             </a>
 
             <a href="#contact">
@@ -1484,7 +1010,7 @@
         </span>
 
         <span>
-          Strategy · Design · Development
+          Worldwide · Remote
         </span>
 
         <a href="#top">
@@ -1496,6 +1022,11 @@
     </div>
 
   </footer>
+
+
+  <div class="toast" role="status">
+    Your inquiry has been prepared.
+  </div>
 
 
   <script src="script.js"></script>
